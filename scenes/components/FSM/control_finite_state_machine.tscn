@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjkfmdshefftu"]
+
+[ext_resource type="Script" path="res://scenes/components/FSM/control_finite_state_machine.gd" id="1_a0oyf"]
+
+[node name="ControlFiniteStateMachine" type="Node"]
+script = ExtResource("1_a0oyf")
