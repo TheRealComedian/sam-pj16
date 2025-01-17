@@ -4,3 +4,6 @@ extends Node
 
 ## Main scene
 var game: Game
+
+## current instance of the player character
+var player: Player
