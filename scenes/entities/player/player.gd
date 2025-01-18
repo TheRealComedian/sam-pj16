@@ -2,15 +2,27 @@ class_name Player extends CharacterBody2D
 
 @export var input_disabled: bool = false
 @export var movement_speed: int = 600
+@onready var cursor: AnimatedSprite2D = $Cursor
+@onready var cursor_ray: RayCast2D = $CursorFacing
+
+## rotation angle to orient something towards the cursor
+##NOTE: default resting position is facing right (0.0)
+var angle_to_cursor: float:
+	get():
+		return self.get_angle_to(get_global_mouse_position())
 
 func _ready():
 	if Global.player: 
 		self.queue_free()
-		return
+		return 
 	Global.player = self
 
 func _physics_process(_delta):
-	if input_disabled: return
-	var input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	self.velocity = input_direction * movement_speed
-	move_and_slide()
+	cursor.global_position = get_global_mouse_position()
+	# Placeholder visual to show what direction a weapon would be facing
+	cursor_ray.rotation = angle_to_cursor
+	
+	if !input_disabled: 
+		var input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+		self.velocity = input_direction * movement_speed
+		move_and_slide()

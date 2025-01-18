@@ -1,7 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://c4xyjdvy1qpyx"]
+[gd_scene load_steps=6 format=3 uid="uid://c4xyjdvy1qpyx"]
 
 [ext_resource type="Script" path="res://scenes/entities/player/player.gd" id="1_3evo7"]
 [ext_resource type="Texture2D" uid="uid://b1avblrivak0m" path="res://icon.png" id="2_2idmq"]
+[ext_resource type="Texture2D" uid="uid://dk3rnrcrrw8yr" path="res://assets/godot/icons/State.png" id="3_sc85x"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jk3v1"]
+atlas = ExtResource("3_sc85x")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_momce"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jk3v1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Player" type="CharacterBody2D"]
 motion_mode = 1
@@ -10,3 +26,10 @@ script = ExtResource("1_3evo7")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.142427, 0.142427)
 texture = ExtResource("2_2idmq")
+
+[node name="Cursor" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.142427, 0.142427)
+sprite_frames = SubResource("SpriteFrames_momce")
+
+[node name="CursorFacing" type="RayCast2D" parent="."]
+target_position = Vector2(128, 0)
