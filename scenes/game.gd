@@ -1,5 +1,6 @@
 class_name Game extends Node2D
 ## The main scene of the project, within all 2D nodes will be added
+##NOTE: peepee weeheehee
 
 func _ready():
 	Global.game = self
