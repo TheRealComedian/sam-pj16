@@ -11,5 +11,3 @@ position = Vector2(480, 270)
 
 [node name="Player" parent="." instance=ExtResource("2_ie04y")]
 position = Vector2(480, 270)
-input_disabled = false
-movement_speed = 300
