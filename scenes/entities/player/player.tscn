@@ -1,7 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://c4xyjdvy1qpyx"]
+[gd_scene load_steps=8 format=3 uid="uid://c4xyjdvy1qpyx"]
 
 [ext_resource type="Script" path="res://scenes/entities/player/player.gd" id="1_3evo7"]
-[ext_resource type="Texture2D" uid="uid://b1avblrivak0m" path="res://icon.png" id="2_2idmq"]
+[ext_resource type="Texture2D" uid="uid://c2mkp15l80a7l" path="res://Blade.png" id="2_pnhr1"]
 [ext_resource type="Texture2D" uid="uid://dk3rnrcrrw8yr" path="res://assets/godot/icons/State.png" id="3_sc85x"]
 [ext_resource type="PackedScene" uid="uid://8p244x1dnspa" path="res://scenes/components/health_component.tscn" id="4_758oi"]
 
@@ -20,19 +20,25 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_srh2y"]
+size = Vector2(22, 62)
+
 [node name="Player" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_3evo7")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.142427, 0.142427)
-texture = ExtResource("2_2idmq")
+texture = ExtResource("2_pnhr1")
 
 [node name="Cursor" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.142427, 0.142427)
 sprite_frames = SubResource("SpriteFrames_momce")
+frame_progress = 0.716665
 
 [node name="CursorFacing" type="RayCast2D" parent="."]
-target_position = Vector2(128, 0)
+target_position = Vector2(64, 0)
 
 [node name="HealthComponent" parent="." instance=ExtResource("4_758oi")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_srh2y")
