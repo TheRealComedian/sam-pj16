@@ -12,11 +12,12 @@ size = Vector2(32, 32)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_445qy"]
 size = Vector2(32, 32)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("health_component")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "weapon")]
 collision_layer = 2
 motion_mode = 1
 script = ExtResource("1_3evo7")
 health_component = NodePath("HealthComponent")
+weapon = NodePath("Sword")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_ed7un")
