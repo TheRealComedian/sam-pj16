@@ -1,11 +1,43 @@
-[gd_scene load_steps=3 format=3 uid="uid://7wibdi5xwkt"]
+[gd_scene load_steps=5 format=3 uid="uid://7wibdi5xwkt"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_ilbpj"]
 [ext_resource type="PackedScene" uid="uid://c4xyjdvy1qpyx" path="res://scenes/entities/player/player.tscn" id="2_ie04y"]
+[ext_resource type="Script" path="res://scenes/ui/hud/hud.gd" id="2_nyb4e"]
+[ext_resource type="PackedScene" uid="uid://m4b6gk7f36vg" path="res://scenes/entities/health_bar.tscn" id="3_a6vth"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_ilbpj")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Overlay" type="CanvasLayer" parent="."]
+
+[node name="HUD" type="Control" parent="Overlay"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_nyb4e")
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Overlay/HUD"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.694792
+anchor_top = 0.109259
+anchor_right = 0.929167
+anchor_bottom = 0.183333
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Overlay/HUD/HBoxContainer"]
+layout_mode = 2
+text = "Health:"
+
+[node name="HealthBar" parent="Overlay/HUD/HBoxContainer" instance=ExtResource("3_a6vth")]
+layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="Player" parent="." instance=ExtResource("2_ie04y")]
+
+[node name="Camera2D" type="Camera2D" parent="."]

@@ -7,7 +7,6 @@ const friction = 600
 @onready var cursor: AnimatedSprite2D = $Cursor
 @onready var cursor_ray: RayCast2D = $CursorFacing
 @export var health_component: HealthComponent
-@onready var healthbar: ProgressBar = $Healthbar	# Placeholder for testing health until health GUI is added
 
 ## rotation angle to orient something towards the cursor
 ##NOTE: default resting position is facing right (0.0)
@@ -20,14 +19,7 @@ func _ready():
 		self.queue_free()
 		return 
 	Global.player = self
-	
-	healthbar.max_value = health_component.max_health
-	healthbar.value = health_component.current_health
-	health_component.health_changed.connect(update_health_gui)
-	
-
-func update_health_gui(_prev: float, new: float):
-	healthbar.value = new
+	Global.hud.health_bar.connect_health(health_component)
 
 func _physics_process(delta: float) -> void:
 	cursor.global_position = get_global_mouse_position()

@@ -5,5 +5,7 @@ extends Node
 ## Main scene
 var game: Game
 
+var hud: HUD
+
 ## current instance of the player character
 var player: Player
