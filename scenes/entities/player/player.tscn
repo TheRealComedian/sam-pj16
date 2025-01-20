@@ -1,9 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://c4xyjdvy1qpyx"]
+[gd_scene load_steps=10 format=3 uid="uid://c4xyjdvy1qpyx"]
 
 [ext_resource type="Script" path="res://scenes/entities/player/player.gd" id="1_3evo7"]
 [ext_resource type="Texture2D" uid="uid://c2mkp15l80a7l" path="res://Blade.png" id="2_pnhr1"]
 [ext_resource type="Texture2D" uid="uid://dk3rnrcrrw8yr" path="res://assets/godot/icons/State.png" id="3_sc85x"]
 [ext_resource type="PackedScene" uid="uid://8p244x1dnspa" path="res://scenes/components/health_component.tscn" id="4_758oi"]
+[ext_resource type="PackedScene" uid="uid://sgkunku4x031" path="res://scenes/components/hurtbox_component.tscn" id="5_23hp3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_srh2y"]
+size = Vector2(22, 62)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jk3v1"]
 atlas = ExtResource("3_sc85x")
@@ -20,15 +24,20 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_srh2y"]
-size = Vector2(22, 62)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_445qy"]
+size = Vector2(35.39, 55.2056)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("health_component")]
+collision_layer = 2
 motion_mode = 1
 script = ExtResource("1_3evo7")
+health_component = NodePath("HealthComponent")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_pnhr1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_srh2y")
 
 [node name="Cursor" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.142427, 0.142427)
@@ -40,5 +49,20 @@ target_position = Vector2(64, 0)
 
 [node name="HealthComponent" parent="." instance=ExtResource("4_758oi")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_srh2y")
+[node name="Hurtbox" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_23hp3")]
+position = Vector2(30.305, -15.2056)
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(-30.305, 11.6028)
+shape = SubResource("RectangleShape2D_445qy")
+debug_color = Color(0.244572, 0.601581, 0.581193, 0.42)
+
+[node name="Healthbar" type="ProgressBar" parent="."]
+offset_left = -48.0
+offset_top = -72.0
+offset_right = 56.0
+offset_bottom = -45.0
+max_value = 20.0
+step = 0.5
+value = 20.0
