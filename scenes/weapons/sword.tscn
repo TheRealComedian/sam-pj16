@@ -1,7 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://b6ukhia0s6mkl"]
+[gd_scene load_steps=13 format=3 uid="uid://b6ukhia0s6mkl"]
 
-[ext_resource type="PackedScene" uid="uid://b1lpwgiginedg" path="res://scenes/weapons/weapon_base/weapon.tscn" id="1_omrgh"]
-[ext_resource type="Script" path="res://scenes/weapons/sword_base/sword.gd" id="2_7dl35"]
+[ext_resource type="Script" path="res://scenes/weapons/sword.gd" id="2_7dl35"]
 [ext_resource type="Texture2D" uid="uid://bmdit23huhynx" path="res://Blade Battlforme.png" id="3_4tvn8"]
 [ext_resource type="Texture2D" uid="uid://c2mkp15l80a7l" path="res://Blade.png" id="4_31d6s"]
 [ext_resource type="Texture2D" uid="uid://dglgqnut2mfur" path="res://Inert Blade.png" id="5_mv7co"]
@@ -59,24 +58,22 @@ animations = [{
 radius = 16.0
 height = 48.0
 
-[node name="Sword" node_paths=PackedStringArray("sprite", "hitbox") instance=ExtResource("1_omrgh")]
+[node name="Sword" type="Node2D" node_paths=PackedStringArray("sprite", "hitbox")]
 script = ExtResource("2_7dl35")
 sprite = NodePath("AnimatedSprite2D")
 hitbox = NodePath("Hitbox/CollisionShape2D")
-swipe_duration = 0.3
-cooldown_duration = 1.0
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="2"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(56, 0)
 rotation = -1.57079
 sprite_frames = SubResource("SpriteFrames_kls4t")
 animation = &"active"
 autoplay = "inactive"
 
-[node name="Hitbox" parent="." index="3" instance=ExtResource("6_tj0cf")]
+[node name="Hitbox" parent="." instance=ExtResource("6_tj0cf")]
 damage = 1.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(72, 0)
 rotation = -1.57079
 shape = SubResource("CapsuleShape2D_lrx43")
