@@ -13,6 +13,13 @@ func get_movement_direction() -> Vector2:
 	else:
 		return Vector2(0, 0) 
 
+func _input(event: InputEvent):
+	if input_disabled: return
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		input_disabled = true
+		await weapon.attack()
+		input_disabled = false
+
 func _physics_process(delta):
 	if weapon and !input_disabled:
 			weapon.look_at(Global.game.get_global_mouse_position())

@@ -7,3 +7,4 @@ var user: Character
 # override with any attack functionality like sprite/position changes or hitbox control
 func attack():
 	pass
+	

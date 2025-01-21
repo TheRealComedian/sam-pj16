@@ -1,21 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://b1lpwgiginedg"]
+[gd_scene load_steps=2 format=3 uid="uid://b1lpwgiginedg"]
 
 [ext_resource type="Script" path="res://scenes/weapons/weapon_base/weapon.gd" id="1_t2fnw"]
-[ext_resource type="PackedScene" uid="uid://bymt3484vhpqx" path="res://scenes/components/FSM/finite_state_machine.tscn" id="2_yh760"]
-[ext_resource type="Script" path="res://scenes/weapons/weapon_base/states/idle.gd" id="3_5lo3y"]
-[ext_resource type="Script" path="res://scenes/weapons/weapon_base/states/attack.gd" id="4_oso62"]
 
 [node name="Weapon" type="Node2D"]
 script = ExtResource("1_t2fnw")
 
-[node name="FiniteStateMachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("2_yh760")]
-initial_state = NodePath("Idle")
-
-[node name="Idle" type="Node" parent="FiniteStateMachine"]
-script = ExtResource("3_5lo3y")
-
-[node name="Attack" type="Node" parent="FiniteStateMachine"]
-script = ExtResource("4_oso62")
-
 [node name="Aim" type="RayCast2D" parent="."]
 target_position = Vector2(32, 0)
+collision_mask = 0
