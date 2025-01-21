@@ -35,5 +35,7 @@ shape = SubResource("RectangleShape2D_445qy")
 debug_color = Color(0.244572, 0.601581, 0.581193, 0.42)
 
 [node name="HealthComponent" parent="." instance=ExtResource("4_758oi")]
+max_health = 20.0
+current_health = 20.0
 
 [node name="Sword" parent="." instance=ExtResource("5_6qmra")]

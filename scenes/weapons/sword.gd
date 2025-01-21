@@ -23,4 +23,4 @@ func attack():
 	
 	hitbox.disabled = true
 	sprite.play('inactive')
-	await Util.wait(cooldown_duration).timeout
+	await Util.wait(self.cooldown_duration).timeout

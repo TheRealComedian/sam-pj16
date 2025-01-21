@@ -62,6 +62,7 @@ height = 48.0
 script = ExtResource("2_7dl35")
 sprite = NodePath("AnimatedSprite2D")
 hitbox = NodePath("Hitbox/CollisionShape2D")
+cooldown_duration = 0.1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(56, 0)
