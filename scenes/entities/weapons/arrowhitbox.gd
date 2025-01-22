@@ -12,9 +12,11 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
+#  Disable the hitbox once it hits a target or wall
 func set_disabled(is_disabled: bool) -> void:
 	collision_shape.set_deferred("disabled", is_disabled)
 	
+#  Disappears once the hitbox hits a target or wall
 func _on_body_entered(body):
 	queue_free()
 	pass

@@ -14,7 +14,7 @@ const friction = 600
 
 var weapon_timer = 0.0
 var cooldown = 0.69
-var speed_bullet = 900
+var arrow_speed = 900
 
 ## rotation angle to orient something towards the cursor
 ##NOTE: default resting position is facing right (0.0)
@@ -58,7 +58,7 @@ func fire() -> void:
 	arrow.global_position = shoot_position.global_position
 	#arrow.direction = global_position.direction_to(get_global_mouse_position())
 	arrow.rotation_degrees = rotation_degrees
-	arrow.linear_velocity = Vector2(speed_bullet,0).rotated(arrow.rotation)
+	arrow.linear_velocity = Vector2(arrow_speed,0).rotated(arrow.rotation)
 	add_child(arrow)
 	pass
 	
