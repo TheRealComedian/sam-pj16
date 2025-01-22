@@ -1,44 +1,41 @@
 [gd_scene load_steps=8 format=3 uid="uid://c4xyjdvy1qpyx"]
 
 [ext_resource type="Script" path="res://scenes/entities/player/player.gd" id="1_3evo7"]
-[ext_resource type="Texture2D" uid="uid://c2mkp15l80a7l" path="res://Blade.png" id="2_pnhr1"]
-[ext_resource type="Texture2D" uid="uid://dk3rnrcrrw8yr" path="res://assets/godot/icons/State.png" id="3_sc85x"]
+[ext_resource type="Texture2D" uid="uid://bmyq5fspilx6v" path="res://Wisper Mote.png" id="2_ed7un"]
 [ext_resource type="PackedScene" uid="uid://8p244x1dnspa" path="res://scenes/components/health_component.tscn" id="4_758oi"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jk3v1"]
-atlas = ExtResource("3_sc85x")
-region = Rect2(0, 0, 256, 256)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_momce"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jk3v1")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[ext_resource type="PackedScene" uid="uid://b6ukhia0s6mkl" path="res://scenes/weapons/sword.tscn" id="5_6qmra"]
+[ext_resource type="PackedScene" uid="uid://sgkunku4x031" path="res://scenes/components/hurtbox_component.tscn" id="5_23hp3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_srh2y"]
-size = Vector2(22, 62)
+size = Vector2(32, 32)
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_445qy"]
+size = Vector2(32, 32)
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "weapon")]
+collision_layer = 2
 motion_mode = 1
 script = ExtResource("1_3evo7")
+health_component = NodePath("HealthComponent")
+weapon = NodePath("Sword")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_pnhr1")
-
-[node name="Cursor" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.142427, 0.142427)
-sprite_frames = SubResource("SpriteFrames_momce")
-frame_progress = 0.716665
-
-[node name="CursorFacing" type="RayCast2D" parent="."]
-target_position = Vector2(64, 0)
-
-[node name="HealthComponent" parent="." instance=ExtResource("4_758oi")]
+texture = ExtResource("2_ed7un")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_srh2y")
+
+[node name="Hurtbox" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_23hp3")]
+collision_layer = 32
+health_component = NodePath("../HealthComponent")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("RectangleShape2D_445qy")
+debug_color = Color(0.244572, 0.601581, 0.581193, 0.42)
+
+[node name="HealthComponent" parent="." instance=ExtResource("4_758oi")]
+max_health = 20.0
+current_health = 20.0
+
+[node name="Sword" parent="." instance=ExtResource("5_6qmra")]
