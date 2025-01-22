@@ -1,11 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://7wibdi5xwkt"]
+[gd_scene load_steps=8 format=3 uid="uid://7wibdi5xwkt"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_ilbpj"]
 [ext_resource type="PackedScene" uid="uid://c4xyjdvy1qpyx" path="res://scenes/entities/player/player.tscn" id="2_ie04y"]
 [ext_resource type="Script" path="res://scenes/ui/hud/hud.gd" id="2_nyb4e"]
 [ext_resource type="PackedScene" uid="uid://m4b6gk7f36vg" path="res://scenes/entities/health_bar.tscn" id="3_a6vth"]
 [ext_resource type="Texture2D" uid="uid://dk3rnrcrrw8yr" path="res://assets/godot/icons/State.png" id="5_1cxmy"]
-[ext_resource type="PackedScene" uid="uid://y28itm0e1koh" path="res://scenes/entities/enemy_base/enemy.tscn" id="6_h6o8p"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jk3v1"]
 atlas = ExtResource("5_1cxmy")
@@ -55,13 +54,13 @@ text = "Health:"
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Player" parent="." instance=ExtResource("2_ie04y")]
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-
 [node name="Cursor" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.142427, 0.142427)
 sprite_frames = SubResource("SpriteFrames_mk6ck")
 
-[node name="Enemy" parent="." instance=ExtResource("6_h6o8p")]
-position = Vector2(-294, -2)
+[node name="Player" parent="." instance=ExtResource("2_ie04y")]
+position = Vector2(327, -18)
+metadata/_edit_group_ = true
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(0.5, 0.5)

@@ -17,7 +17,7 @@ func enter():
 func physics_update(delta):
 	if done_wandering: 
 		Transitioned.emit(self, 'Idle')
-		if is_instance_valid(wander_timer): wander_timer.quedue_free()
+		if is_instance_valid(wander_timer): wander_timer.queue_free()
 	
 	if Global.player in (owner.detection_range as Area2D).get_overlapping_bodies():
 		Transitioned.emit(self, 'Chase')

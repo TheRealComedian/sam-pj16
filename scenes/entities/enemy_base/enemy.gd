@@ -5,6 +5,7 @@ class_name Enemy extends Character
 @export var attack_range: Area2D
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var hurtbox: Hurtbox = $Hurtbox
+@onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
 
 func _ready():
 	(health_component as HealthComponent).health_changed.connect(health_changed)

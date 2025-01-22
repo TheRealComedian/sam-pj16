@@ -21,7 +21,7 @@ radius = 25.2982
 radius = 24.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xytv3"]
-radius = 709.479
+radius = 880.036
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e2t7j"]
 radius = 96.0
@@ -98,8 +98,4 @@ shape = SubResource("CircleShape2D_e2t7j")
 debug_color = Color(1, 0.529412, 0.219608, 0.121569)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-avoidance_enabled = true
-radius = 60.0
 debug_enabled = true
-
-[connection signal="velocity_computed" from="NavigationAgent2D" to="FiniteStateMachine/Chase" method="velocity_computed"]
