@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://dadigxamxmcxe"]
+
+[ext_resource type="Texture2D" uid="uid://cqlnrq70p2sf6" path="res://assets/weapons/arrowtest.png" id="1_oh3p6"]
+[ext_resource type="Script" path="res://scenes/entities/weapons/arrow.gd" id="1_rqwt6"]
+[ext_resource type="Script" path="res://scenes/entities/weapons/arrowhitbox.gd" id="2_vqe3o"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vt3wm"]
+radius = 11.0454
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fs1yl"]
+radius = 11.0454
+
+[node name="Arrow" type="RigidBody2D"]
+script = ExtResource("1_rqwt6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(32, 32)
+rotation = 1.57024
+scale = Vector2(1, 1)
+texture = ExtResource("1_oh3p6")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 13
+collision_mask = 0
+monitoring = false
+script = ExtResource("2_vqe3o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(48, 32)
+shape = SubResource("CircleShape2D_vt3wm")
+
+[node name="ImpactDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 13
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ImpactDetector"]
+position = Vector2(48, 32)
+shape = SubResource("CircleShape2D_fs1yl")
+
+[node name="Timer" type="Timer" parent="."]
