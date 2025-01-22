@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=3 uid="uid://y28itm0e1koh"]
 
 [ext_resource type="Script" path="res://scenes/entities/enemy_base/enemy.gd" id="1_7mqys"]
-[ext_resource type="Texture2D" uid="uid://cs6f4hvcgsprf" path="res://Wisper Sprite.png" id="2_ogjx5"]
+[ext_resource type="Texture2D" uid="uid://cs6f4hvcgsprf" path="res://assets/sprites/entities/Wisper Sprite.png" id="2_ogjx5"]
 [ext_resource type="PackedScene" uid="uid://bymt3484vhpqx" path="res://scenes/components/FSM/finite_state_machine.tscn" id="2_ulcgu"]
 [ext_resource type="Script" path="res://scenes/entities/enemy_base/states/idle.gd" id="3_8sevy"]
 [ext_resource type="PackedScene" uid="uid://sgkunku4x031" path="res://scenes/components/hurtbox_component.tscn" id="3_ay3ji"]

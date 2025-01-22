@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dglgqnut2mfur"
-path="res://.godot/imported/Inert Blade.png-6d485215aa6f1fc9636edfac50824502.ctex"
+uid="uid://bmyq5fspilx6v"
+path="res://.godot/imported/Wisper Mote.png-055ad81a1815cf5b4e8e32a7f0dbb3d4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Inert Blade.png"
-dest_files=["res://.godot/imported/Inert Blade.png-6d485215aa6f1fc9636edfac50824502.ctex"]
+source_file="res://assets/sprites/entities/Wisper Mote.png"
+dest_files=["res://.godot/imported/Wisper Mote.png-055ad81a1815cf5b4e8e32a7f0dbb3d4.ctex"]
 
 [params]
 

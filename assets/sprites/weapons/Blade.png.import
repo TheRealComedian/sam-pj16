@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmdit23huhynx"
-path="res://.godot/imported/Blade Battlforme.png-71da8fa99a6a439f840c39299c9eacce.ctex"
+uid="uid://c2mkp15l80a7l"
+path="res://.godot/imported/Blade.png-ebe338389c2a0430f8736cf36ffebf4c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Blade Battlforme.png"
-dest_files=["res://.godot/imported/Blade Battlforme.png-71da8fa99a6a439f840c39299c9eacce.ctex"]
+source_file="res://assets/sprites/weapons/Blade.png"
+dest_files=["res://.godot/imported/Blade.png-ebe338389c2a0430f8736cf36ffebf4c.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmyq5fspilx6v"
-path="res://.godot/imported/Wisper Mote.png-ae6136fce4b417ea6bc296f3648414fc.ctex"
+uid="uid://bmdit23huhynx"
+path="res://.godot/imported/Blade Battlforme.png-a71c9d99f6ace56743d0fc5c1d5863c2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Wisper Mote.png"
-dest_files=["res://.godot/imported/Wisper Mote.png-ae6136fce4b417ea6bc296f3648414fc.ctex"]
+source_file="res://assets/sprites/weapons/Blade Battlforme.png"
+dest_files=["res://.godot/imported/Blade Battlforme.png-a71c9d99f6ace56743d0fc5c1d5863c2.ctex"]
 
 [params]
 

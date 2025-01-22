@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bublvpyp7q23i"
-path="res://.godot/imported/YATW Tile Practice IV.png-ce0bf85a52365b458176c5e5f583528d.ctex"
+uid="uid://cs6f4hvcgsprf"
+path="res://.godot/imported/Wisper Sprite.png-50776a30a9b85bfedfbbb586fb135c78.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://YATW Tile Practice IV.png"
-dest_files=["res://.godot/imported/YATW Tile Practice IV.png-ce0bf85a52365b458176c5e5f583528d.ctex"]
+source_file="res://assets/sprites/entities/Wisper Sprite.png"
+dest_files=["res://.godot/imported/Wisper Sprite.png-50776a30a9b85bfedfbbb586fb135c78.ctex"]
 
 [params]
 

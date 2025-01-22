@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=4 uid="uid://bjkvlacl5718e"]
 
-[ext_resource type="Texture2D" uid="uid://bgbydahg8e0x1" path="res://YATW Tile Practice V.png" id="1_84l1v"]
-[ext_resource type="Texture2D" uid="uid://c6qg5i6qvh1g0" path="res://YATW Tile Practice VI.png" id="2_kt8kh"]
+[ext_resource type="Texture2D" uid="uid://bgbydahg8e0x1" path="res://assets/sprites/tiles/YATW Tile Practice V.png" id="1_84l1v"]
+[ext_resource type="Texture2D" uid="uid://c6qg5i6qvh1g0" path="res://assets/sprites/tiles/YATW Tile Practice VI.png" id="2_kt8kh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0ms7j"]
 texture = ExtResource("1_84l1v")

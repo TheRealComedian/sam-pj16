@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2mkp15l80a7l"
-path="res://.godot/imported/Blade.png-7fd42d934587a53ff8614b403b8f4219.ctex"
+uid="uid://bublvpyp7q23i"
+path="res://.godot/imported/YATW Tile Practice IV.png-69994ced7698d52328a43f8a7a4240d5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Blade.png"
-dest_files=["res://.godot/imported/Blade.png-7fd42d934587a53ff8614b403b8f4219.ctex"]
+source_file="res://assets/sprites/tiles/YATW Tile Practice IV.png"
+dest_files=["res://.godot/imported/YATW Tile Practice IV.png-69994ced7698d52328a43f8a7a4240d5.ctex"]
 
 [params]
 
