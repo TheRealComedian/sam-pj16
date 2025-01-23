@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://ba7bjlytuufxp"]
+
+[ext_resource type="Texture2D" uid="uid://cfo74a3mpgra1" path="res://assets/sprites/weapons/Bow.png" id="1_74aow"]
+[ext_resource type="Script" path="res://scenes/weapons/bow.gd" id="1_usdhu"]
+
+[node name="Bow" type="Node2D"]
+script = ExtResource("1_usdhu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(32, 0)
+texture = ExtResource("1_74aow")
+
+[node name="CursorFacing" type="RayCast2D" parent="."]
+position = Vector2(0, -24)
+target_position = Vector2(36, 0)

@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://scenes/entities/player/player.gd" id="1_3evo7"]
 [ext_resource type="Texture2D" uid="uid://bmyq5fspilx6v" path="res://assets/sprites/entities/Wisper Mote.png" id="2_ed7un"]
 [ext_resource type="PackedScene" uid="uid://8p244x1dnspa" path="res://scenes/components/health_component.tscn" id="4_758oi"]
-[ext_resource type="PackedScene" uid="uid://b6ukhia0s6mkl" path="res://scenes/weapons/sword.tscn" id="5_6qmra"]
 [ext_resource type="PackedScene" uid="uid://sgkunku4x031" path="res://scenes/components/hurtbox_component.tscn" id="5_23hp3"]
+[ext_resource type="PackedScene" uid="uid://ba7bjlytuufxp" path="res://scenes/weapons/bow.tscn" id="5_y4aer"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_srh2y"]
 size = Vector2(32, 32)
@@ -16,8 +16,9 @@ size = Vector2(32, 32)
 collision_layer = 2
 motion_mode = 1
 script = ExtResource("1_3evo7")
+mc = true
 health_component = NodePath("HealthComponent")
-weapon = NodePath("Sword")
+weapon = NodePath("Bow")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_ed7un")
@@ -39,4 +40,4 @@ debug_color = Color(0.244572, 0.601581, 0.581193, 0.42)
 max_health = 20.0
 current_health = 20.0
 
-[node name="Sword" parent="." instance=ExtResource("5_6qmra")]
+[node name="Bow" parent="." instance=ExtResource("5_y4aer")]
