@@ -11,6 +11,11 @@ class_name Sword extends Weapon
 
 var current_animation_tween: Tween
 
+func cancel_attack():
+	if owner.weapon.current_animation_tween:
+		owner.weapon.current_animation_tween.kill()
+		owner.weapon.hitbox.disabled = true
+
 func attack():
 	current_animation_tween = get_tree().create_tween()
 	current_animation_tween.tween_property(self, 'rotation', self.rotation-1.1, 0.1)

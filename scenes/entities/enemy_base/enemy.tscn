@@ -62,8 +62,9 @@ script = ExtResource("7_wp61d")
 modulate = Color(0.664854, 0, 0.0390365, 1)
 texture = ExtResource("2_ogjx5")
 
-[node name="Hurtbox" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_ay3ji")]
+[node name="Hurtbox" parent="." node_paths=PackedStringArray("health_component", "visual_node") instance=ExtResource("3_ay3ji")]
 health_component = NodePath("../HealthComponent")
+visual_node = NodePath("../Sprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource("CircleShape2D_4370a")

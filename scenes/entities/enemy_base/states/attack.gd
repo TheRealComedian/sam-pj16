@@ -8,5 +8,4 @@ func enter():
 	Transitioned.emit(self, 'Idle')
 
 func exit():
-	if owner.weapon.current_animation_tween:
-		owner.weapon.current_animation_tween.kill()
+	owner.weapon.cancel_attack()

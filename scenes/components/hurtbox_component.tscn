@@ -6,5 +6,6 @@
 collision_layer = 4
 collision_mask = 8
 script = ExtResource("1_3pb4x")
+invincibility_preiod = 1.0
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

@@ -25,9 +25,10 @@ texture = ExtResource("2_ed7un")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_srh2y")
 
-[node name="Hurtbox" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_23hp3")]
+[node name="Hurtbox" parent="." node_paths=PackedStringArray("health_component", "visual_node") instance=ExtResource("5_23hp3")]
 collision_layer = 32
 health_component = NodePath("../HealthComponent")
+visual_node = NodePath("../Sprite2D")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
