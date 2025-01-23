@@ -2,7 +2,7 @@ class_name Arrow
 extends Node2D
 
 @export var speed := 1000.0
-@export var lifetime := .69
+@export var lifetime := .6
 
 var direction:=Vector2.ZERO
 

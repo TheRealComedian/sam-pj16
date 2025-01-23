@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://go5r0qxwwaks"]
+[gd_scene load_steps=20 format=3 uid="uid://go5r0qxwwaks"]
 
 [ext_resource type="Script" path="res://scenes/entities/enemy_base/enemy.gd" id="1_h3jc7"]
 [ext_resource type="PackedScene" uid="uid://bymt3484vhpqx" path="res://scenes/components/FSM/finite_state_machine.tscn" id="2_0pdvg"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://8p244x1dnspa" path="res://scenes/components/health_component.tscn" id="11_x0ato"]
 [ext_resource type="PackedScene" uid="uid://m4b6gk7f36vg" path="res://scenes/entities/health_bar.tscn" id="12_3l6af"]
 [ext_resource type="PackedScene" uid="uid://ba7bjlytuufxp" path="res://scenes/weapons/bow.tscn" id="13_xiwbo"]
+[ext_resource type="Script" path="res://scenes/entities/enemy_base/teleport_detector.gd" id="14_ocklm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_am6lc"]
 radius = 25.2982
@@ -25,6 +26,9 @@ radius = 512.516
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e2t7j"]
 radius = 241.671
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g8ucy"]
+radius = 25.02
 
 [node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("detection_range", "attack_range", "health_component", "weapon")]
 script = ExtResource("1_h3jc7")
@@ -102,5 +106,13 @@ debug_color = Color(1, 0.529412, 0.219608, 0.121569)
 avoidance_enabled = true
 radius = 60.0
 debug_enabled = true
+
+[node name="TeleportDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 128
+script = ExtResource("14_ocklm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TeleportDetector"]
+shape = SubResource("CircleShape2D_g8ucy")
 
 [connection signal="velocity_computed" from="NavigationAgent2D" to="FiniteStateMachine/Chase" method="velocity_computed"]

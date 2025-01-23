@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://7wibdi5xwkt"]
+[gd_scene load_steps=11 format=3 uid="uid://7wibdi5xwkt"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_ilbpj"]
 [ext_resource type="PackedScene" uid="uid://c4xyjdvy1qpyx" path="res://scenes/entities/player/player.tscn" id="2_ie04y"]
@@ -22,6 +22,9 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rejoh"]
+size = Vector2(582.5, 401)
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_ilbpj")
@@ -71,3 +74,11 @@ metadata/_edit_group_ = true
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(0.7, 0.7)
+
+[node name="TeleportRange" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TeleportRange"]
+position = Vector2(223, -46)
+shape = SubResource("RectangleShape2D_rejoh")
