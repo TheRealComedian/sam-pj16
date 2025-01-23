@@ -40,3 +40,6 @@ max_health = 20.0
 current_health = 20.0
 
 [node name="Sword" parent="." instance=ExtResource("5_6qmra")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
