@@ -24,7 +24,7 @@ radius = 24.0
 radius = 512.516
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e2t7j"]
-radius = 474.861
+radius = 241.671
 
 [node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("detection_range", "attack_range", "health_component", "weapon")]
 script = ExtResource("1_h3jc7")
