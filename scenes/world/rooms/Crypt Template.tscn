@@ -1,0 +1,36 @@
+[gd_scene load_steps=2 format=3 uid="uid://chlr2cyq1obv1"]
+
+[ext_resource type="TileSet" uid="uid://def7m4nhhqg6a" path="res://resources/tilesets/crypt.tres" id="1_6incj"]
+
+[node name="Map" type="Node2D"]
+
+[node name="Spritework" type="Node2D" parent="."]
+
+[node name="Tiles" type="TileMapLayer" parent="Spritework"]
+scale = Vector2(2, 2)
+tile_set = ExtResource("1_6incj")
+
+[node name="Decor" type="TileMapLayer" parent="Spritework"]
+position = Vector2(32, 32)
+scale = Vector2(2, 2)
+tile_set = ExtResource("1_6incj")
+
+[node name="Passwall" type="TileMapLayer" parent="Spritework"]
+scale = Vector2(4, 4)
+tile_set = ExtResource("1_6incj")
+
+[node name="PasswallDecor" type="TileMapLayer" parent="Spritework/Passwall"]
+position = Vector2(16, 16)
+tile_set = ExtResource("1_6incj")
+
+[node name="PasswallShade" type="TileMapLayer" parent="Spritework/Passwall/PasswallDecor"]
+position = Vector2(16, 16)
+tile_set = ExtResource("1_6incj")
+
+[node name="Shade1" type="TileMapLayer" parent="Spritework"]
+scale = Vector2(2, 2)
+tile_set = ExtResource("1_6incj")
+
+[node name="Shade2" type="TileMapLayer" parent="Spritework"]
+scale = Vector2(2, 2)
+tile_set = ExtResource("1_6incj")

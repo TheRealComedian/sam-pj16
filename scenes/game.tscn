@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://7wibdi5xwkt"]
+[gd_scene load_steps=9 format=3 uid="uid://7wibdi5xwkt"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_ilbpj"]
 [ext_resource type="PackedScene" uid="uid://c4xyjdvy1qpyx" path="res://scenes/entities/player/player.tscn" id="2_ie04y"]
 [ext_resource type="Script" path="res://scenes/ui/hud/hud.gd" id="2_nyb4e"]
 [ext_resource type="PackedScene" uid="uid://m4b6gk7f36vg" path="res://scenes/entities/health_bar.tscn" id="3_a6vth"]
 [ext_resource type="Texture2D" uid="uid://dk3rnrcrrw8yr" path="res://assets/godot/icons/State.png" id="5_1cxmy"]
+[ext_resource type="PackedScene" uid="uid://cj6eq4yhboiis" path="res://scenes/world/rooms/Crypt Crossroad Plus.tscn" id="6_s6qfx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jk3v1"]
 atlas = ExtResource("5_1cxmy")
@@ -58,9 +59,11 @@ size_flags_horizontal = 3
 scale = Vector2(0.142427, 0.142427)
 sprite_frames = SubResource("SpriteFrames_mk6ck")
 
-[node name="Player" parent="." instance=ExtResource("2_ie04y")]
-position = Vector2(327, -18)
-metadata/_edit_group_ = true
+[node name="Node2D" parent="." instance=ExtResource("6_s6qfx")]
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(0.5, 0.5)
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(480, 270)
+
+[node name="Player" parent="." instance=ExtResource("2_ie04y")]
+position = Vector2(480, 260)
+metadata/_edit_group_ = true
