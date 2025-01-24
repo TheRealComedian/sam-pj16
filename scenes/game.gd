@@ -10,5 +10,5 @@ func _ready():
 	#NOTE: this may seem obsolete, but trust me having a separate global signal for the main scene's readiness prevents a lot of issues using the built in ready signal causes
 	SignalBus.main_scene_ready.emit()
 
-func _process(_delta):
+func _physics_process(_delta):
 	cursor.global_position = get_global_mouse_position()

@@ -1,4 +1,5 @@
 class_name Player extends Character
+@onready var dir = $Dir
 
 func _ready():
 	if Global.player:
@@ -29,3 +30,11 @@ func _physics_process(delta):
 		momentum * delta
 	) 
 	move_and_slide()
+
+func changed_direction(new_direction: Util.DIRECTION):
+	print('new rotation')
+	match new_direction:
+		Util.DIRECTION.DOWN: dir.play('down')
+		Util.DIRECTION.LEFT: dir.play('left')
+		Util.DIRECTION.RIGHT: dir.play('right')
+		Util.DIRECTION.UP: dir.play('up')

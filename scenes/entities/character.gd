@@ -9,3 +9,7 @@ const friction = 600
 	set(value):
 		weapon = value
 		weapon.user = self
+		if weapon.dir_com:
+			weapon.dir_com.changed_direction.connect(changed_direction)
+
+func changed_direction(dir: Util.DIRECTION): pass

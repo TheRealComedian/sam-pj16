@@ -1,16 +1,68 @@
-[gd_scene load_steps=8 format=3 uid="uid://c4xyjdvy1qpyx"]
+[gd_scene load_steps=14 format=3 uid="uid://c4xyjdvy1qpyx"]
 
 [ext_resource type="Script" path="res://scenes/entities/player/player.gd" id="1_3evo7"]
 [ext_resource type="Texture2D" uid="uid://bmyq5fspilx6v" path="res://assets/sprites/entities/Wisper Mote.png" id="2_ed7un"]
 [ext_resource type="PackedScene" uid="uid://8p244x1dnspa" path="res://scenes/components/health_component.tscn" id="4_758oi"]
 [ext_resource type="PackedScene" uid="uid://b6ukhia0s6mkl" path="res://scenes/weapons/sword.tscn" id="5_6qmra"]
 [ext_resource type="PackedScene" uid="uid://sgkunku4x031" path="res://scenes/components/hurtbox_component.tscn" id="5_23hp3"]
+[ext_resource type="Texture2D" uid="uid://dd6c83euhk8bo" path="res://temp/direction_test.png" id="6_3bqhb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_srh2y"]
 size = Vector2(32, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_445qy"]
 size = Vector2(32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a0k7l"]
+atlas = ExtResource("6_3bqhb")
+region = Rect2(128, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nm36n"]
+atlas = ExtResource("6_3bqhb")
+region = Rect2(128, 384, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5tw06"]
+atlas = ExtResource("6_3bqhb")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2r2hf"]
+atlas = ExtResource("6_3bqhb")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lpymp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a0k7l")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nm36n")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5tw06")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2r2hf")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "weapon")]
 collision_layer = 2
@@ -40,3 +92,7 @@ max_health = 20.0
 current_health = 20.0
 
 [node name="Sword" parent="." instance=ExtResource("5_6qmra")]
+
+[node name="Dir" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_lpymp")
+animation = &"up"
