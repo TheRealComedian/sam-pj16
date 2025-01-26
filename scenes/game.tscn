@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://7wibdi5xwkt"]
+[gd_scene load_steps=14 format=3 uid="uid://7wibdi5xwkt"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_ilbpj"]
 [ext_resource type="PackedScene" uid="uid://c4xyjdvy1qpyx" path="res://scenes/entities/player/player.tscn" id="2_ie04y"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://y28itm0e1koh" path="res://scenes/entities/enemy_base/enemy.tscn" id="5_h3vh1"]
 [ext_resource type="PackedScene" uid="uid://go5r0qxwwaks" path="res://scenes/entities/enemy_base/ghost.tscn" id="5_kfto5"]
 [ext_resource type="Script" path="res://scenes/scene_trigger.gd" id="8_iufuo"]
+[ext_resource type="PackedScene" uid="uid://dbe1wcl85pw5x" path="res://scenes/entities/enemy_base/reaper.tscn" id="9_7p0gj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jk3v1"]
 atlas = ExtResource("5_1cxmy")
@@ -95,3 +96,6 @@ script = ExtResource("8_iufuo")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SceneTrigger"]
 position = Vector2(595, -36)
 shape = SubResource("RectangleShape2D_shldc")
+
+[node name="Enemy" parent="SceneTrigger" instance=ExtResource("9_7p0gj")]
+position = Vector2(761, 260)

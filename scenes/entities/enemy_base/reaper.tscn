@@ -9,11 +9,11 @@
 [ext_resource type="Script" path="res://scenes/entities/enemy_base/states/hit.gd" id="7_yu6lm"]
 [ext_resource type="Script" path="res://scenes/entities/enemy_base/states/death.gd" id="8_mh6mu"]
 [ext_resource type="Script" path="res://scenes/entities/enemy_base/states/teleport.gd" id="9_i3tl1"]
-[ext_resource type="Texture2D" uid="uid://cs6f4hvcgsprf" path="res://assets/sprites/entities/Wisper Sprite.png" id="10_2scrv"]
+[ext_resource type="Texture2D" uid="uid://bpnus5a76qgr4" path="res://assets/sprites/entities/reapertest.png" id="10_ytpr6"]
 [ext_resource type="PackedScene" uid="uid://sgkunku4x031" path="res://scenes/components/hurtbox_component.tscn" id="11_fw31v"]
 [ext_resource type="PackedScene" uid="uid://8p244x1dnspa" path="res://scenes/components/health_component.tscn" id="12_04ktb"]
 [ext_resource type="PackedScene" uid="uid://m4b6gk7f36vg" path="res://scenes/entities/health_bar.tscn" id="13_1dwk7"]
-[ext_resource type="PackedScene" uid="uid://ba7bjlytuufxp" path="res://scenes/weapons/bow.tscn" id="14_r2san"]
+[ext_resource type="PackedScene" uid="uid://ggje00ded7ue" path="res://scenes/weapons/scythe.tscn" id="14_hb7fb"]
 [ext_resource type="Script" path="res://scenes/entities/enemy_base/teleport_detector.gd" id="15_qywq6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_am6lc"]
@@ -37,7 +37,7 @@ detection_range = NodePath("DetectionRange")
 attack_range = NodePath("AttackRange")
 movement_speed = 200
 health_component = NodePath("HealthComponent")
-weapon = NodePath("Bow")
+weapon = NodePath("Scythe")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_am6lc")
@@ -68,7 +68,9 @@ script = ExtResource("9_i3tl1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.664854, 0, 0.0390365, 1)
-texture = ExtResource("10_2scrv")
+position = Vector2(-9.53674e-07, 1)
+scale = Vector2(1.4375, 1.48438)
+texture = ExtResource("10_ytpr6")
 
 [node name="Hurtbox" parent="." node_paths=PackedStringArray("health_component", "visual_node") instance=ExtResource("11_fw31v")]
 health_component = NodePath("../HealthComponent")
@@ -82,13 +84,14 @@ debug_color = Color(0, 0.611806, 0.626093, 0.42)
 
 [node name="HealthBar" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("13_1dwk7")]
 offset_left = -64.0
-offset_top = -56.0
+offset_top = -82.0
 offset_right = 64.0
-offset_bottom = -29.0
+offset_bottom = -55.0
 health_component = NodePath("../HealthComponent")
 
-[node name="Bow" parent="." instance=ExtResource("14_r2san")]
-position = Vector2(7, 0)
+[node name="Scythe" parent="." instance=ExtResource("14_hb7fb")]
+position = Vector2(1, 0)
+scale = Vector2(1.2, 1.2)
 
 [node name="DetectionRange" type="Area2D" parent="."]
 collision_layer = 0
