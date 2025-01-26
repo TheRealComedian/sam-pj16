@@ -68,7 +68,7 @@ cooldown_duration = 0.1
 position = Vector2(56, 0)
 rotation = -1.57079
 sprite_frames = SubResource("SpriteFrames_kls4t")
-animation = &"active"
+animation = &"inactive"
 autoplay = "inactive"
 
 [node name="Hitbox" parent="." instance=ExtResource("6_tj0cf")]

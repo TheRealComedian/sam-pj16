@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=3 uid="uid://ba7bjlytuufxp"]
+
+[ext_resource type="Script" path="res://scenes/weapons/bow.gd" id="1_usdhu"]
+[ext_resource type="Texture2D" uid="uid://bkb77arcvr4hp" path="res://assets/sprites/weapons/Variant_Bow.png" id="2_mf0wr"]
+[ext_resource type="Texture2D" uid="uid://dpelj5bt17yti" path="res://assets/sprites/weapons/Bow_Pull1.png" id="3_xsu6k"]
+[ext_resource type="Texture2D" uid="uid://26dkyb10v5oi" path="res://assets/sprites/weapons/Bow_Pull2.png" id="4_ge1fg"]
+[ext_resource type="Texture2D" uid="uid://cjj2qnni6f" path="res://assets/sprites/weapons/Bow_Pull3.png" id="5_cfmhb"]
+[ext_resource type="Texture2D" uid="uid://c1ict5o7f1no3" path="res://assets/sprites/weapons/Bow_Pull4.png" id="6_8t4n0"]
+[ext_resource type="Texture2D" uid="uid://dlcenqwp34w84" path="res://assets/sprites/weapons/Bow_Pulled.png" id="7_qp7l8"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3luq4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_mf0wr")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_mf0wr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xsu6k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ge1fg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_cfmhb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_8t4n0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_qp7l8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xsu6k")
+}],
+"loop": true,
+"name": &"shoot",
+"speed": 10.0
+}]
+
+[node name="Bow" type="Node2D" node_paths=PackedStringArray("sprite")]
+script = ExtResource("1_usdhu")
+sprite = NodePath("AnimatedSprite2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(32, 0)
+rotation = -1.57138
+sprite_frames = SubResource("SpriteFrames_3luq4")
+animation = &"idle"
+frame_progress = 0.740257
+
+[node name="CursorFacing" type="RayCast2D" parent="."]
+position = Vector2(0, -28)
+target_position = Vector2(36, 0)
