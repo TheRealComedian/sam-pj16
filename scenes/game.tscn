@@ -29,12 +29,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rejoh"]
-size = Vector2(582.5, 401)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_shldc"]
-size = Vector2(44, 131)
-
 [node name="Game" type="Node2D"]
 script = ExtResource("1_ilbpj")
 
@@ -199,11 +193,6 @@ metadata/_edit_use_anchors_ = true
 [node name="Cursor" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.142427, 0.142427)
 sprite_frames = SubResource("SpriteFrames_mk6ck")
-
-[node name="Enemy2" parent="." instance=ExtResource("5_kfto5")]
-
-[node name="Enemy" parent="." instance=ExtResource("5_h3vh1")]
-position = Vector2(251, 393)
 
 [node name="Player" parent="." instance=ExtResource("2_ie04y")]
 position = Vector2(327, -18)
