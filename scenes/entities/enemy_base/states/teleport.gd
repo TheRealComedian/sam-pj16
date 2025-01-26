@@ -2,16 +2,17 @@ extends State
 
 var agent: NavigationAgent2D
 
-var max_distance=56893434343
+var max_distance=56
 var a = randf() * 2 * PI
 var r = max_distance * sqrt(randf())
 
 var x = r * cos(a)
 var y = r * sin(a)
 
-var teleport_location = Global.player.position + Vector2(x,y)
+var teleport_location
 
 func enter():
+	teleport_location = Global.player.position + Vector2(x,y)
 	agent = owner.navigation_agent
 	owner.attack_range.body_entered.connect(player_in_attack_range)
 	owner.detection_range.body_exited.connect(player_lost)

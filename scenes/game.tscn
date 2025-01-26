@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://7wibdi5xwkt"]
+[gd_scene load_steps=13 format=3 uid="uid://7wibdi5xwkt"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_ilbpj"]
 [ext_resource type="PackedScene" uid="uid://c4xyjdvy1qpyx" path="res://scenes/entities/player/player.tscn" id="2_ie04y"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dk3rnrcrrw8yr" path="res://assets/godot/icons/State.png" id="5_1cxmy"]
 [ext_resource type="PackedScene" uid="uid://y28itm0e1koh" path="res://scenes/entities/enemy_base/enemy.tscn" id="5_h3vh1"]
 [ext_resource type="PackedScene" uid="uid://go5r0qxwwaks" path="res://scenes/entities/enemy_base/ghost.tscn" id="5_kfto5"]
+[ext_resource type="Script" path="res://scenes/scene_trigger.gd" id="8_iufuo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jk3v1"]
 atlas = ExtResource("5_1cxmy")
@@ -25,6 +26,9 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rejoh"]
 size = Vector2(582.5, 401)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_shldc"]
+size = Vector2(44, 131)
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_ilbpj")
@@ -66,7 +70,7 @@ sprite_frames = SubResource("SpriteFrames_mk6ck")
 [node name="Enemy2" parent="." instance=ExtResource("5_kfto5")]
 
 [node name="Enemy" parent="." instance=ExtResource("5_h3vh1")]
-position = Vector2(551, 279)
+position = Vector2(251, 393)
 
 [node name="Player" parent="." instance=ExtResource("2_ie04y")]
 position = Vector2(327, -18)
@@ -82,3 +86,12 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TeleportRange"]
 position = Vector2(223, -46)
 shape = SubResource("RectangleShape2D_rejoh")
+
+[node name="SceneTrigger" type="Area2D" parent="."]
+collision_layer = 79
+collision_mask = 79
+script = ExtResource("8_iufuo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SceneTrigger"]
+position = Vector2(595, -36)
+shape = SubResource("RectangleShape2D_shldc")

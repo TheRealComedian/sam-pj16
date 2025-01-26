@@ -1,0 +1,65 @@
+[gd_scene load_steps=10 format=3 uid="uid://ggje00ded7ue"]
+
+[ext_resource type="Script" path="res://scenes/weapons/scythe.gd" id="1_e0m33"]
+[ext_resource type="PackedScene" uid="uid://dljttb073ciof" path="res://scenes/weapons/Projectile.tscn" id="2_3dkie"]
+[ext_resource type="Texture2D" uid="uid://bkb77arcvr4hp" path="res://assets/sprites/weapons/Variant_Bow.png" id="2_8qkcu"]
+[ext_resource type="Texture2D" uid="uid://dpelj5bt17yti" path="res://assets/sprites/weapons/Bow_Pull1.png" id="3_fp8jc"]
+[ext_resource type="Texture2D" uid="uid://26dkyb10v5oi" path="res://assets/sprites/weapons/Bow_Pull2.png" id="4_kb2oc"]
+[ext_resource type="Texture2D" uid="uid://cjj2qnni6f" path="res://assets/sprites/weapons/Bow_Pull3.png" id="5_8yoxx"]
+[ext_resource type="Texture2D" uid="uid://c1ict5o7f1no3" path="res://assets/sprites/weapons/Bow_Pull4.png" id="6_6tien"]
+[ext_resource type="Texture2D" uid="uid://dlcenqwp34w84" path="res://assets/sprites/weapons/Bow_Pulled.png" id="7_6pchq"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3luq4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_8qkcu")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_8qkcu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_fp8jc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_kb2oc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_8yoxx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_6tien")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_6pchq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_fp8jc")
+}],
+"loop": true,
+"name": &"shoot",
+"speed": 10.0
+}]
+
+[node name="Scythe" type="Node2D"]
+script = ExtResource("1_e0m33")
+bullet = ExtResource("2_3dkie")
+bullet_count = 8
+arc = 131.611
+fire_rate = 2.381
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(32, 0)
+rotation = -1.57138
+sprite_frames = SubResource("SpriteFrames_3luq4")
+animation = &"idle"
+frame_progress = 0.740257
+
+[node name="CursorFacing" type="RayCast2D" parent="."]
+position = Vector2(0, -28)
+target_position = Vector2(36, 0)

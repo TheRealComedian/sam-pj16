@@ -15,7 +15,7 @@ script = ExtResource("1_2ytha")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(30, 32)
-rotation = 4.71225
+rotation = -1.57094
 texture = ExtResource("2_rfpo2")
 
 [node name="Hitbox" type="Area2D" parent="."]

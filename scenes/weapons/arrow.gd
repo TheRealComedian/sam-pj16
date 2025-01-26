@@ -18,6 +18,7 @@ func _ready() -> void:
 	timer.timeout.connect(queue_free)
 	timer.start(lifetime)
 	impact_detector.body_entered.connect(_on_impact)
+	pass
 
 
 func _physics_process(delta: float) -> void:
