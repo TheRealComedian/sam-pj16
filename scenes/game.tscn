@@ -1,14 +1,18 @@
-[gd_scene load_steps=14 format=3 uid="uid://7wibdi5xwkt"]
+[gd_scene load_steps=16 format=4 uid="uid://7wibdi5xwkt"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_ilbpj"]
 [ext_resource type="PackedScene" uid="uid://c4xyjdvy1qpyx" path="res://scenes/entities/player/player.tscn" id="2_ie04y"]
 [ext_resource type="Script" path="res://scenes/ui/hud/hud.gd" id="2_nyb4e"]
 [ext_resource type="PackedScene" uid="uid://m4b6gk7f36vg" path="res://scenes/entities/health_bar.tscn" id="3_a6vth"]
+[ext_resource type="Script" path="res://scenes/components/FSM/control_finite_state_machine.gd" id="4_v2mg7"]
 [ext_resource type="Texture2D" uid="uid://dk3rnrcrrw8yr" path="res://assets/godot/icons/State.png" id="5_1cxmy"]
-[ext_resource type="PackedScene" uid="uid://y28itm0e1koh" path="res://scenes/entities/enemy_base/enemy.tscn" id="5_h3vh1"]
-[ext_resource type="PackedScene" uid="uid://go5r0qxwwaks" path="res://scenes/entities/enemy_base/ghost.tscn" id="5_kfto5"]
-[ext_resource type="Script" path="res://scenes/scene_trigger.gd" id="8_iufuo"]
-[ext_resource type="PackedScene" uid="uid://dbe1wcl85pw5x" path="res://scenes/entities/enemy_base/reaper.tscn" id="9_7p0gj"]
+[ext_resource type="Script" path="res://scenes/ui/menu/hidden.gd" id="5_7xr64"]
+[ext_resource type="Script" path="res://scenes/ui/menu/pause.gd" id="7_xben1"]
+[ext_resource type="Script" path="res://scenes/ui/menu/settings.gd" id="8_5tl6g"]
+[ext_resource type="Shortcut" uid="uid://b6qukba6pvtra" path="res://resources/input/shortcuts/ui_back.tres" id="8_d1wrf"]
+[ext_resource type="Shortcut" uid="uid://b755kkr23w728" path="res://resources/input/key/escape.tres" id="8_ik34c"]
+[ext_resource type="PackedScene" uid="uid://bv5igxgun5x6e" path="res://scenes/components/FSM/transition_button.tscn" id="8_ou0a1"]
+[ext_resource type="TileSet" uid="uid://def7m4nhhqg6a" path="res://resources/tilesets/crypt.tres" id="11_ux3h6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jk3v1"]
 atlas = ExtResource("5_1cxmy")
@@ -64,6 +68,134 @@ text = "Health:"
 layout_mode = 2
 size_flags_horizontal = 3
 
+[node name="Menu" type="Control" parent="Overlay" node_paths=PackedStringArray("initial_state")]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_v2mg7")
+initial_state = NodePath("Hidden")
+
+[node name="Hidden" type="Control" parent="Overlay/Menu"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_7xr64")
+metadata/_edit_lock_ = true
+
+[node name="Pause" type="Control" parent="Overlay/Menu"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_xben1")
+metadata/_edit_lock_ = true
+
+[node name="PanelContainer" type="PanelContainer" parent="Overlay/Menu/Pause"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 320.0
+offset_top = 92.0
+offset_right = -320.0
+offset_bottom = -92.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Overlay/Menu/Pause/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Overlay/Menu/Pause/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Pause"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="toHidden" parent="Overlay/Menu/Pause/PanelContainer/VBoxContainer" node_paths=PackedStringArray("parent_CFSM", "target_state") instance=ExtResource("8_ou0a1")]
+layout_mode = 2
+shortcut = ExtResource("8_ik34c")
+text = "Continue"
+parent_CFSM = NodePath("../../../..")
+target_state = NodePath("../../../../Hidden")
+
+[node name="toSettings" parent="Overlay/Menu/Pause/PanelContainer/VBoxContainer" node_paths=PackedStringArray("parent_CFSM", "target_state") instance=ExtResource("8_ou0a1")]
+layout_mode = 2
+text = "Settings"
+parent_CFSM = NodePath("../../../..")
+target_state = NodePath("../../../../Settings")
+
+[node name="Settings" type="Control" parent="Overlay/Menu"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("8_5tl6g")
+metadata/_edit_lock_ = true
+
+[node name="TabContainer" type="TabContainer" parent="Overlay/Menu/Settings"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 136.0
+offset_top = 84.0
+offset_right = -136.0
+offset_bottom = -84.0
+grow_horizontal = 2
+grow_vertical = 2
+current_tab = 0
+
+[node name="Display" type="VBoxContainer" parent="Overlay/Menu/Settings/TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="Audio" type="VBoxContainer" parent="Overlay/Menu/Settings/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="Controls" type="VBoxContainer" parent="Overlay/Menu/Settings/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="Difficulty" type="VBoxContainer" parent="Overlay/Menu/Settings/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 3
+
+[node name="Back" parent="Overlay/Menu/Settings" node_paths=PackedStringArray("parent_CFSM", "target_state") instance=ExtResource("8_ou0a1")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.85
+anchor_top = 0.874074
+anchor_right = 0.941667
+anchor_bottom = 0.940741
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 0
+grow_vertical = 0
+shortcut = ExtResource("8_d1wrf")
+text = "Back"
+parent_CFSM = NodePath("../..")
+target_state = NodePath("../../Pause")
+metadata/_edit_use_anchors_ = true
+
 [node name="Cursor" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.142427, 0.142427)
 sprite_frames = SubResource("SpriteFrames_mk6ck")
@@ -78,24 +210,8 @@ position = Vector2(327, -18)
 metadata/_edit_group_ = true
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(0.7, 0.7)
 
-[node name="TeleportRange" type="Area2D" parent="."]
-collision_layer = 128
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TeleportRange"]
-position = Vector2(223, -46)
-shape = SubResource("RectangleShape2D_rejoh")
-
-[node name="SceneTrigger" type="Area2D" parent="."]
-collision_layer = 79
-collision_mask = 79
-script = ExtResource("8_iufuo")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SceneTrigger"]
-position = Vector2(595, -36)
-shape = SubResource("RectangleShape2D_shldc")
-
-[node name="Enemy" parent="SceneTrigger" instance=ExtResource("9_7p0gj")]
-position = Vector2(761, 260)
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+visible = false
+tile_map_data = PackedByteArray("AAD6//3/AAAAAAgAAAD6//7/AAAAAAkAAAD6////AAAAAAoAAAD7//3/AAABAAgAAAD7//7/AAABAAkAAAD7////AAABAAoAAAD8//3/AAABAAgAAAD8//7/AAABAAkAAAD8////AAABAAoAAAD9/wIAAAACAA4AAAD9/wEAAAACAA0AAAD9/wAAAAACAAwAAAD8/wIAAAABAA4AAAD8/wEAAAABAA0AAAD8/wAAAAABAAwAAAD7/wIAAAABAA4AAAD7/wEAAAABAA0AAAD7/wAAAAABAAwAAAD6/wIAAAABAA4AAAD6/wEAAAABAA0AAAD6/wAAAAABAAwAAAD5/wIAAAABAA4AAAD5/wEAAAABAA0AAAD5/wAAAAAFAA4AAAD4/wIAAAABAA4AAAD4/wEAAAABAA0AAAD4/wAAAAABAA0AAAD3/wIAAAAAAA4AAAD3/wEAAAAGAA0AAAD3/wAAAAABAA0AAAD5////AAACAAwAAAD4////AAABAAwAAAD3////AAABAAwAAAD2/wAAAAABAA0AAAD2////AAABAAwAAAD1/wAAAAAAAA0AAAD1////AAAAAAwAAAD2/wEAAAABAA4AAAD1/wEAAAAAAA4AAAD5//7/AAACAAoAAAD5//3/AAACAAkAAAD5//z/AAACAAgAAAD4//7/AAABAAoAAAD4//3/AAABAAkAAAD4//z/AAABAAgAAAD3//7/AAABAAoAAAD3//3/AAABAAkAAAD3//z/AAABAAgAAAD2//7/AAABAAoAAAD2//3/AAABAAkAAAD2//z/AAABAAgAAAD1//7/AAAAAAoAAAD1//3/AAAAAAkAAAD1//z/AAAAAAgAAAD9////AAACAAoAAAD9//7/AAACAAkAAAD9//3/AAACAAgAAAA=")
+tile_set = ExtResource("11_ux3h6")

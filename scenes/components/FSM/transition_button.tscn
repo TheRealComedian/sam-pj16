@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bv5igxgun5x6e"]
+
+[ext_resource type="Script" path="res://scenes/components/FSM/transition_button.gd" id="1_f8jmn"]
+
+[node name="TransitionButton" type="Button"]
+offset_right = 8.0
+offset_bottom = 8.0
+script = ExtResource("1_f8jmn")
