@@ -7,6 +7,11 @@ func _ready():
 	Global.player = self
 	Global.hud.health_bar.connect_health(health_component)
 
+static func instance() -> Player:
+	#TODO: add data when implemented
+	var inst: Player = load('res://scenes/entities/player/player.tscn').instantiate()
+	return inst
+
 func get_movement_direction() -> Vector2:
 	if !input_disabled:
 		return Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -29,3 +34,6 @@ func _physics_process(delta):
 		momentum * delta
 	) 
 	move_and_slide()
+
+func _exit_tree():
+	Global.player = null
