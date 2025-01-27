@@ -10,7 +10,7 @@
 [ext_resource type="Script" path="res://scenes/ui/menu/settings.gd" id="8_5tl6g"]
 [ext_resource type="Shortcut" uid="uid://b6qukba6pvtra" path="res://resources/input/shortcuts/ui_back.tres" id="8_d1wrf"]
 [ext_resource type="Shortcut" uid="uid://b755kkr23w728" path="res://resources/input/key/escape.tres" id="8_ik34c"]
-[ext_resource type="PackedScene" path="res://scenes/components/FSM/transition_button.tscn" id="8_ou0a1"]
+[ext_resource type="PackedScene" uid="uid://bv5igxgun5x6e" path="res://scenes/components/FSM/transition_button.tscn" id="8_ou0a1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jk3v1"]
 atlas = ExtResource("5_1cxmy")

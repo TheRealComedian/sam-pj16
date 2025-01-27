@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ctntogdedgd8v"
-path="res://.godot/imported/Reaper_Sheet_Edit_5.png-5001381b09722af3da901fea5f812e7f.ctex"
+uid="uid://bant6hkhyketg"
+path="res://.godot/imported/SkeleIdle Mk 2.png-bf8dbeaa57db6bb763b2f0cf53905aff.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/weapons/Reaper_Sheet_Edit_5.png"
-dest_files=["res://.godot/imported/Reaper_Sheet_Edit_5.png-5001381b09722af3da901fea5f812e7f.ctex"]
+source_file="res://assets/sprites/entities/SkeleIdle Mk 2.png"
+dest_files=["res://.godot/imported/SkeleIdle Mk 2.png-bf8dbeaa57db6bb763b2f0cf53905aff.ctex"]
 
 [params]
 
