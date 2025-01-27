@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://depsu0p2x1g45"]
+
+[ext_resource type="Script" path="res://scenes/world/map_exit.gd" id="1_i32je"]
+
+[node name="Exit" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_i32je")
+map_path = "res://scenes/world/maps/test_room2.tscn"

@@ -1,7 +1,6 @@
-[gd_scene load_steps=16 format=4 uid="uid://7wibdi5xwkt"]
+[gd_scene load_steps=14 format=3 uid="uid://7wibdi5xwkt"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_ilbpj"]
-[ext_resource type="PackedScene" uid="uid://c4xyjdvy1qpyx" path="res://scenes/entities/player/player.tscn" id="2_ie04y"]
 [ext_resource type="Script" path="res://scenes/ui/hud/hud.gd" id="2_nyb4e"]
 [ext_resource type="PackedScene" uid="uid://m4b6gk7f36vg" path="res://scenes/entities/health_bar.tscn" id="3_a6vth"]
 [ext_resource type="Script" path="res://scenes/components/FSM/control_finite_state_machine.gd" id="4_v2mg7"]
@@ -11,8 +10,7 @@
 [ext_resource type="Script" path="res://scenes/ui/menu/settings.gd" id="8_5tl6g"]
 [ext_resource type="Shortcut" uid="uid://b6qukba6pvtra" path="res://resources/input/shortcuts/ui_back.tres" id="8_d1wrf"]
 [ext_resource type="Shortcut" uid="uid://b755kkr23w728" path="res://resources/input/key/escape.tres" id="8_ik34c"]
-[ext_resource type="PackedScene" uid="uid://bv5igxgun5x6e" path="res://scenes/components/FSM/transition_button.tscn" id="8_ou0a1"]
-[ext_resource type="TileSet" uid="uid://def7m4nhhqg6a" path="res://resources/tilesets/crypt.tres" id="11_ux3h6"]
+[ext_resource type="PackedScene" path="res://scenes/components/FSM/transition_button.tscn" id="8_ou0a1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jk3v1"]
 atlas = ExtResource("5_1cxmy")
@@ -193,14 +191,3 @@ metadata/_edit_use_anchors_ = true
 [node name="Cursor" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.142427, 0.142427)
 sprite_frames = SubResource("SpriteFrames_mk6ck")
-
-[node name="Player" parent="." instance=ExtResource("2_ie04y")]
-position = Vector2(327, -18)
-metadata/_edit_group_ = true
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
-visible = false
-tile_map_data = PackedByteArray("AAD6//3/AAAAAAgAAAD6//7/AAAAAAkAAAD6////AAAAAAoAAAD7//3/AAABAAgAAAD7//7/AAABAAkAAAD7////AAABAAoAAAD8//3/AAABAAgAAAD8//7/AAABAAkAAAD8////AAABAAoAAAD9/wIAAAACAA4AAAD9/wEAAAACAA0AAAD9/wAAAAACAAwAAAD8/wIAAAABAA4AAAD8/wEAAAABAA0AAAD8/wAAAAABAAwAAAD7/wIAAAABAA4AAAD7/wEAAAABAA0AAAD7/wAAAAABAAwAAAD6/wIAAAABAA4AAAD6/wEAAAABAA0AAAD6/wAAAAABAAwAAAD5/wIAAAABAA4AAAD5/wEAAAABAA0AAAD5/wAAAAAFAA4AAAD4/wIAAAABAA4AAAD4/wEAAAABAA0AAAD4/wAAAAABAA0AAAD3/wIAAAAAAA4AAAD3/wEAAAAGAA0AAAD3/wAAAAABAA0AAAD5////AAACAAwAAAD4////AAABAAwAAAD3////AAABAAwAAAD2/wAAAAABAA0AAAD2////AAABAAwAAAD1/wAAAAAAAA0AAAD1////AAAAAAwAAAD2/wEAAAABAA4AAAD1/wEAAAAAAA4AAAD5//7/AAACAAoAAAD5//3/AAACAAkAAAD5//z/AAACAAgAAAD4//7/AAABAAoAAAD4//3/AAABAAkAAAD4//z/AAABAAgAAAD3//7/AAABAAoAAAD3//3/AAABAAkAAAD3//z/AAABAAgAAAD2//7/AAABAAoAAAD2//3/AAABAAkAAAD2//z/AAABAAgAAAD1//7/AAAAAAoAAAD1//3/AAAAAAkAAAD1//z/AAAAAAgAAAD9////AAACAAoAAAD9//7/AAACAAkAAAD9//3/AAACAAgAAAA=")
-tile_set = ExtResource("11_ux3h6")
