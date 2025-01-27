@@ -1,11 +1,13 @@
 extends CharacterBody2D
 
 @onready var Hitbox := $Hitbox
+@onready var animation := $AnimatedSprite2D
 var speed =10
 var direction= Vector2.RIGHT
 
 func _ready():
 	direction=Vector2.RIGHT.rotated(global_rotation)
+	animation.play('default')
 
 func _process(delta):
 	velocity=direction*speed

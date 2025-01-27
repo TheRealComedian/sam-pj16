@@ -11,7 +11,7 @@ class_name Scythe extends Weapon
 @onready var shoot_position := $CursorFacing
 
 var weapon_timer = 0.0
-var anim_duration = 0.5
+var anim_duration = 0.6
 var arrow_speed = 900
 var warn=2
 var warned=false
@@ -45,19 +45,21 @@ func cancel_attack():
 
 func attack():
 	if melee>0:
+		sprite.play('windup')
+		await Util.wait(self.anim_duration).timeout
 		current_animation_tween = get_tree().create_tween()
 		current_animation_tween.tween_property(self, 'rotation', self.rotation-1.1, 0.1)
 		await current_animation_tween.finished
 		
 		hitbox.disabled = false
-		#sprite.play('active')
+		sprite.play('active')
 		
 		current_animation_tween = get_tree().create_tween()
 		current_animation_tween.tween_property(self, 'rotation', self.rotation+2.1, swipe_duration)
 		await current_animation_tween.finished
 		
 		hitbox.disabled = true
-		#sprite.play('inactive')
+		sprite.play('idle')
 		await Util.wait(self.cooldown_duration).timeout
 		melee-=1
 	else:

@@ -1,21 +1,27 @@
-[gd_scene load_steps=13 format=3 uid="uid://ggje00ded7ue"]
+[gd_scene load_steps=11 format=3 uid="uid://ggje00ded7ue"]
 
 [ext_resource type="Script" path="res://scenes/weapons/scythe.gd" id="1_e0m33"]
 [ext_resource type="PackedScene" uid="uid://dljttb073ciof" path="res://scenes/weapons/Projectile.tscn" id="2_3dkie"]
-[ext_resource type="Texture2D" uid="uid://bkb77arcvr4hp" path="res://assets/sprites/weapons/Variant_Bow.png" id="2_8qkcu"]
-[ext_resource type="Texture2D" uid="uid://dpelj5bt17yti" path="res://assets/sprites/weapons/Bow_Pull1.png" id="3_fp8jc"]
-[ext_resource type="Texture2D" uid="uid://dquggofpprxyh" path="res://assets/sprites/weapons/scythetest.png" id="3_qjtwh"]
-[ext_resource type="Texture2D" uid="uid://26dkyb10v5oi" path="res://assets/sprites/weapons/Bow_Pull2.png" id="4_kb2oc"]
-[ext_resource type="Texture2D" uid="uid://cjj2qnni6f" path="res://assets/sprites/weapons/Bow_Pull3.png" id="5_8yoxx"]
-[ext_resource type="Texture2D" uid="uid://c1ict5o7f1no3" path="res://assets/sprites/weapons/Bow_Pull4.png" id="6_6tien"]
-[ext_resource type="Texture2D" uid="uid://dlcenqwp34w84" path="res://assets/sprites/weapons/Bow_Pulled.png" id="7_6pchq"]
+[ext_resource type="Texture2D" uid="uid://bgirxqu6a5247" path="res://assets/sprites/weapons/ReaperScythe.png" id="3_sxu5p"]
+[ext_resource type="Texture2D" uid="uid://ms3q8yxfelg" path="res://assets/sprites/weapons/ReaperScythe1.png" id="4_3wqds"]
+[ext_resource type="Texture2D" uid="uid://b12a0jknqjyw6" path="res://assets/sprites/weapons/ReaperScythe2.png" id="5_u344v"]
+[ext_resource type="Texture2D" uid="uid://d3i85ef2kgxdh" path="res://assets/sprites/weapons/ReaperScythe3.png" id="6_o2c1o"]
+[ext_resource type="Texture2D" uid="uid://uk8hgdnlkn0n" path="res://assets/sprites/weapons/ReaperScythe4.png" id="7_00bua"]
 [ext_resource type="Script" path="res://scenes/components/hitbox_component.gd" id="10_a4281"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3luq4"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_qjtwh")
+"texture": ExtResource("7_00bua")
+}],
+"loop": true,
+"name": &"active",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_sxu5p")
 }],
 "loop": true,
 "name": &"idle",
@@ -23,34 +29,25 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_8qkcu")
+"texture": ExtResource("4_3wqds")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_fp8jc")
+"texture": ExtResource("5_u344v")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_kb2oc")
+"texture": ExtResource("6_o2c1o")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_8yoxx")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_6tien")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_6pchq")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_fp8jc")
+"texture": ExtResource("7_00bua")
 }],
 "loop": true,
-"name": &"shoot",
-"speed": 10.0
+"name": &"windup",
+"speed": 5.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x4j66"]
-radius = 11.3986
-height = 74.4035
+radius = 16.0514
+height = 79.6122
 
 [node name="Scythe" type="Node2D" node_paths=PackedStringArray("sprite", "hitbox")]
 script = ExtResource("1_e0m33")
@@ -66,19 +63,20 @@ position = Vector2(0, -28)
 target_position = Vector2(36, 0)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(42.875, 6)
+position = Vector2(8, -2)
 rotation = 1.56982
-scale = Vector2(1.18783, 1.33966)
+scale = Vector2(1.0174, 1.07969)
 sprite_frames = SubResource("SpriteFrames_3luq4")
-animation = &"idle"
+animation = &"active"
 
 [node name="Hitbox" type="Area2D" parent="."]
+position = Vector2(47, -20)
 collision_layer = 8
 collision_mask = 96
 script = ExtResource("10_a4281")
 damage = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(61, 13)
-rotation = -2.50423
+position = Vector2(20, 12)
+rotation = -0.219597
 shape = SubResource("CapsuleShape2D_x4j66")

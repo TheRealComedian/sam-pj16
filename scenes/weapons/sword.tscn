@@ -91,7 +91,6 @@ rotation = -1.57079
 sprite_frames = SubResource("SpriteFrames_kls4t")
 animation = &"inactive"
 autoplay = "inactive"
-frame_progress = 0.690292
 
 [node name="Hitbox" parent="." instance=ExtResource("6_tj0cf")]
 damage = 1.0

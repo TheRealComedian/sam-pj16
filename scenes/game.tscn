@@ -13,7 +13,7 @@
 [ext_resource type="Shortcut" uid="uid://b755kkr23w728" path="res://resources/input/key/escape.tres" id="8_ik34c"]
 [ext_resource type="PackedScene" uid="uid://bv5igxgun5x6e" path="res://scenes/components/FSM/transition_button.tscn" id="8_ou0a1"]
 [ext_resource type="TileSet" uid="uid://def7m4nhhqg6a" path="res://resources/tilesets/crypt.tres" id="11_ux3h6"]
-[ext_resource type="PackedScene" uid="uid://y28itm0e1koh" path="res://scenes/entities/enemy_base/enemy.tscn" id="13_8v4nn"]
+[ext_resource type="PackedScene" uid="uid://dbe1wcl85pw5x" path="res://scenes/entities/enemy_base/reaper.tscn" id="14_ujtam"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jk3v1"]
 atlas = ExtResource("5_1cxmy")
@@ -195,8 +195,6 @@ metadata/_edit_use_anchors_ = true
 scale = Vector2(0.142427, 0.142427)
 sprite_frames = SubResource("SpriteFrames_mk6ck")
 
-[node name="Enemy" parent="." instance=ExtResource("13_8v4nn")]
-
 [node name="Player" parent="." instance=ExtResource("2_ie04y")]
 position = Vector2(327, -18)
 metadata/_edit_group_ = true
@@ -207,3 +205,6 @@ metadata/_edit_group_ = true
 visible = false
 tile_map_data = PackedByteArray("AAD6//3/AAAAAAgAAAD6//7/AAAAAAkAAAD6////AAAAAAoAAAD7//3/AAABAAgAAAD7//7/AAABAAkAAAD7////AAABAAoAAAD8//3/AAABAAgAAAD8//7/AAABAAkAAAD8////AAABAAoAAAD9/wIAAAACAA4AAAD9/wEAAAACAA0AAAD9/wAAAAACAAwAAAD8/wIAAAABAA4AAAD8/wEAAAABAA0AAAD8/wAAAAABAAwAAAD7/wIAAAABAA4AAAD7/wEAAAABAA0AAAD7/wAAAAABAAwAAAD6/wIAAAABAA4AAAD6/wEAAAABAA0AAAD6/wAAAAABAAwAAAD5/wIAAAABAA4AAAD5/wEAAAABAA0AAAD5/wAAAAAFAA4AAAD4/wIAAAABAA4AAAD4/wEAAAABAA0AAAD4/wAAAAABAA0AAAD3/wIAAAAAAA4AAAD3/wEAAAAGAA0AAAD3/wAAAAABAA0AAAD5////AAACAAwAAAD4////AAABAAwAAAD3////AAABAAwAAAD2/wAAAAABAA0AAAD2////AAABAAwAAAD1/wAAAAAAAA0AAAD1////AAAAAAwAAAD2/wEAAAABAA4AAAD1/wEAAAAAAA4AAAD5//7/AAACAAoAAAD5//3/AAACAAkAAAD5//z/AAACAAgAAAD4//7/AAABAAoAAAD4//3/AAABAAkAAAD4//z/AAABAAgAAAD3//7/AAABAAoAAAD3//3/AAABAAkAAAD3//z/AAABAAgAAAD2//7/AAABAAoAAAD2//3/AAABAAkAAAD2//z/AAABAAgAAAD1//7/AAAAAAoAAAD1//3/AAAAAAkAAAD1//z/AAAAAAgAAAD9////AAACAAoAAAD9//7/AAACAAkAAAD9//3/AAACAAgAAAA=")
 tile_set = ExtResource("11_ux3h6")
+
+[node name="Enemy" parent="." instance=ExtResource("14_ujtam")]
+position = Vector2(912, 136)

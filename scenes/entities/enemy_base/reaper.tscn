@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dbe1wcl85pw5x"]
+[gd_scene load_steps=35 format=3 uid="uid://dbe1wcl85pw5x"]
 
 [ext_resource type="Script" path="res://scenes/entities/enemy_base/enemy.gd" id="1_bi5xf"]
 [ext_resource type="PackedScene" uid="uid://bymt3484vhpqx" path="res://scenes/components/FSM/finite_state_machine.tscn" id="2_mlgmd"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://m4b6gk7f36vg" path="res://scenes/entities/health_bar.tscn" id="13_1dwk7"]
 [ext_resource type="PackedScene" uid="uid://ggje00ded7ue" path="res://scenes/weapons/scythe.tscn" id="14_hb7fb"]
 [ext_resource type="Script" path="res://scenes/entities/enemy_base/teleport_detector.gd" id="15_qywq6"]
+[ext_resource type="Texture2D" uid="uid://ciau6cdbwqtfw" path="res://assets/sprites/entities/Reaper_Sheet_Edit_5.png" id="16_lt6v3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_am6lc"]
 radius = 25.2982
@@ -30,6 +31,98 @@ radius = 241.671
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g8ucy"]
 radius = 25.02
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f7yn5"]
+atlas = ExtResource("16_lt6v3")
+region = Rect2(0, 0, 96, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pmpc1"]
+atlas = ExtResource("16_lt6v3")
+region = Rect2(96, 0, 96, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e0cox"]
+atlas = ExtResource("16_lt6v3")
+region = Rect2(192, 0, 96, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oqwrd"]
+atlas = ExtResource("16_lt6v3")
+region = Rect2(288, 0, 96, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kgim0"]
+atlas = ExtResource("16_lt6v3")
+region = Rect2(384, 0, 96, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_44iob"]
+atlas = ExtResource("16_lt6v3")
+region = Rect2(480, 0, 96, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1nx1j"]
+atlas = ExtResource("16_lt6v3")
+region = Rect2(576, 0, 96, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3bymd"]
+atlas = ExtResource("16_lt6v3")
+region = Rect2(672, 0, 96, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a46x6"]
+atlas = ExtResource("16_lt6v3")
+region = Rect2(768, 0, 96, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1bpt"]
+atlas = ExtResource("16_lt6v3")
+region = Rect2(864, 0, 96, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wf3f6"]
+atlas = ExtResource("16_lt6v3")
+region = Rect2(960, 0, 96, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ab2e7"]
+atlas = ExtResource("16_lt6v3")
+region = Rect2(1056, 0, 96, 144)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1fot0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f7yn5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pmpc1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e0cox")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oqwrd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kgim0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_44iob")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1nx1j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3bymd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a46x6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h1bpt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wf3f6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ab2e7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
 
 [node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("detection_range", "attack_range", "health_component", "weapon")]
 script = ExtResource("1_bi5xf")
@@ -67,6 +160,7 @@ script = ExtResource("8_mh6mu")
 script = ExtResource("9_i3tl1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 modulate = Color(0.664854, 0, 0.0390365, 1)
 position = Vector2(-9.53674e-07, 1)
 scale = Vector2(1.4375, 1.48438)
@@ -84,13 +178,14 @@ debug_color = Color(0, 0.611806, 0.626093, 0.42)
 
 [node name="HealthBar" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("13_1dwk7")]
 offset_left = -64.0
-offset_top = -82.0
+offset_top = -103.0
 offset_right = 64.0
-offset_bottom = -55.0
+offset_bottom = -76.0
 health_component = NodePath("../HealthComponent")
 
 [node name="Scythe" parent="." instance=ExtResource("14_hb7fb")]
-position = Vector2(1, 0)
+z_index = 1
+position = Vector2(2, 0)
 scale = Vector2(1.2, 1.2)
 
 [node name="DetectionRange" type="Area2D" parent="."]
@@ -121,5 +216,9 @@ script = ExtResource("15_qywq6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TeleportDetector"]
 shape = SubResource("CircleShape2D_g8ucy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_1fot0")
+frame_progress = 0.434294
 
 [connection signal="velocity_computed" from="NavigationAgent2D" to="FiniteStateMachine/Chase" method="velocity_computed"]
