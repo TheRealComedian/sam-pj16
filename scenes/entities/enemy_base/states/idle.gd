@@ -4,7 +4,7 @@ extends State
 
 func enter():
 	owner.detection_range.body_entered.connect(player_detected)
-	
+	print("Idle")
 	if Global.player in (owner.detection_range as Area2D).get_overlapping_bodies():
 		Transitioned.emit(self, 'Chase')
 		return
