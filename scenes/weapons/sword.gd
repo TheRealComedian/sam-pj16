@@ -10,6 +10,7 @@ class_name Sword extends Weapon
 @export var cooldown_duration: float = 1.0
 
 var current_animation_tween: Tween
+var anim_duration = 0.6
 
 func cancel_attack():
 	if owner.weapon.current_animation_tween:
@@ -17,6 +18,8 @@ func cancel_attack():
 		owner.weapon.hitbox.disabled = true
 
 func attack():
+	sprite.play('windup')
+	await Util.wait(self.anim_duration).timeout
 	current_animation_tween = get_tree().create_tween()
 	current_animation_tween.tween_property(self, 'rotation', self.rotation-1.1, 0.1)
 	await current_animation_tween.finished

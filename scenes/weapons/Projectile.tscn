@@ -1,0 +1,54 @@
+[gd_scene load_steps=10 format=3 uid="uid://dljttb073ciof"]
+
+[ext_resource type="Script" path="res://scenes/weapons/projectile.gd" id="1_3vdrq"]
+[ext_resource type="Texture2D" uid="uid://c155krh2yfnj8" path="res://assets/sprites/weapons/scythespin.png" id="2_lcpq3"]
+[ext_resource type="Script" path="res://scenes/weapons/arrowhitbox.gd" id="3_aaunm"]
+[ext_resource type="Texture2D" uid="uid://b5xg2h7oal05h" path="res://assets/sprites/weapons/scythespin2.png" id="3_inlgt"]
+[ext_resource type="Texture2D" uid="uid://dw1faviie7me6" path="res://assets/sprites/weapons/scythespin3.png" id="4_3iuvt"]
+[ext_resource type="Texture2D" uid="uid://cxt73xxcwcgj3" path="res://assets/sprites/weapons/scythespin4.png" id="5_oi81k"]
+[ext_resource type="Texture2D" uid="uid://evh600y31dej" path="res://assets/sprites/weapons/scythespin5.png" id="6_qj77s"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_glmdw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_lcpq3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_inlgt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3iuvt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_oi81k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_qj77s")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bkgp1"]
+radius = 73.0
+
+[node name="Projectile" type="CharacterBody2D"]
+collision_layer = 0
+script = ExtResource("1_3vdrq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(72, 72)
+sprite_frames = SubResource("SpriteFrames_glmdw")
+frame_progress = 0.059804
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("3_aaunm")
+damage = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(70, 70)
+shape = SubResource("CircleShape2D_bkgp1")
