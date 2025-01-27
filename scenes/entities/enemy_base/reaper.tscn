@@ -1,0 +1,224 @@
+[gd_scene load_steps=35 format=3 uid="uid://dbe1wcl85pw5x"]
+
+[ext_resource type="Script" path="res://scenes/entities/enemy_base/enemy.gd" id="1_bi5xf"]
+[ext_resource type="PackedScene" uid="uid://bymt3484vhpqx" path="res://scenes/components/FSM/finite_state_machine.tscn" id="2_mlgmd"]
+[ext_resource type="Script" path="res://scenes/entities/enemy_base/states/idle.gd" id="3_0lqae"]
+[ext_resource type="Script" path="res://scenes/entities/enemy_base/states/wander.gd" id="4_4xu05"]
+[ext_resource type="Script" path="res://scenes/entities/enemy_base/states/chase.gd" id="5_0rebf"]
+[ext_resource type="Script" path="res://scenes/entities/enemy_base/states/attack.gd" id="6_8bucs"]
+[ext_resource type="Script" path="res://scenes/entities/enemy_base/states/hit.gd" id="7_yu6lm"]
+[ext_resource type="Script" path="res://scenes/entities/enemy_base/states/death.gd" id="8_mh6mu"]
+[ext_resource type="Script" path="res://scenes/entities/enemy_base/states/teleport.gd" id="9_i3tl1"]
+[ext_resource type="Texture2D" uid="uid://bpnus5a76qgr4" path="res://assets/sprites/entities/reapertest.png" id="10_ytpr6"]
+[ext_resource type="PackedScene" uid="uid://sgkunku4x031" path="res://scenes/components/hurtbox_component.tscn" id="11_fw31v"]
+[ext_resource type="PackedScene" uid="uid://8p244x1dnspa" path="res://scenes/components/health_component.tscn" id="12_04ktb"]
+[ext_resource type="PackedScene" uid="uid://m4b6gk7f36vg" path="res://scenes/entities/health_bar.tscn" id="13_1dwk7"]
+[ext_resource type="PackedScene" uid="uid://ggje00ded7ue" path="res://scenes/weapons/scythe.tscn" id="14_hb7fb"]
+[ext_resource type="Script" path="res://scenes/entities/enemy_base/teleport_detector.gd" id="15_qywq6"]
+[ext_resource type="Texture2D" uid="uid://ciau6cdbwqtfw" path="res://assets/sprites/entities/Reaper_Sheet_Edit_5.png" id="16_lt6v3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_am6lc"]
+radius = 25.2982
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4370a"]
+radius = 24.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xytv3"]
+radius = 512.516
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e2t7j"]
+radius = 241.671
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g8ucy"]
+radius = 25.02
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f7yn5"]
+atlas = ExtResource("16_lt6v3")
+region = Rect2(0, 0, 96, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pmpc1"]
+atlas = ExtResource("16_lt6v3")
+region = Rect2(96, 0, 96, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e0cox"]
+atlas = ExtResource("16_lt6v3")
+region = Rect2(192, 0, 96, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oqwrd"]
+atlas = ExtResource("16_lt6v3")
+region = Rect2(288, 0, 96, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kgim0"]
+atlas = ExtResource("16_lt6v3")
+region = Rect2(384, 0, 96, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_44iob"]
+atlas = ExtResource("16_lt6v3")
+region = Rect2(480, 0, 96, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1nx1j"]
+atlas = ExtResource("16_lt6v3")
+region = Rect2(576, 0, 96, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3bymd"]
+atlas = ExtResource("16_lt6v3")
+region = Rect2(672, 0, 96, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a46x6"]
+atlas = ExtResource("16_lt6v3")
+region = Rect2(768, 0, 96, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1bpt"]
+atlas = ExtResource("16_lt6v3")
+region = Rect2(864, 0, 96, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wf3f6"]
+atlas = ExtResource("16_lt6v3")
+region = Rect2(960, 0, 96, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ab2e7"]
+atlas = ExtResource("16_lt6v3")
+region = Rect2(1056, 0, 96, 144)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1fot0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f7yn5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pmpc1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e0cox")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oqwrd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kgim0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_44iob")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1nx1j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3bymd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a46x6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h1bpt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wf3f6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ab2e7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("detection_range", "attack_range", "health_component", "weapon")]
+script = ExtResource("1_bi5xf")
+detection_range = NodePath("DetectionRange")
+attack_range = NodePath("AttackRange")
+movement_speed = 200
+health_component = NodePath("HealthComponent")
+weapon = NodePath("Scythe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_am6lc")
+
+[node name="FiniteStateMachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("2_mlgmd")]
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("3_0lqae")
+
+[node name="Wander" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("4_4xu05")
+
+[node name="Chase" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("5_0rebf")
+
+[node name="Attack" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("6_8bucs")
+
+[node name="Hit" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("7_yu6lm")
+
+[node name="Death" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("8_mh6mu")
+
+[node name="Teleport" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("9_i3tl1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0.664854, 0, 0.0390365, 1)
+position = Vector2(-9.53674e-07, 1)
+scale = Vector2(1.4375, 1.48438)
+texture = ExtResource("10_ytpr6")
+
+[node name="Hurtbox" parent="." node_paths=PackedStringArray("health_component", "visual_node") instance=ExtResource("11_fw31v")]
+health_component = NodePath("../HealthComponent")
+visual_node = NodePath("../Sprite2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("CircleShape2D_4370a")
+debug_color = Color(0, 0.611806, 0.626093, 0.42)
+
+[node name="HealthComponent" parent="." instance=ExtResource("12_04ktb")]
+
+[node name="HealthBar" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("13_1dwk7")]
+offset_left = -64.0
+offset_top = -103.0
+offset_right = 64.0
+offset_bottom = -76.0
+health_component = NodePath("../HealthComponent")
+
+[node name="Scythe" parent="." instance=ExtResource("14_hb7fb")]
+z_index = 1
+position = Vector2(2, 0)
+scale = Vector2(1.2, 1.2)
+
+[node name="DetectionRange" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
+shape = SubResource("CircleShape2D_xytv3")
+debug_color = Color(0.815686, 0.811765, 0, 0.0470588)
+
+[node name="AttackRange" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
+shape = SubResource("CircleShape2D_e2t7j")
+debug_color = Color(1, 0.529412, 0.219608, 0.121569)
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
+radius = 60.0
+debug_enabled = true
+
+[node name="TeleportDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 128
+script = ExtResource("15_qywq6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TeleportDetector"]
+shape = SubResource("CircleShape2D_g8ucy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_1fot0")
+frame_progress = 0.434294
+
+[connection signal="velocity_computed" from="NavigationAgent2D" to="FiniteStateMachine/Chase" method="velocity_computed"]
