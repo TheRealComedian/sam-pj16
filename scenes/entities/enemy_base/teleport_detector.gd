@@ -12,4 +12,5 @@ func _process(delta: float) -> void:
 	pass
 	
 func _on_area_entered() -> void:
-	FSM.force_update('Teleport')
+	#FSM.force_update('Teleport')
+	pass
