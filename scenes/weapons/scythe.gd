@@ -9,9 +9,9 @@ class_name Scythe extends Weapon
 @export_range(0,20) var fire_rate: float=2.0
 
 @onready var shoot_position := $CursorFacing
-
+var warning_duration = 0.69
 var weapon_timer = 0.0
-var anim_duration = 0.6
+var anim_duration = 0.69
 var arrow_speed = 900
 var warn=2
 var warned=false
@@ -83,6 +83,7 @@ func attack():
 					get_tree().root.call_deferred("add_child", new_arrow)
 				warned=true
 				await get_tree().create_timer(1/fire_rate).timeout
+				await Util.wait(self.warning_duration).timeout
 		await get_tree().create_timer(1/fire_rate).timeout
 		warned=false
 		can_shoot = true

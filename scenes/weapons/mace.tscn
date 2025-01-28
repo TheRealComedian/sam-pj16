@@ -1,0 +1,148 @@
+[gd_scene load_steps=19 format=3 uid="uid://ciabcmslf04qb"]
+
+[ext_resource type="Script" path="res://scenes/weapons/mace.gd" id="1_v10l8"]
+[ext_resource type="Texture2D" uid="uid://dcjkbeu6gpu4y" path="res://assets/sprites/weapons/Mace_Transform_Frames4.png" id="2_ygc67"]
+[ext_resource type="Texture2D" uid="uid://d2ejh0ssf6885" path="res://assets/sprites/weapons/Mace_Blink_1-Sheet.png" id="3_kw3e7"]
+[ext_resource type="Texture2D" uid="uid://bn664f2jsljkt" path="res://assets/sprites/weapons/Mace_Transform_Frames1.png" id="4_vduo7"]
+[ext_resource type="Texture2D" uid="uid://c5fhpvh6sj6ls" path="res://assets/sprites/weapons/Mace_Transform_Frames2.png" id="5_1775n"]
+[ext_resource type="Texture2D" uid="uid://cc5q07k4c5ysp" path="res://assets/sprites/weapons/Mace_Transform_Frames3.png" id="6_x8bps"]
+[ext_resource type="PackedScene" uid="uid://1rq7hjdwqhix" path="res://scenes/components/hitbox_component.tscn" id="7_1nuh5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_14d22"]
+atlas = ExtResource("3_kw3e7")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_omtp7"]
+atlas = ExtResource("3_kw3e7")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7bfhj"]
+atlas = ExtResource("3_kw3e7")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bsdd3"]
+atlas = ExtResource("3_kw3e7")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f2lyv"]
+atlas = ExtResource("3_kw3e7")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7pf53"]
+atlas = ExtResource("3_kw3e7")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yd74u"]
+atlas = ExtResource("3_kw3e7")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_riycy"]
+atlas = ExtResource("3_kw3e7")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_27xid"]
+atlas = ExtResource("3_kw3e7")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kls4t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ygc67")
+}],
+"loop": true,
+"name": &"active",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_14d22")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_14d22")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_14d22")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_omtp7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7bfhj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bsdd3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f2lyv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7pf53")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yd74u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_riycy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_27xid")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_14d22")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_14d22")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_14d22")
+}],
+"loop": true,
+"name": &"inactive",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_vduo7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_1775n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_x8bps")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ygc67")
+}],
+"loop": true,
+"name": &"windup",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lrx43"]
+radius = 14.0
+height = 28.0
+
+[node name="Mace" type="Node2D" node_paths=PackedStringArray("sprite", "hitbox")]
+script = ExtResource("1_v10l8")
+sprite = NodePath("AnimatedSprite2D")
+hitbox = NodePath("Hitbox/CollisionShape2D")
+cooldown_duration = 0.1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(56, 0)
+rotation = -1.57079
+sprite_frames = SubResource("SpriteFrames_kls4t")
+animation = &"windup"
+autoplay = "inactive"
+frame_progress = 0.545814
+
+[node name="Hitbox" parent="." instance=ExtResource("7_1nuh5")]
+damage = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(73, 0)
+rotation = -1.57079
+shape = SubResource("CapsuleShape2D_lrx43")
+disabled = true
+debug_color = Color(0.9967, 0, 0.181514, 0.42)
