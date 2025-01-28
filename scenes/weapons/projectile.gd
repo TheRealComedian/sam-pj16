@@ -19,10 +19,8 @@ func _process(delta):
 func enable_layer():
 	$Hitbox.set_collision_layer_value(4, true)
 	print($Hitbox.get_collision_layer_value(4))
-	print("it happened")
 	
 func disable_layer():
 	$Hitbox.set_collision_layer_value(4, false)
 	print($Hitbox.get_collision_layer_value(4))
-	print("wooo")
 	

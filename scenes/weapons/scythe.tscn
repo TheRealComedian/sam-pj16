@@ -54,7 +54,7 @@ script = ExtResource("1_e0m33")
 sprite = NodePath("AnimatedSprite2D")
 hitbox = NodePath("Hitbox/CollisionShape2D")
 projectile = ExtResource("2_3dkie")
-arrow_count = 8
+arrow_count = 6
 arc = 131.611
 fire_rate = 2.381
 
@@ -67,7 +67,7 @@ position = Vector2(8, -2)
 rotation = 1.56982
 scale = Vector2(1.0174, 1.07969)
 sprite_frames = SubResource("SpriteFrames_3luq4")
-animation = &"active"
+animation = &"windup"
 
 [node name="Hitbox" type="Area2D" parent="."]
 position = Vector2(47, -20)

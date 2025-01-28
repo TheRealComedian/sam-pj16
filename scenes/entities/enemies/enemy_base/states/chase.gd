@@ -6,7 +6,7 @@ var agent: NavigationAgent2D
 var localize=0.69
 
 func enter():
-	print("chase")
+	#print("chase")
 	agent = owner.navigation_agent
 	owner.attack_range.body_entered.connect(player_in_attack_range)
 	owner.detection_range.body_exited.connect(player_lost)
