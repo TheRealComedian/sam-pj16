@@ -9,6 +9,7 @@ class_name Hurtbox extends Area2D
 
 func _on_area_entered(hitbox: Hitbox):
 	if hitbox is not Hitbox: return
+	
 	set_deferred('monitoring', false)
 	
 	health_component.current_health -= hitbox.damage
@@ -16,8 +17,7 @@ func _on_area_entered(hitbox: Hitbox):
 	clr.a = 0.5
 	visual_node.modulate = clr
 	
-	Util.wait(invincibility_preiod, func(): 
-		clr.a = 1
-		visual_node.modulate = clr
-		monitoring = true
-		)
+	await Util.wait(invincibility_preiod).timeout
+	clr.a = 1
+	visual_node.modulate = clr
+	monitoring = true

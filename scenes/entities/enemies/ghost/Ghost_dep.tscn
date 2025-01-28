@@ -1,19 +1,19 @@
 [gd_scene load_steps=23 format=3 uid="uid://go5r0qxwwaks"]
 
-[ext_resource type="Script" path="res://scenes/entities/enemies/enemy_base/enemy.gd" id="1_h3jc7"]
-[ext_resource type="PackedScene" uid="uid://bymt3484vhpqx" path="res://scenes/components/FSM/finite_state_machine.tscn" id="2_0pdvg"]
-[ext_resource type="Script" path="res://scenes/entities/enemies/enemy_base/states/idle.gd" id="3_745of"]
-[ext_resource type="Script" path="res://scenes/entities/enemies/enemy_base/states/wander.gd" id="4_w8fye"]
-[ext_resource type="Script" path="res://scenes/entities/enemies/enemy_base/states/chase.gd" id="5_bcyya"]
-[ext_resource type="Script" path="res://scenes/entities/enemies/enemy_base/states/attack.gd" id="6_at06i"]
-[ext_resource type="Script" path="res://scenes/entities/enemies/enemy_base/states/hit.gd" id="7_a14dg"]
-[ext_resource type="Script" path="res://scenes/entities/enemies/enemy_base/states/death.gd" id="8_583uy"]
-[ext_resource type="PackedScene" uid="uid://dev1cxfx4pw6u" path="res://scenes/entities/enemies/ghost/Ghost2.tscn" id="10_kvvhj"]
-[ext_resource type="PackedScene" uid="uid://sgkunku4x031" path="res://scenes/components/hurtbox_component.tscn" id="10_tjhfg"]
-[ext_resource type="PackedScene" uid="uid://8p244x1dnspa" path="res://scenes/components/health_component.tscn" id="11_x0ato"]
-[ext_resource type="PackedScene" uid="uid://m4b6gk7f36vg" path="res://scenes/entities/health_bar.tscn" id="12_3l6af"]
-[ext_resource type="PackedScene" uid="uid://ba7bjlytuufxp" path="res://scenes/weapons/bow.tscn" id="13_xiwbo"]
-[ext_resource type="Script" path="res://scenes/entities/enemies/enemy_base/teleport_detector.gd" id="14_ocklm"]
+[ext_resource type="Script" path="res://scenes/entities/enemies/enemy_base/enemy.gd" id="1_rxr2b"]
+[ext_resource type="PackedScene" uid="uid://bymt3484vhpqx" path="res://scenes/components/FSM/finite_state_machine.tscn" id="2_f5irk"]
+[ext_resource type="Script" path="res://scenes/entities/enemies/enemy_base/states/idle.gd" id="3_hn3iw"]
+[ext_resource type="Script" path="res://scenes/entities/enemies/enemy_base/states/wander.gd" id="4_wpy5c"]
+[ext_resource type="Script" path="res://scenes/entities/enemies/enemy_base/states/chase.gd" id="5_ap8lg"]
+[ext_resource type="Script" path="res://scenes/entities/enemies/enemy_base/states/attack.gd" id="6_nuiuv"]
+[ext_resource type="Script" path="res://scenes/entities/enemies/enemy_base/states/hit.gd" id="7_bysxk"]
+[ext_resource type="Script" path="res://scenes/entities/enemies/enemy_base/states/death.gd" id="8_hdi41"]
+[ext_resource type="PackedScene" uid="uid://dm0c6qmicag32" path="res://scenes/entities/enemies/ghost/Ghost_anim.tscn" id="9_6gme3"]
+[ext_resource type="PackedScene" uid="uid://sgkunku4x031" path="res://scenes/components/hurtbox_component.tscn" id="10_ol0ct"]
+[ext_resource type="PackedScene" uid="uid://8p244x1dnspa" path="res://scenes/components/health_component.tscn" id="11_lwuyw"]
+[ext_resource type="PackedScene" uid="uid://m4b6gk7f36vg" path="res://scenes/entities/health_bar.tscn" id="12_ccxpk"]
+[ext_resource type="PackedScene" path="res://scenes/weapons/bow.tscn" id="13_wrkok"]
+[ext_resource type="Script" path="res://scenes/entities/enemies/enemy_base/teleport_detector.gd" id="14_ca2he"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_am6lc"]
 radius = 25.2982
@@ -69,7 +69,7 @@ radius = 241.671
 radius = 25.02
 
 [node name="Ghost" type="CharacterBody2D" node_paths=PackedStringArray("detection_range", "attack_range", "health_component", "weapon")]
-script = ExtResource("1_h3jc7")
+script = ExtResource("1_rxr2b")
 detection_range = NodePath("DetectionRange")
 attack_range = NodePath("AttackRange")
 movement_speed = 200
@@ -80,35 +80,35 @@ weapon = NodePath("Bow")
 scale = Vector2(1, 1.8)
 shape = SubResource("CircleShape2D_am6lc")
 
-[node name="FiniteStateMachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("2_0pdvg")]
+[node name="FiniteStateMachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("2_f5irk")]
 initial_state = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="FiniteStateMachine"]
-script = ExtResource("3_745of")
+script = ExtResource("3_hn3iw")
 
 [node name="Wander" type="Node" parent="FiniteStateMachine"]
-script = ExtResource("4_w8fye")
+script = ExtResource("4_wpy5c")
 
 [node name="Chase" type="Node" parent="FiniteStateMachine"]
-script = ExtResource("5_bcyya")
+script = ExtResource("5_ap8lg")
 
 [node name="Attack" type="Node" parent="FiniteStateMachine"]
-script = ExtResource("6_at06i")
+script = ExtResource("6_nuiuv")
 
 [node name="Hit" type="Node" parent="FiniteStateMachine"]
-script = ExtResource("7_a14dg")
+script = ExtResource("7_bysxk")
 
 [node name="Death" type="Node" parent="FiniteStateMachine"]
-script = ExtResource("8_583uy")
+script = ExtResource("8_hdi41")
 
-[node name="Sprite2D" parent="." instance=ExtResource("10_kvvhj")]
+[node name="Sprite2D" parent="." instance=ExtResource("9_6gme3")]
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="Sprite2D"]
 libraries = {
 "": SubResource("AnimationLibrary_l3dsl")
 }
 
-[node name="Hurtbox" parent="." node_paths=PackedStringArray("health_component", "visual_node") instance=ExtResource("10_tjhfg")]
+[node name="Hurtbox" parent="." node_paths=PackedStringArray("health_component", "visual_node") instance=ExtResource("10_ol0ct")]
 scale = Vector2(1, 2)
 health_component = NodePath("../HealthComponent")
 visual_node = NodePath("../Sprite2D")
@@ -117,16 +117,16 @@ visual_node = NodePath("../Sprite2D")
 shape = SubResource("CircleShape2D_4370a")
 debug_color = Color(0, 0.611806, 0.626093, 0.42)
 
-[node name="HealthComponent" parent="." instance=ExtResource("11_x0ato")]
+[node name="HealthComponent" parent="." instance=ExtResource("11_lwuyw")]
 
-[node name="HealthBar" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("12_3l6af")]
+[node name="HealthBar" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("12_ccxpk")]
 offset_left = -64.0
 offset_top = -56.0
 offset_right = 64.0
 offset_bottom = -29.0
 health_component = NodePath("../HealthComponent")
 
-[node name="Bow" parent="." instance=ExtResource("13_xiwbo")]
+[node name="Bow" parent="." instance=ExtResource("13_wrkok")]
 position = Vector2(7, 0)
 
 [node name="DetectionRange" type="Area2D" parent="."]
@@ -153,7 +153,7 @@ debug_enabled = true
 [node name="TeleportDetector" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 128
-script = ExtResource("14_ocklm")
+script = ExtResource("14_ca2he")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TeleportDetector"]
 shape = SubResource("CircleShape2D_g8ucy")

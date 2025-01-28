@@ -12,7 +12,7 @@ func enter():
 	direction = Vector2(randf_range(-1.0, 1.0), randf_range(-1., 1.0))
 	
 	done_wandering = false
-	wander_timer = Util.wait(1, func(): done_wandering = true)
+	#wander_timer = Util.wait(1, func(): done_wandering = true)
 
 func physics_update(delta):
 	if done_wandering: 

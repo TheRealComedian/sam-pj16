@@ -1,18 +1,18 @@
-[gd_scene load_steps=31 format=3 uid="uid://6wlc67hdwcl2"]
+[gd_scene load_steps=31 format=3 uid="uid://cxl1bqfbaduj6"]
 
-[ext_resource type="Script" path="res://scenes/entities/enemies/enemy_base/enemy.gd" id="1_aamsr"]
-[ext_resource type="PackedScene" uid="uid://bymt3484vhpqx" path="res://scenes/components/FSM/finite_state_machine.tscn" id="2_qc85r"]
-[ext_resource type="Script" path="res://scenes/entities/enemies/enemy_base/states/idle.gd" id="3_q6ewt"]
-[ext_resource type="Script" path="res://scenes/entities/enemies/enemy_base/states/wander.gd" id="4_2krhl"]
-[ext_resource type="Script" path="res://scenes/entities/enemies/enemy_base/states/chase.gd" id="5_14xod"]
-[ext_resource type="Script" path="res://scenes/entities/enemies/enemy_base/states/attack.gd" id="6_2fhuv"]
-[ext_resource type="Script" path="res://scenes/entities/enemies/enemy_base/states/hit.gd" id="7_0oqre"]
-[ext_resource type="Script" path="res://scenes/entities/enemies/enemy_base/states/death.gd" id="8_f8h11"]
-[ext_resource type="PackedScene" uid="uid://sgkunku4x031" path="res://scenes/components/hurtbox_component.tscn" id="10_5xfb0"]
-[ext_resource type="PackedScene" uid="uid://8p244x1dnspa" path="res://scenes/components/health_component.tscn" id="11_64uve"]
-[ext_resource type="PackedScene" uid="uid://m4b6gk7f36vg" path="res://scenes/entities/health_bar.tscn" id="12_bulfr"]
-[ext_resource type="PackedScene" uid="uid://ciabcmslf04qb" path="res://scenes/weapons/mace.tscn" id="12_eswwt"]
-[ext_resource type="Texture2D" uid="uid://bm47crp7oaf0j" path="res://assets/sprites/entities/ZOMBIE-Sheet-Outlined.png" id="13_l5jx3"]
+[ext_resource type="Script" path="res://scenes/entities/enemies/enemy_base/enemy.gd" id="1_8t4bi"]
+[ext_resource type="PackedScene" uid="uid://bymt3484vhpqx" path="res://scenes/components/FSM/finite_state_machine.tscn" id="2_s4x23"]
+[ext_resource type="Script" path="res://scenes/entities/enemies/enemy_base/states/idle.gd" id="3_160kb"]
+[ext_resource type="Script" path="res://scenes/entities/enemies/enemy_base/states/wander.gd" id="4_r1vb5"]
+[ext_resource type="Script" path="res://scenes/entities/enemies/enemy_base/states/chase.gd" id="5_8diar"]
+[ext_resource type="Script" path="res://scenes/entities/enemies/enemy_base/states/attack.gd" id="6_6xo5v"]
+[ext_resource type="Script" path="res://scenes/entities/enemies/enemy_base/states/hit.gd" id="7_d4bmk"]
+[ext_resource type="Script" path="res://scenes/entities/enemies/enemy_base/states/death.gd" id="8_vlupd"]
+[ext_resource type="PackedScene" uid="uid://sgkunku4x031" path="res://scenes/components/hurtbox_component.tscn" id="9_y6gn0"]
+[ext_resource type="PackedScene" uid="uid://8p244x1dnspa" path="res://scenes/components/health_component.tscn" id="10_tlnf1"]
+[ext_resource type="PackedScene" uid="uid://m4b6gk7f36vg" path="res://scenes/entities/health_bar.tscn" id="11_8jml3"]
+[ext_resource type="PackedScene" path="res://scenes/weapons/mace.tscn" id="12_xqwoc"]
+[ext_resource type="Texture2D" uid="uid://bm47crp7oaf0j" path="res://assets/sprites/entities/ZOMBIE-Sheet-Outlined.png" id="13_53atm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_am6lc"]
 radius = 25.2982
@@ -27,51 +27,51 @@ radius = 709.479
 radius = 96.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bpe8e"]
-atlas = ExtResource("13_l5jx3")
+atlas = ExtResource("13_53atm")
 region = Rect2(0, 0, 64, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yc4f1"]
-atlas = ExtResource("13_l5jx3")
+atlas = ExtResource("13_53atm")
 region = Rect2(64, 0, 64, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_di63q"]
-atlas = ExtResource("13_l5jx3")
+atlas = ExtResource("13_53atm")
 region = Rect2(128, 0, 64, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j6vld"]
-atlas = ExtResource("13_l5jx3")
+atlas = ExtResource("13_53atm")
 region = Rect2(192, 0, 64, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bp4mv"]
-atlas = ExtResource("13_l5jx3")
+atlas = ExtResource("13_53atm")
 region = Rect2(256, 0, 64, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n10fd"]
-atlas = ExtResource("13_l5jx3")
+atlas = ExtResource("13_53atm")
 region = Rect2(320, 0, 64, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_goaep"]
-atlas = ExtResource("13_l5jx3")
+atlas = ExtResource("13_53atm")
 region = Rect2(384, 0, 64, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t2n14"]
-atlas = ExtResource("13_l5jx3")
+atlas = ExtResource("13_53atm")
 region = Rect2(448, 0, 64, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p5uv4"]
-atlas = ExtResource("13_l5jx3")
+atlas = ExtResource("13_53atm")
 region = Rect2(512, 0, 64, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sr6ul"]
-atlas = ExtResource("13_l5jx3")
+atlas = ExtResource("13_53atm")
 region = Rect2(576, 0, 64, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_58eoa"]
-atlas = ExtResource("13_l5jx3")
+atlas = ExtResource("13_53atm")
 region = Rect2(640, 0, 64, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hcm0x"]
-atlas = ExtResource("13_l5jx3")
+atlas = ExtResource("13_53atm")
 region = Rect2(704, 0, 64, 96)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_aypqg"]
@@ -119,7 +119,7 @@ animations = [{
 }]
 
 [node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("detection_range", "attack_range", "health_component", "weapon")]
-script = ExtResource("1_aamsr")
+script = ExtResource("1_8t4bi")
 detection_range = NodePath("DetectionRange")
 attack_range = NodePath("AttackRange")
 movement_speed = 200
@@ -130,28 +130,28 @@ weapon = NodePath("Mace")
 scale = Vector2(0.177668, 1.64209)
 shape = SubResource("CircleShape2D_am6lc")
 
-[node name="FiniteStateMachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("2_qc85r")]
+[node name="FiniteStateMachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("2_s4x23")]
 initial_state = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="FiniteStateMachine"]
-script = ExtResource("3_q6ewt")
+script = ExtResource("3_160kb")
 
 [node name="Wander" type="Node" parent="FiniteStateMachine"]
-script = ExtResource("4_2krhl")
+script = ExtResource("4_r1vb5")
 
 [node name="Chase" type="Node" parent="FiniteStateMachine"]
-script = ExtResource("5_14xod")
+script = ExtResource("5_8diar")
 
 [node name="Attack" type="Node" parent="FiniteStateMachine"]
-script = ExtResource("6_2fhuv")
+script = ExtResource("6_6xo5v")
 
 [node name="Hit" type="Node" parent="FiniteStateMachine"]
-script = ExtResource("7_0oqre")
+script = ExtResource("7_d4bmk")
 
 [node name="Death" type="Node" parent="FiniteStateMachine"]
-script = ExtResource("8_f8h11")
+script = ExtResource("8_vlupd")
 
-[node name="Hurtbox" parent="." node_paths=PackedStringArray("health_component", "visual_node") instance=ExtResource("10_5xfb0")]
+[node name="Hurtbox" parent="." node_paths=PackedStringArray("health_component", "visual_node") instance=ExtResource("9_y6gn0")]
 scale = Vector2(1, 1.72)
 health_component = NodePath("../HealthComponent")
 visual_node = NodePath("../AnimatedSprite2D")
@@ -160,16 +160,16 @@ visual_node = NodePath("../AnimatedSprite2D")
 shape = SubResource("CircleShape2D_4370a")
 debug_color = Color(0, 0.611806, 0.626093, 0.42)
 
-[node name="HealthComponent" parent="." instance=ExtResource("11_64uve")]
+[node name="HealthComponent" parent="." instance=ExtResource("10_tlnf1")]
 
-[node name="HealthBar" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("12_bulfr")]
+[node name="HealthBar" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("11_8jml3")]
 offset_left = -64.0
 offset_top = -56.0
 offset_right = 64.0
 offset_bottom = -29.0
 health_component = NodePath("../HealthComponent")
 
-[node name="Mace" parent="." instance=ExtResource("12_eswwt")]
+[node name="Mace" parent="." instance=ExtResource("12_xqwoc")]
 
 [node name="DetectionRange" type="Area2D" parent="."]
 collision_layer = 0

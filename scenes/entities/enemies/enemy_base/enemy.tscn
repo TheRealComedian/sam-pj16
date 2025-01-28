@@ -1,7 +1,6 @@
-[gd_scene load_steps=18 format=3 uid="uid://y28itm0e1koh"]
+[gd_scene load_steps=14 format=3 uid="uid://y28itm0e1koh"]
 
 [ext_resource type="Script" path="res://scenes/entities/enemies/enemy_base/enemy.gd" id="1_7mqys"]
-[ext_resource type="Texture2D" uid="uid://cs6f4hvcgsprf" path="res://assets/sprites/entities/Wisper Sprite.png" id="2_ogjx5"]
 [ext_resource type="PackedScene" uid="uid://bymt3484vhpqx" path="res://scenes/components/FSM/finite_state_machine.tscn" id="2_ulcgu"]
 [ext_resource type="Script" path="res://scenes/entities/enemies/enemy_base/states/idle.gd" id="3_8sevy"]
 [ext_resource type="PackedScene" uid="uid://sgkunku4x031" path="res://scenes/components/hurtbox_component.tscn" id="3_ay3ji"]
@@ -9,33 +8,22 @@
 [ext_resource type="PackedScene" uid="uid://8p244x1dnspa" path="res://scenes/components/health_component.tscn" id="4_imu56"]
 [ext_resource type="PackedScene" uid="uid://m4b6gk7f36vg" path="res://scenes/entities/health_bar.tscn" id="5_5k3q0"]
 [ext_resource type="Script" path="res://scenes/entities/enemies/enemy_base/states/chase.gd" id="5_elx00"]
-[ext_resource type="PackedScene" uid="uid://b6ukhia0s6mkl" path="res://scenes/weapons/sword.tscn" id="6_0n74n"]
 [ext_resource type="Script" path="res://scenes/entities/enemies/enemy_base/states/attack.gd" id="6_a0lxl"]
 [ext_resource type="Script" path="res://scenes/entities/enemies/enemy_base/states/hit.gd" id="7_j7kul"]
 [ext_resource type="Script" path="res://scenes/entities/enemies/enemy_base/states/death.gd" id="7_wp61d"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_am6lc"]
-radius = 25.2982
+[sub_resource type="CircleShape2D" id="CircleShape2D_et0kw"]
+radius = 384.083
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_4370a"]
-radius = 24.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_cqqe4"]
+radius = 112.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_xytv3"]
-radius = 709.479
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_e2t7j"]
-radius = 96.0
-
-[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("detection_range", "attack_range", "health_component", "weapon")]
+[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("detection_range", "attack_range", "health_component")]
 script = ExtResource("1_7mqys")
 detection_range = NodePath("DetectionRange")
 attack_range = NodePath("AttackRange")
 movement_speed = 200
 health_component = NodePath("HealthComponent")
-weapon = NodePath("Sword")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_am6lc")
 
 [node name="FiniteStateMachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("2_ulcgu")]
 initial_state = NodePath("Idle")
@@ -58,18 +46,6 @@ script = ExtResource("7_j7kul")
 [node name="Death" type="Node" parent="FiniteStateMachine"]
 script = ExtResource("7_wp61d")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.664854, 0, 0.0390365, 1)
-texture = ExtResource("2_ogjx5")
-
-[node name="Hurtbox" parent="." node_paths=PackedStringArray("health_component", "visual_node") instance=ExtResource("3_ay3ji")]
-health_component = NodePath("../HealthComponent")
-visual_node = NodePath("../Sprite2D")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-shape = SubResource("CircleShape2D_4370a")
-debug_color = Color(0, 0.611806, 0.626093, 0.42)
-
 [node name="HealthComponent" parent="." instance=ExtResource("4_imu56")]
 
 [node name="HealthBar" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_5k3q0")]
@@ -79,28 +55,28 @@ offset_right = 64.0
 offset_bottom = -29.0
 health_component = NodePath("../HealthComponent")
 
-[node name="Sword" parent="." instance=ExtResource("6_0n74n")]
-cooldown_duration = 1.0
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
+radius = 60.0
+debug_enabled = true
+
+[node name="Hurtbox" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_ay3ji")]
+health_component = NodePath("../HealthComponent")
 
 [node name="DetectionRange" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
-shape = SubResource("CircleShape2D_xytv3")
-debug_color = Color(0.815686, 0.811765, 0, 0.0470588)
+shape = SubResource("CircleShape2D_et0kw")
+debug_color = Color(0.611765, 0.537255, 0, 0.0823529)
 
 [node name="AttackRange" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
-shape = SubResource("CircleShape2D_e2t7j")
-debug_color = Color(1, 0.529412, 0.219608, 0.121569)
-
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-avoidance_enabled = true
-radius = 60.0
-debug_enabled = true
+shape = SubResource("CircleShape2D_cqqe4")
+debug_color = Color(1, 0.0198501, 0.0837663, 0.254902)
 
 [connection signal="velocity_computed" from="NavigationAgent2D" to="FiniteStateMachine/Chase" method="velocity_computed"]

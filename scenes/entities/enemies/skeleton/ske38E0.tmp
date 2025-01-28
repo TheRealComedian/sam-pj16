@@ -102,8 +102,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fx35q"]
-radius = 24.4132
-height = 48.8265
+radius = 32.0
+height = 112.826
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_he4qq"]
 _data = {
@@ -114,20 +114,11 @@ _data = {
 position = Vector2(0, -0.413236)
 weapon = NodePath("Sword")
 
-[node name="HealthComponent" parent="." index="1"]
-current_health = 1.0
-
 [node name="Hurtbox" parent="." index="4" node_paths=PackedStringArray("visual_node")]
 visual_node = NodePath("../AnimatedSprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" index="0"]
 shape = SubResource("CapsuleShape2D_aeua0")
-
-[node name="CollisionShape2D" parent="DetectionRange" index="0"]
-debug_color = Color(0.611765, 0.537255, 0, 0.0823529)
-
-[node name="CollisionShape2D" parent="AttackRange" index="0"]
-debug_color = Color(1, 0.0198501, 0.0837663, 0.254902)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="7"]
 position = Vector2(0, -0.413236)
@@ -137,7 +128,6 @@ autoplay = "Idle"
 frame_progress = 0.0825989
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="8"]
-position = Vector2(0, 24.4132)
 shape = SubResource("CapsuleShape2D_fx35q")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="9"]
@@ -147,3 +137,5 @@ libraries = {
 }
 
 [node name="Sword" parent="." index="10" instance=ExtResource("4_2lspu")]
+
+[connection signal="velocity_computed" from="NavigationAgent2D" to="FiniteStateMachine/Chase" method="velocity_computed"]
