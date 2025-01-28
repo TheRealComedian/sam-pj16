@@ -5,8 +5,17 @@ class_name Projectile extends CharacterBody2D
 @onready var sprite := $AnimatedSprite2D
 @export var speed: int = 10
 @export var lifetime := .6
+var user: Character
 var direction= Vector2.RIGHT
 
+static func spawn_projectile(proj_scene: PackedScene, spawn_position: Vector2, spawn_rotation: float, user: Character, add_to_scene: bool = true) -> Projectile:
+	var inst: Projectile = proj_scene.instantiate()
+	inst.user = user
+	inst.position = spawn_position
+	inst.global_rotation = spawn_rotation
+	if add_to_scene and Global.map:
+		Global.map.add_child(inst)
+	return inst
 
 func _ready():
 	direction=Vector2.RIGHT.rotated(global_rotation)

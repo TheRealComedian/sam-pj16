@@ -26,18 +26,37 @@ func attack():
 	#await Util.wait(self.anim_duration).timeout
 	await sprite.animation_finished
 	sprite.play('idle')
-	for i in arrow_count:
-		var new_arrow=projectile.instantiate()
-		new_arrow.position=global_position
-		if arrow_count==1:
-			new_arrow.global_rotation=global_rotation
-		else:
+	if arrow_count == 1:
+		Projectile.spawn_projectile(
+			projectile, 
+			self.global_position, 
+			self.global_rotation,
+			self.user
+		)
+	else:
+		for i in arrow_count:
 			var arc_rad = deg_to_rad(arc)
 			var increment=arc_rad/(arrow_count-1)
-			new_arrow.global_rotation=(
-				global_rotation + increment*i - arc_rad/2
+			Projectile.spawn_projectile(
+				projectile, 
+				self.global_position, 
+				global_rotation + increment*i - arc_rad/2,
+				self.user
 			)
-		get_tree().root.call_deferred("add_child", new_arrow)
+		
+		
+		
+		#var new_arrow=projectile.instantiate()
+		#new_arrow.position=global_position
+		#if arrow_count==1:
+			#new_arrow.global_rotation=global_rotation
+		#else:
+			#var arc_rad = deg_to_rad(arc)
+			#var increment=arc_rad/(arrow_count-1)
+			#new_arrow.global_rotation=(
+				#global_rotation + increment*i - arc_rad/2
+			#)
+		#get_tree().root.call_deferred("add_child", new_arrow)
 	await get_tree().create_timer(1/fire_rate).timeout
 	#sprite.play('idle')
 	await Util.wait(self.cooldown_duration).timeout
