@@ -28,7 +28,7 @@ func attack():
 	await Util.wait(self.anim_duration).timeout
 	var arrow = ArrowScene.instantiate()
 	arrow.global_position = shoot_position.global_position
-	if user.mc:
+	if user is Player:
 		arrow.direction = global_position.direction_to(get_global_mouse_position())
 	else:
 		shoot_position.target_position=Global.player.position

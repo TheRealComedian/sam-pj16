@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=4 uid="uid://164i3kptt5w0"]
+[gd_scene load_steps=4 format=4 uid="uid://164i3kptt5w0"]
 
 [ext_resource type="PackedScene" uid="uid://dy335p6keujbx" path="res://scenes/world/map.tscn" id="1_4744t"]
 [ext_resource type="TileSet" uid="uid://def7m4nhhqg6a" path="res://resources/tilesets/crypt.tres" id="2_axu18"]
+[ext_resource type="PackedScene" uid="uid://bpo6yc7rnj2me" path="res://scenes/entities/enemies/ghost/ghost.tscn" id="3_px4jl"]
 
 [node name="CryptVertical" instance=ExtResource("1_4744t")]
 
@@ -51,3 +52,6 @@ limit_left = -470
 limit_top = -890
 limit_right = 470
 limit_bottom = 900
+
+[node name="Ghost" parent="." index="4" instance=ExtResource("3_px4jl")]
+position = Vector2(-224, -232)
