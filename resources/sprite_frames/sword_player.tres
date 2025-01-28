@@ -1,10 +1,10 @@
 [gd_resource type="SpriteFrames" load_steps=16 format=3 uid="uid://b8n2y1rfmfmns"]
 
-[ext_resource type="Texture2D" uid="uid://2m3uqtmsnyl8" path="res://assets/sprites/weapons/Sword_Atk_Frame_4.png" id="1_wt2rv"]
-[ext_resource type="Texture2D" uid="uid://cui2dohy06qn4" path="res://assets/sprites/weapons/Sword_Blink_1-Sheet.png" id="2_ilime"]
-[ext_resource type="Texture2D" uid="uid://86nc84tqdwcd" path="res://assets/sprites/weapons/Sword_Atk_Frame_1.png" id="3_scglc"]
-[ext_resource type="Texture2D" uid="uid://bhcyvqfebrbr5" path="res://assets/sprites/weapons/Sword_Atk_Frame_2.png" id="4_iupcl"]
-[ext_resource type="Texture2D" uid="uid://86s4wrllhx0t" path="res://assets/sprites/weapons/Sword_Atk_Frame_3.png" id="5_vfjbg"]
+[ext_resource type="Texture2D" uid="uid://2m3uqtmsnyl8" path="res://assets/sprites/weapons/old weapon sprites/Sword_Atk_Frame_4.png" id="1_wt2rv"]
+[ext_resource type="Texture2D" uid="uid://cui2dohy06qn4" path="res://assets/sprites/weapons/old weapon sprites/Sword_Blink_1-Sheet.png" id="2_ilime"]
+[ext_resource type="Texture2D" uid="uid://86nc84tqdwcd" path="res://assets/sprites/weapons/old weapon sprites/Sword_Atk_Frame_1.png" id="3_scglc"]
+[ext_resource type="Texture2D" uid="uid://bhcyvqfebrbr5" path="res://assets/sprites/weapons/old weapon sprites/Sword_Atk_Frame_2.png" id="4_iupcl"]
+[ext_resource type="Texture2D" uid="uid://86s4wrllhx0t" path="res://assets/sprites/weapons/old weapon sprites/Sword_Atk_Frame_3.png" id="5_vfjbg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pkjpf"]
 atlas = ExtResource("2_ilime")

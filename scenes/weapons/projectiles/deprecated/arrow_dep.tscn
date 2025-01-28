@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://d0r7n281un4av"]
 
 [ext_resource type="Script" path="res://scenes/weapons/projectiles/arrow.gd" id="1_2ytha"]
-[ext_resource type="Texture2D" uid="uid://6metdaku1nt7" path="res://assets/sprites/weapons/arrow.png" id="2_rfpo2"]
+[ext_resource type="Texture2D" uid="uid://6metdaku1nt7" path="res://assets/sprites/weapons/old weapon sprites/arrow.png" id="2_rfpo2"]
 [ext_resource type="Script" path="res://scenes/weapons/projectiles/deprecated/arrowhitbox.gd" id="3_83wa2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n6q7a"]
