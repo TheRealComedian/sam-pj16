@@ -1,0 +1,140 @@
+[gd_scene load_steps=21 format=3 uid="uid://bap3cwsoe2ooh"]
+
+[ext_resource type="PackedScene" uid="uid://y28itm0e1koh" path="res://scenes/entities/enemies/enemy_base/enemy.tscn" id="1_d43yx"]
+[ext_resource type="Animation" uid="uid://cpal1sha8q41s" path="res://resources/animations/skeleton_walk.res" id="3_cv0of"]
+[ext_resource type="PackedScene" uid="uid://d3f0alvle4il3" path="res://scenes/weapons/mace.tscn" id="12_eswwt"]
+[ext_resource type="Texture2D" uid="uid://bm47crp7oaf0j" path="res://assets/sprites/entities/ZOMBIE-Sheet-Outlined.png" id="13_l5jx3"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wenln"]
+radius = 32.0
+height = 112.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bpe8e"]
+atlas = ExtResource("13_l5jx3")
+region = Rect2(0, 0, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yc4f1"]
+atlas = ExtResource("13_l5jx3")
+region = Rect2(64, 0, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_di63q"]
+atlas = ExtResource("13_l5jx3")
+region = Rect2(128, 0, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j6vld"]
+atlas = ExtResource("13_l5jx3")
+region = Rect2(192, 0, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bp4mv"]
+atlas = ExtResource("13_l5jx3")
+region = Rect2(256, 0, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n10fd"]
+atlas = ExtResource("13_l5jx3")
+region = Rect2(320, 0, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_goaep"]
+atlas = ExtResource("13_l5jx3")
+region = Rect2(384, 0, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t2n14"]
+atlas = ExtResource("13_l5jx3")
+region = Rect2(448, 0, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5uv4"]
+atlas = ExtResource("13_l5jx3")
+region = Rect2(512, 0, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sr6ul"]
+atlas = ExtResource("13_l5jx3")
+region = Rect2(576, 0, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_58eoa"]
+atlas = ExtResource("13_l5jx3")
+region = Rect2(640, 0, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hcm0x"]
+atlas = ExtResource("13_l5jx3")
+region = Rect2(704, 0, 64, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7aeql"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bpe8e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yc4f1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_di63q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j6vld")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bp4mv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n10fd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_goaep")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t2n14")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p5uv4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sr6ul")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_58eoa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hcm0x")
+}],
+"loop": true,
+"name": &"default",
+"speed": 9.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7yvuw"]
+radius = 16.0
+height = 64.0
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_he4qq"]
+_data = {
+"walk": ExtResource("3_cv0of")
+}
+
+[node name="Zombie" node_paths=PackedStringArray("weapon") instance=ExtResource("1_d43yx")]
+movement_speed = 100
+weapon = NodePath("Mace")
+
+[node name="Hurtbox" parent="." index="4" node_paths=PackedStringArray("visual_node")]
+visual_node = NodePath("../AnimatedSprite2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" index="0"]
+shape = SubResource("CapsuleShape2D_wenln")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="7"]
+position = Vector2(0, -0.413236)
+sprite_frames = SubResource("SpriteFrames_7aeql")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="8"]
+position = Vector2(0, 32)
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_7yvuw")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="9"]
+root_node = NodePath("../AnimatedSprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_he4qq")
+}
+
+[node name="Mace" parent="." index="10" instance=ExtResource("12_eswwt")]
+
+[connection signal="velocity_computed" from="NavigationAgent2D" to="FiniteStateMachine/Chase" method="velocity_computed"]

@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://sgkunku4x031" path="res://scenes/components/hurtbox_component.tscn" id="9_y6gn0"]
 [ext_resource type="PackedScene" uid="uid://8p244x1dnspa" path="res://scenes/components/health_component.tscn" id="10_tlnf1"]
 [ext_resource type="PackedScene" uid="uid://m4b6gk7f36vg" path="res://scenes/entities/health_bar.tscn" id="11_8jml3"]
-[ext_resource type="PackedScene" path="res://scenes/weapons/mace.tscn" id="12_xqwoc"]
+[ext_resource type="PackedScene" uid="uid://d3f0alvle4il3" path="res://scenes/weapons/mace.tscn" id="12_xqwoc"]
 [ext_resource type="Texture2D" uid="uid://bm47crp7oaf0j" path="res://assets/sprites/entities/ZOMBIE-Sheet-Outlined.png" id="13_53atm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_am6lc"]

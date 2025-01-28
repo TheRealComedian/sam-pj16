@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://ciabcmslf04qb"]
+[gd_scene load_steps=19 format=3 uid="uid://d3f0alvle4il3"]
 
 [ext_resource type="Script" path="res://scenes/weapons/mace.gd" id="1_v10l8"]
 [ext_resource type="Texture2D" uid="uid://dcjkbeu6gpu4y" path="res://assets/sprites/weapons/Mace_Transform_Frames4.png" id="2_ygc67"]
@@ -127,7 +127,6 @@ height = 28.0
 script = ExtResource("1_v10l8")
 sprite = NodePath("AnimatedSprite2D")
 hitbox = NodePath("Hitbox/CollisionShape2D")
-cooldown_duration = 0.1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(56, 0)
