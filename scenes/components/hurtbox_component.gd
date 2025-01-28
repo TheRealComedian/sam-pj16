@@ -10,6 +10,9 @@ class_name Hurtbox extends Area2D
 func _on_area_entered(hitbox: Hitbox):
 	if hitbox is not Hitbox: return
 	
+	if owner is Character and hitbox.owner is Weapon or hitbox.owner is Projectile:
+		if owner == hitbox.owner.user: return
+	
 	set_deferred('monitoring', false)
 	
 	health_component.current_health -= hitbox.damage
