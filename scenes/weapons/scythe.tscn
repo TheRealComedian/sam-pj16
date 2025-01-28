@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://scenes/weapons/scythe.gd" id="1_e0m33"]
 [ext_resource type="PackedScene" uid="uid://cdpdshtgj402p" path="res://scenes/weapons/projectiles/scythe_projectile.tscn" id="2_sxkyp"]
-[ext_resource type="Texture2D" uid="uid://bgirxqu6a5247" path="res://assets/sprites/weapons/ReaperScythe.png" id="3_sxu5p"]
-[ext_resource type="Texture2D" uid="uid://ms3q8yxfelg" path="res://assets/sprites/weapons/ReaperScythe1.png" id="4_3wqds"]
-[ext_resource type="Texture2D" uid="uid://b12a0jknqjyw6" path="res://assets/sprites/weapons/ReaperScythe2.png" id="5_u344v"]
-[ext_resource type="Texture2D" uid="uid://d3i85ef2kgxdh" path="res://assets/sprites/weapons/ReaperScythe3.png" id="6_o2c1o"]
-[ext_resource type="Texture2D" uid="uid://uk8hgdnlkn0n" path="res://assets/sprites/weapons/ReaperScythe4.png" id="7_00bua"]
+[ext_resource type="Texture2D" uid="uid://bgirxqu6a5247" path="res://assets/sprites/weapons/old weapon sprites/ReaperScythe.png" id="3_sxu5p"]
+[ext_resource type="Texture2D" uid="uid://ms3q8yxfelg" path="res://assets/sprites/weapons/old weapon sprites/ReaperScythe1.png" id="4_3wqds"]
+[ext_resource type="Texture2D" uid="uid://b12a0jknqjyw6" path="res://assets/sprites/weapons/old weapon sprites/ReaperScythe2.png" id="5_u344v"]
+[ext_resource type="Texture2D" uid="uid://d3i85ef2kgxdh" path="res://assets/sprites/weapons/old weapon sprites/ReaperScythe3.png" id="6_o2c1o"]
+[ext_resource type="Texture2D" uid="uid://uk8hgdnlkn0n" path="res://assets/sprites/weapons/old weapon sprites/ReaperScythe4.png" id="7_00bua"]
 [ext_resource type="Script" path="res://scenes/components/hitbox_component.gd" id="10_a4281"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3luq4"]

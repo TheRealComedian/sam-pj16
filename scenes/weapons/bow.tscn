@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" path="res://scenes/weapons/bow.gd" id="1_usdhu"]
 [ext_resource type="PackedScene" uid="uid://c45r2p2cfi14k" path="res://scenes/weapons/projectiles/arrow.tscn" id="2_8usm0"]
-[ext_resource type="Texture2D" uid="uid://bkb77arcvr4hp" path="res://assets/sprites/weapons/Variant_Bow.png" id="2_mf0wr"]
-[ext_resource type="Texture2D" uid="uid://bpckd26x61iju" path="res://assets/sprites/weapons/Bow_Blink_1-Sheet.png" id="3_enrn0"]
-[ext_resource type="Texture2D" uid="uid://dpelj5bt17yti" path="res://assets/sprites/weapons/Bow_Pull1.png" id="3_xsu6k"]
-[ext_resource type="Texture2D" uid="uid://26dkyb10v5oi" path="res://assets/sprites/weapons/Bow_Pull2.png" id="4_ge1fg"]
-[ext_resource type="Texture2D" uid="uid://cjj2qnni6f" path="res://assets/sprites/weapons/Bow_Pull3.png" id="5_cfmhb"]
-[ext_resource type="Texture2D" uid="uid://c1ict5o7f1no3" path="res://assets/sprites/weapons/Bow_Pull4.png" id="6_8t4n0"]
-[ext_resource type="Texture2D" uid="uid://dlcenqwp34w84" path="res://assets/sprites/weapons/Bow_Pulled.png" id="7_qp7l8"]
+[ext_resource type="Texture2D" uid="uid://bkb77arcvr4hp" path="res://assets/sprites/weapons/old weapon sprites/Variant_Bow.png" id="2_mf0wr"]
+[ext_resource type="Texture2D" uid="uid://bpckd26x61iju" path="res://assets/sprites/weapons/old weapon sprites/Bow_Blink_1-Sheet.png" id="3_enrn0"]
+[ext_resource type="Texture2D" uid="uid://dpelj5bt17yti" path="res://assets/sprites/weapons/old weapon sprites/Bow_Pull1.png" id="3_xsu6k"]
+[ext_resource type="Texture2D" uid="uid://26dkyb10v5oi" path="res://assets/sprites/weapons/old weapon sprites/Bow_Pull2.png" id="4_ge1fg"]
+[ext_resource type="Texture2D" uid="uid://cjj2qnni6f" path="res://assets/sprites/weapons/old weapon sprites/Bow_Pull3.png" id="5_cfmhb"]
+[ext_resource type="Texture2D" uid="uid://c1ict5o7f1no3" path="res://assets/sprites/weapons/old weapon sprites/Bow_Pull4.png" id="6_8t4n0"]
+[ext_resource type="Texture2D" uid="uid://dlcenqwp34w84" path="res://assets/sprites/weapons/old weapon sprites/Bow_Pulled.png" id="7_qp7l8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k4b8h"]
 atlas = ExtResource("3_enrn0")

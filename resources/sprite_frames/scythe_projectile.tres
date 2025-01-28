@@ -1,10 +1,10 @@
 [gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://crjucv57xbdo4"]
 
-[ext_resource type="Texture2D" uid="uid://c155krh2yfnj8" path="res://assets/sprites/weapons/scythespin.png" id="1_7mxcl"]
-[ext_resource type="Texture2D" uid="uid://b5xg2h7oal05h" path="res://assets/sprites/weapons/scythespin2.png" id="2_4meec"]
-[ext_resource type="Texture2D" uid="uid://dw1faviie7me6" path="res://assets/sprites/weapons/scythespin3.png" id="3_8xp1r"]
-[ext_resource type="Texture2D" uid="uid://cxt73xxcwcgj3" path="res://assets/sprites/weapons/scythespin4.png" id="4_sqfqb"]
-[ext_resource type="Texture2D" uid="uid://evh600y31dej" path="res://assets/sprites/weapons/scythespin5.png" id="5_163bk"]
+[ext_resource type="Texture2D" uid="uid://c155krh2yfnj8" path="res://assets/sprites/weapons/old weapon sprites/scythespin.png" id="1_7mxcl"]
+[ext_resource type="Texture2D" uid="uid://b5xg2h7oal05h" path="res://assets/sprites/weapons/old weapon sprites/scythespin2.png" id="2_4meec"]
+[ext_resource type="Texture2D" uid="uid://dw1faviie7me6" path="res://assets/sprites/weapons/old weapon sprites/scythespin3.png" id="3_8xp1r"]
+[ext_resource type="Texture2D" uid="uid://cxt73xxcwcgj3" path="res://assets/sprites/weapons/old weapon sprites/scythespin4.png" id="4_sqfqb"]
+[ext_resource type="Texture2D" uid="uid://evh600y31dej" path="res://assets/sprites/weapons/old weapon sprites/scythespin5.png" id="5_163bk"]
 
 [resource]
 animations = [{
