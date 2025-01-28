@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://sgkunku4x031" path="res://scenes/components/hurtbox_component.tscn" id="10_ol0ct"]
 [ext_resource type="PackedScene" uid="uid://8p244x1dnspa" path="res://scenes/components/health_component.tscn" id="11_lwuyw"]
 [ext_resource type="PackedScene" uid="uid://m4b6gk7f36vg" path="res://scenes/entities/health_bar.tscn" id="12_ccxpk"]
-[ext_resource type="PackedScene" path="res://scenes/weapons/bow.tscn" id="13_wrkok"]
+[ext_resource type="PackedScene" uid="uid://ba7bjlytuufxp" path="res://scenes/weapons/bow.tscn" id="13_wrkok"]
 [ext_resource type="Script" path="res://scenes/entities/enemies/enemy_base/teleport_detector.gd" id="14_ca2he"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_am6lc"]

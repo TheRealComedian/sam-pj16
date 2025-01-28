@@ -1,13 +1,17 @@
 extends CharacterBody2D
 
+@onready var timer := $Timer
 @onready var Hitbox := $Hitbox
 @onready var animation := $AnimatedSprite2D
+@export var lifetime := .6
 var speed =10
 var direction= Vector2.RIGHT
 
 func _ready():
 	direction=Vector2.RIGHT.rotated(global_rotation)
 	animation.play('default')
+	timer.timeout.connect(queue_free)
+	timer.start(lifetime)
 
 func _process(delta):
 	velocity=direction*speed

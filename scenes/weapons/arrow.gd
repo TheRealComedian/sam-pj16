@@ -1,28 +1,24 @@
 class_name Arrow
-extends Node2D
+extends CharacterBody2D
 
-@export var speed := 1000.0
+@export var speed := 10.0
 @export var lifetime := .6
 
-var direction:=Vector2.ZERO
+var direction:=Vector2.RIGHT
 
 @onready var timer := $Timer
-@onready var hitbox := $Hitbox
 @onready var sprite := $Sprite2D
-@onready var impact_detector := $ImpactDetector
+@onready var Hitbox := $Hitbox
+@onready var animation := $AnimatedSprite2D
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	set_as_top_level(true)
-	look_at(position+direction)
+func _ready():
+	direction=Vector2.RIGHT.rotated(global_rotation)
 	timer.timeout.connect(queue_free)
 	timer.start(lifetime)
-	impact_detector.body_entered.connect(_on_impact)
-	pass
 
-
-func _physics_process(delta: float) -> void:
-	position += direction * speed * delta
+func _process(delta):
+	velocity=direction*speed
+	var collision = move_and_collide(velocity)
 	
-func _on_impact(_body: Node) -> void:	
-	queue_free()
+	if collision:
+		queue_free()

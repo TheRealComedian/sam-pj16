@@ -27,15 +27,6 @@ var can_shoot =true
 
 var current_animation_tween: Tween
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 func cancel_attack():
 	#how do you cancel an arrow
 	if owner.weapon.current_animation_tween:

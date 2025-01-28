@@ -138,5 +138,3 @@ libraries = {
 }
 
 [node name="Sword" parent="." index="10" instance=ExtResource("4_2lspu")]
-
-[connection signal="velocity_computed" from="NavigationAgent2D" to="FiniteStateMachine/Chase" method="velocity_computed"]
