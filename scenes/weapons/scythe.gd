@@ -1,6 +1,5 @@
 class_name Scythe extends Weapon
 
-@export var sprite: AnimatedSprite2D
 @export var hitbox: CollisionShape2D
 
 @export var projectile: PackedScene
@@ -8,7 +7,6 @@ class_name Scythe extends Weapon
 @export_range(0,360) var arc: float=0
 @export_range(0,20) var fire_rate: float=2.0
 
-@onready var shoot_position := $CursorFacing
 var warning_duration = 0.69
 var weapon_timer = 0.0
 var anim_duration = 0.69
@@ -57,21 +55,23 @@ func attack():
 		if can_shoot:
 			can_shoot=false
 			for j in warn:
-				for i in arrow_count:
-					var new_arrow=projectile.instantiate()
-					if warned==true:
-						new_arrow.enable_layer()
-					new_arrow.position=global_position
-					#new_bullet.direction = global_position.direction_to(get_global_mouse_position())
-					#print(global_position.direction_to(get_global_mouse_position()))
-					#print(global_rotation)
-					var arc_rad = deg_to_rad(arc)
-					var increment=arc_rad/(arrow_count-1)
-					new_arrow.global_rotation=(
-						global_rotation + increment*i - arc_rad/2
+				if arrow_count == 1:
+					Projectile.spawn_projectile(
+						projectile, 
+						self.global_position, 
+						self.global_rotation,
+						self.user
 					)
-					#print(new_arrow.get_collision_layer_value(4))
-					get_tree().root.call_deferred("add_child", new_arrow)
+				else:
+					for i in arrow_count:
+						var arc_rad = deg_to_rad(arc)
+						var increment=arc_rad/(arrow_count-1)
+						Projectile.spawn_projectile(
+							projectile, 
+							self.global_position, 
+							global_rotation + increment*i - arc_rad/2,
+							self.user
+						)
 				warned=true
 				await get_tree().create_timer(1/fire_rate).timeout
 				await Util.wait(self.warning_duration).timeout

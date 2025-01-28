@@ -127,9 +127,9 @@ animations = [{
 
 [node name="Bow" type="Node2D" node_paths=PackedStringArray("sprite")]
 script = ExtResource("1_usdhu")
-sprite = NodePath("AnimatedSprite2D")
 projectile = ExtResource("2_8usm0")
 arrow_count = 1
+sprite = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(32, 0)

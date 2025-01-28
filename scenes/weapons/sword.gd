@@ -1,6 +1,6 @@
 class_name Sword extends Weapon
 
-@export var sprite: AnimatedSprite2D
+
 @export var hitbox: Hitbox:
 	set(value):
 		hitbox = value

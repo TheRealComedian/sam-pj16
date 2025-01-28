@@ -123,10 +123,10 @@ animations = [{
 radius = 14.0
 height = 28.0
 
-[node name="Mace" type="Node2D" node_paths=PackedStringArray("sprite", "hitbox")]
+[node name="Mace" type="Node2D" node_paths=PackedStringArray("hitbox", "sprite")]
 script = ExtResource("1_v10l8")
-sprite = NodePath("AnimatedSprite2D")
 hitbox = NodePath("Hitbox/CollisionShape2D")
+sprite = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(56, 0)

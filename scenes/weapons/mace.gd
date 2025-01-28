@@ -1,6 +1,5 @@
 class_name Mace extends Weapon
 
-@export var sprite: AnimatedSprite2D
 @export var hitbox: CollisionShape2D
 
 @export_category("Animation Durations")

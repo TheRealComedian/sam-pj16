@@ -1,6 +1,5 @@
 class_name Bow extends Weapon
 
-@export var sprite:AnimatedSprite2D
 @export var projectile: PackedScene
 @export var arrow_count: int = 5
 @export_range(0,360) var arc: float=0

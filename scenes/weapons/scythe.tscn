@@ -49,18 +49,14 @@ animations = [{
 radius = 16.0514
 height = 79.6122
 
-[node name="Scythe" type="Node2D" node_paths=PackedStringArray("sprite", "hitbox")]
+[node name="Scythe" type="Node2D" node_paths=PackedStringArray("hitbox", "sprite")]
 script = ExtResource("1_e0m33")
-sprite = NodePath("AnimatedSprite2D")
 hitbox = NodePath("Hitbox/CollisionShape2D")
 projectile = ExtResource("2_sxkyp")
 arrow_count = 6
 arc = 131.611
 fire_rate = 2.381
-
-[node name="CursorFacing" type="RayCast2D" parent="."]
-position = Vector2(0, -28)
-target_position = Vector2(36, 0)
+sprite = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(8, -2)

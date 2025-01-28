@@ -8,11 +8,11 @@
 radius = 8.0
 height = 42.0
 
-[node name="Sword" type="Node2D" node_paths=PackedStringArray("sprite", "hitbox")]
+[node name="Sword" type="Node2D" node_paths=PackedStringArray("hitbox", "sprite")]
 script = ExtResource("2_7dl35")
-sprite = NodePath("AnimatedSprite2D")
 hitbox = NodePath("Hitbox")
 cooldown_duration = 0.1
+sprite = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(56.0002, 0.000202179)

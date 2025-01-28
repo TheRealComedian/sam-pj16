@@ -1,5 +1,6 @@
 class_name Weapon extends Node2D
 
+@export var sprite: AnimatedSprite2D
 var user: Character
 
 func _ready():
