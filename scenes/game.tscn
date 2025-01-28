@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://7wibdi5xwkt"]
+[gd_scene load_steps=17 format=3 uid="uid://7wibdi5xwkt"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_ilbpj"]
 [ext_resource type="Script" path="res://scenes/ui/hud/hud.gd" id="2_nyb4e"]
 [ext_resource type="PackedScene" uid="uid://m4b6gk7f36vg" path="res://scenes/entities/health_bar.tscn" id="3_a6vth"]
+[ext_resource type="Texture2D" uid="uid://cg5soj2a8stdk" path="res://assets/sprites/ui/weapon_icons.png" id="4_ktiyo"]
 [ext_resource type="Script" path="res://scenes/components/FSM/control_finite_state_machine.gd" id="4_v2mg7"]
 [ext_resource type="Texture2D" uid="uid://dk3rnrcrrw8yr" path="res://assets/godot/icons/State.png" id="5_1cxmy"]
 [ext_resource type="Script" path="res://scenes/ui/menu/hidden.gd" id="5_7xr64"]
@@ -11,6 +12,11 @@
 [ext_resource type="Shortcut" uid="uid://b6qukba6pvtra" path="res://resources/input/shortcuts/ui_back.tres" id="8_d1wrf"]
 [ext_resource type="Shortcut" uid="uid://b755kkr23w728" path="res://resources/input/key/escape.tres" id="8_ik34c"]
 [ext_resource type="PackedScene" uid="uid://bv5igxgun5x6e" path="res://scenes/components/FSM/transition_button.tscn" id="8_ou0a1"]
+[ext_resource type="Script" path="res://scenes/ui/menu/game_over.gd" id="12_5a466"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kyprb"]
+atlas = ExtResource("4_ktiyo")
+region = Rect2(0, 128, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jk3v1"]
 atlas = ExtResource("5_1cxmy")
@@ -43,7 +49,7 @@ script = ExtResource("2_nyb4e")
 metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Overlay/HUD"]
+[node name="Health" type="HBoxContainer" parent="Overlay/HUD"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.694792
@@ -52,13 +58,26 @@ anchor_right = 0.929167
 anchor_bottom = 0.183333
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="Overlay/HUD/HBoxContainer"]
+[node name="Label" type="Label" parent="Overlay/HUD/Health"]
 layout_mode = 2
 text = "Health:"
 
-[node name="HealthBar" parent="Overlay/HUD/HBoxContainer" instance=ExtResource("3_a6vth")]
+[node name="HealthBar" parent="Overlay/HUD/Health" instance=ExtResource("3_a6vth")]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="Overlay/HUD"]
+layout_mode = 2
+offset_left = 128.0
+offset_top = 64.0
+offset_right = 320.0
+offset_bottom = 256.0
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="Overlay/HUD/PanelContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_kyprb")
+expand_mode = 3
 
 [node name="Menu" type="Control" parent="Overlay" node_paths=PackedStringArray("initial_state")]
 process_mode = 3
@@ -70,6 +89,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("4_v2mg7")
 initial_state = NodePath("Hidden")
+metadata/_edit_lock_ = true
 
 [node name="Hidden" type="Control" parent="Overlay/Menu"]
 visible = false
@@ -186,6 +206,41 @@ shortcut = ExtResource("8_d1wrf")
 text = "Back"
 parent_CFSM = NodePath("../..")
 target_state = NodePath("../../Pause")
+metadata/_edit_use_anchors_ = true
+
+[node name="GameOver" type="Control" parent="Overlay/Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("12_5a466")
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="Overlay/Menu/GameOver"]
+layout_mode = 0
+anchor_left = 0.166667
+anchor_top = 0.177778
+anchor_right = 0.821959
+anchor_bottom = 0.475348
+offset_right = -1166.16
+offset_bottom = -298.376
+scale = Vector2(13.6757, 13.9729)
+text = "GAME OVER"
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="Overlay/Menu/GameOver"]
+layout_mode = 0
+anchor_left = 0.3625
+anchor_top = 0.511111
+anchor_right = 0.598865
+anchor_bottom = 0.682
+offset_top = -6.10352e-05
+offset_right = -374.82
+offset_bottom = -153.56
+scale = Vector2(5.74456, 5.95354)
+text = "Continue"
 metadata/_edit_use_anchors_ = true
 
 [node name="Cursor" type="AnimatedSprite2D" parent="."]

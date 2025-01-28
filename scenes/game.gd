@@ -3,6 +3,7 @@ class_name Game extends Node2D
 ##NOTE: peepee weeheehee
 
 @onready var cursor = $Cursor
+@onready var menu: ControlFiniteStateMachine = $Overlay/Menu
 
 func _ready():
 	Global.game = self

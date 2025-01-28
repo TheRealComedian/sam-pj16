@@ -22,3 +22,7 @@ damage = 1.0
 position = Vector2(22, 0)
 shape = SubResource("CircleShape2D_a43j7")
 debug_color = Color(0.997151, 0, 0.172183, 0.42)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." index="3"]
+position = Vector2(22, 0)
+shape = SubResource("CircleShape2D_a43j7")
