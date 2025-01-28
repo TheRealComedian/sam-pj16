@@ -1,0 +1,143 @@
+[gd_scene load_steps=20 format=3 uid="uid://byve87xjow6s"]
+
+[ext_resource type="PackedScene" uid="uid://y28itm0e1koh" path="res://scenes/entities/enemies/enemy_base/enemy.tscn" id="1_mjkf8"]
+[ext_resource type="Texture2D" uid="uid://ciau6cdbwqtfw" path="res://assets/sprites/entities/Reaper_Sheet_Edit_5.png" id="2_wpq7c"]
+[ext_resource type="PackedScene" uid="uid://ggje00ded7ue" path="res://scenes/weapons/scythe.tscn" id="3_2y1y3"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h8kj3"]
+radius = 24.0
+height = 144.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_snvt8"]
+radius = 1472.02
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f7yn5"]
+atlas = ExtResource("2_wpq7c")
+region = Rect2(0, 0, 96, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pmpc1"]
+atlas = ExtResource("2_wpq7c")
+region = Rect2(96, 0, 96, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e0cox"]
+atlas = ExtResource("2_wpq7c")
+region = Rect2(192, 0, 96, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oqwrd"]
+atlas = ExtResource("2_wpq7c")
+region = Rect2(288, 0, 96, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kgim0"]
+atlas = ExtResource("2_wpq7c")
+region = Rect2(384, 0, 96, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_44iob"]
+atlas = ExtResource("2_wpq7c")
+region = Rect2(480, 0, 96, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1nx1j"]
+atlas = ExtResource("2_wpq7c")
+region = Rect2(576, 0, 96, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3bymd"]
+atlas = ExtResource("2_wpq7c")
+region = Rect2(672, 0, 96, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a46x6"]
+atlas = ExtResource("2_wpq7c")
+region = Rect2(768, 0, 96, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1bpt"]
+atlas = ExtResource("2_wpq7c")
+region = Rect2(864, 0, 96, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wf3f6"]
+atlas = ExtResource("2_wpq7c")
+region = Rect2(960, 0, 96, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ab2e7"]
+atlas = ExtResource("2_wpq7c")
+region = Rect2(1056, 0, 96, 144)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a762m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f7yn5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pmpc1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e0cox")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oqwrd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kgim0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_44iob")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1nx1j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3bymd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a46x6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h1bpt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wf3f6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ab2e7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kyci6"]
+radius = 24.0
+height = 96.0
+
+[node name="Reaper" node_paths=PackedStringArray("weapon") instance=ExtResource("1_mjkf8")]
+weapon = NodePath("Scythe")
+
+[node name="HealthComponent" parent="." index="1"]
+max_health = 20.0
+current_health = 20.0
+
+[node name="Hurtbox" parent="." index="4" node_paths=PackedStringArray("visual_node")]
+monitoring = false
+monitorable = false
+visual_node = NodePath("../AnimatedSprite2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" index="0"]
+shape = SubResource("CapsuleShape2D_h8kj3")
+
+[node name="CollisionShape2D" parent="DetectionRange" index="0"]
+shape = SubResource("CircleShape2D_snvt8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="7"]
+sprite_frames = SubResource("SpriteFrames_a762m")
+autoplay = "default"
+frame_progress = 0.83411
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="8"]
+position = Vector2(0, 32)
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_kyci6")
+
+[node name="Scythe" parent="." index="9" instance=ExtResource("3_2y1y3")]
+position = Vector2(8, 0)
+
+[connection signal="velocity_computed" from="NavigationAgent2D" to="FiniteStateMachine/Chase" method="velocity_computed"]
+
+[editable path="Scythe"]

@@ -1,15 +1,16 @@
-extends CharacterBody2D
+class_name Projectile extends CharacterBody2D
 
 @onready var timer := $Timer
 @onready var Hitbox := $Hitbox
-@onready var animation := $AnimatedSprite2D
+@onready var sprite := $AnimatedSprite2D
+@export var speed: int = 10
 @export var lifetime := .6
-var speed =10
 var direction= Vector2.RIGHT
+
 
 func _ready():
 	direction=Vector2.RIGHT.rotated(global_rotation)
-	animation.play('default')
+	sprite.play('default')
 	timer.timeout.connect(queue_free)
 	timer.start(lifetime)
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://ggje00ded7ue"]
 
 [ext_resource type="Script" path="res://scenes/weapons/scythe.gd" id="1_e0m33"]
-[ext_resource type="PackedScene" uid="uid://dljttb073ciof" path="res://scenes/weapons/Projectile.tscn" id="2_3dkie"]
+[ext_resource type="PackedScene" uid="uid://cdpdshtgj402p" path="res://scenes/weapons/projectiles/scythe_projectile.tscn" id="2_sxkyp"]
 [ext_resource type="Texture2D" uid="uid://bgirxqu6a5247" path="res://assets/sprites/weapons/ReaperScythe.png" id="3_sxu5p"]
 [ext_resource type="Texture2D" uid="uid://ms3q8yxfelg" path="res://assets/sprites/weapons/ReaperScythe1.png" id="4_3wqds"]
 [ext_resource type="Texture2D" uid="uid://b12a0jknqjyw6" path="res://assets/sprites/weapons/ReaperScythe2.png" id="5_u344v"]
@@ -53,7 +53,7 @@ height = 79.6122
 script = ExtResource("1_e0m33")
 sprite = NodePath("AnimatedSprite2D")
 hitbox = NodePath("Hitbox/CollisionShape2D")
-projectile = ExtResource("2_3dkie")
+projectile = ExtResource("2_sxkyp")
 arrow_count = 6
 arc = 131.611
 fire_rate = 2.381

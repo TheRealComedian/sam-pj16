@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://y28itm0e1koh" path="res://scenes/entities/enemies/enemy_base/enemy.tscn" id="1_k4tmn"]
 [ext_resource type="Texture2D" uid="uid://c3ifr7x22dojn" path="res://assets/sprites/entities/Ghost Frames.png" id="2_jcmjn"]
-[ext_resource type="PackedScene" path="res://scenes/weapons/bow.tscn" id="3_jl1ix"]
+[ext_resource type="PackedScene" uid="uid://ba7bjlytuufxp" path="res://scenes/weapons/bow.tscn" id="3_jl1ix"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p024h"]
 radius = 24.0

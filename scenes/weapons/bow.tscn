@@ -1,8 +1,8 @@
 [gd_scene load_steps=20 format=3 uid="uid://ba7bjlytuufxp"]
 
 [ext_resource type="Script" path="res://scenes/weapons/bow.gd" id="1_usdhu"]
+[ext_resource type="PackedScene" uid="uid://c45r2p2cfi14k" path="res://scenes/weapons/projectiles/arrow.tscn" id="2_8usm0"]
 [ext_resource type="Texture2D" uid="uid://bkb77arcvr4hp" path="res://assets/sprites/weapons/Variant_Bow.png" id="2_mf0wr"]
-[ext_resource type="PackedScene" uid="uid://d0r7n281un4av" path="res://scenes/weapons/arrow.tscn" id="2_vb5ck"]
 [ext_resource type="Texture2D" uid="uid://bpckd26x61iju" path="res://assets/sprites/weapons/Bow_Blink_1-Sheet.png" id="3_enrn0"]
 [ext_resource type="Texture2D" uid="uid://dpelj5bt17yti" path="res://assets/sprites/weapons/Bow_Pull1.png" id="3_xsu6k"]
 [ext_resource type="Texture2D" uid="uid://26dkyb10v5oi" path="res://assets/sprites/weapons/Bow_Pull2.png" id="4_ge1fg"]
@@ -120,7 +120,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("3_xsu6k")
 }],
-"loop": true,
+"loop": false,
 "name": &"shoot",
 "speed": 10.0
 }]
@@ -128,15 +128,14 @@ animations = [{
 [node name="Bow" type="Node2D" node_paths=PackedStringArray("sprite")]
 script = ExtResource("1_usdhu")
 sprite = NodePath("AnimatedSprite2D")
-projectile = ExtResource("2_vb5ck")
+projectile = ExtResource("2_8usm0")
 arrow_count = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(32, 0)
 rotation = -1.57138
 sprite_frames = SubResource("SpriteFrames_3luq4")
-animation = &"idle"
-frame_progress = 0.671777
+animation = &"shoot"
 
 [node name="CursorFacing" type="RayCast2D" parent="."]
 target_position = Vector2(36, 0)

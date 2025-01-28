@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dljttb073ciof"]
+
+[ext_resource type="Script" path="res://scenes/weapons/projectiles/projectile.gd" id="1_3vdrq"]
+[ext_resource type="PackedScene" uid="uid://1rq7hjdwqhix" path="res://scenes/components/hitbox_component.tscn" id="2_0tovs"]
+
+[node name="Projectile" type="CharacterBody2D"]
+collision_layer = 0
+script = ExtResource("1_3vdrq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(72, 72)
+
+[node name="Hitbox" parent="." instance=ExtResource("2_0tovs")]
+collision_mask = 97
+
+[node name="Timer" type="Timer" parent="."]

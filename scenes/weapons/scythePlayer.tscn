@@ -1,7 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://ud8pccah2rbn"]
+[gd_scene load_steps=18 format=3 uid="uid://ccl7i1g2loijl"]
 
 [ext_resource type="Script" path="res://scenes/weapons/scythe.gd" id="1_aony7"]
-[ext_resource type="PackedScene" uid="uid://dljttb073ciof" path="res://scenes/weapons/Projectile.tscn" id="2_5sni4"]
+[ext_resource type="PackedScene" uid="uid://dljttb073ciof" path="res://scenes/weapons/projectiles/Projectile.tscn" id="2_5sni4"]
 [ext_resource type="Texture2D" uid="uid://b8o7pweymjpav" path="res://assets/sprites/weapons/Scythe_Variant_Sheet.png" id="3_g7fn8"]
 [ext_resource type="Texture2D" uid="uid://c0b85bcki661f" path="res://assets/sprites/weapons/Scythe_Atk_Frame_2.png" id="4_81njq"]
 [ext_resource type="Texture2D" uid="uid://vgjia0w7iql5" path="res://assets/sprites/weapons/Scythe_Atk_Frame_3.png" id="5_moiva"]

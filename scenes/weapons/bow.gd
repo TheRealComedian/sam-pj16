@@ -9,7 +9,7 @@ class_name Bow extends Weapon
 @onready var shoot_position := $CursorFacing
 @export var cooldown_duration: float = 1.0
 
-var can_shoot =true
+var can_shoot = true
 var weapon_timer = 0.0
 var anim_duration = 0.3
 var arrow_speed = 900
@@ -18,9 +18,14 @@ func cancel_attack():
 	#how do you cancel an arrow
 	pass
 
+#func spawn_projectile(origin: Vector2) -> Projectile:
+	#var new_arrow=projectile.instantiate()
+
 func attack():
 	sprite.play('shoot')
-	await Util.wait(self.anim_duration).timeout
+	#await Util.wait(self.anim_duration).timeout
+	await sprite.animation_finished
+	sprite.play('idle')
 	for i in arrow_count:
 		var new_arrow=projectile.instantiate()
 		new_arrow.position=global_position
@@ -34,6 +39,6 @@ func attack():
 			)
 		get_tree().root.call_deferred("add_child", new_arrow)
 	await get_tree().create_timer(1/fire_rate).timeout
-	sprite.play('idle')
+	#sprite.play('idle')
 	await Util.wait(self.cooldown_duration).timeout
 	
