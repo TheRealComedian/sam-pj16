@@ -1,19 +1,70 @@
-[gd_resource type="SpriteFrames" format=3 uid="uid://7ewnx8at5gh0"]
+[gd_resource type="SpriteFrames" load_steps=9 format=3 uid="uid://7ewnx8at5gh0"]
+
+[ext_resource type="Texture2D" uid="uid://b6ukrgo8wj3t4" path="res://assets/sprites/weapons/Sword Sheet Alpha.png" id="1_j3qif"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b2koe"]
+atlas = ExtResource("1_j3qif")
+region = Rect2(128, 128, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eii47"]
+atlas = ExtResource("1_j3qif")
+region = Rect2(0, 128, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pfvxg"]
+atlas = ExtResource("1_j3qif")
+region = Rect2(0, 128, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g77wh"]
+atlas = ExtResource("1_j3qif")
+region = Rect2(32, 128, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wrpwl"]
+atlas = ExtResource("1_j3qif")
+region = Rect2(64, 128, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_evlrs"]
+atlas = ExtResource("1_j3qif")
+region = Rect2(96, 128, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cq4yl"]
+atlas = ExtResource("1_j3qif")
+region = Rect2(128, 128, 32, 64)
 
 [resource]
 animations = [{
-"frames": [],
-"loop": true,
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b2koe")
+}],
+"loop": false,
 "name": &"active",
 "speed": 5.0
 }, {
-"frames": [],
-"loop": true,
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eii47")
+}],
+"loop": false,
 "name": &"inactive",
 "speed": 5.0
 }, {
-"frames": [],
-"loop": true,
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pfvxg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g77wh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wrpwl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_evlrs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cq4yl")
+}],
+"loop": false,
 "name": &"windup",
 "speed": 5.0
 }]

@@ -1,129 +1,8 @@
-[gd_scene load_steps=20 format=3 uid="uid://ba7bjlytuufxp"]
+[gd_scene load_steps=4 format=3 uid="uid://ba7bjlytuufxp"]
 
 [ext_resource type="Script" path="res://scenes/weapons/bow.gd" id="1_usdhu"]
 [ext_resource type="PackedScene" uid="uid://c45r2p2cfi14k" path="res://scenes/weapons/projectiles/arrow.tscn" id="2_8usm0"]
-[ext_resource type="Texture2D" uid="uid://bkb77arcvr4hp" path="res://assets/sprites/weapons/old weapon sprites/Variant_Bow.png" id="2_mf0wr"]
-[ext_resource type="Texture2D" uid="uid://bpckd26x61iju" path="res://assets/sprites/weapons/old weapon sprites/Bow_Blink_1-Sheet.png" id="3_enrn0"]
-[ext_resource type="Texture2D" uid="uid://dpelj5bt17yti" path="res://assets/sprites/weapons/old weapon sprites/Bow_Pull1.png" id="3_xsu6k"]
-[ext_resource type="Texture2D" uid="uid://26dkyb10v5oi" path="res://assets/sprites/weapons/old weapon sprites/Bow_Pull2.png" id="4_ge1fg"]
-[ext_resource type="Texture2D" uid="uid://cjj2qnni6f" path="res://assets/sprites/weapons/old weapon sprites/Bow_Pull3.png" id="5_cfmhb"]
-[ext_resource type="Texture2D" uid="uid://c1ict5o7f1no3" path="res://assets/sprites/weapons/old weapon sprites/Bow_Pull4.png" id="6_8t4n0"]
-[ext_resource type="Texture2D" uid="uid://dlcenqwp34w84" path="res://assets/sprites/weapons/old weapon sprites/Bow_Pulled.png" id="7_qp7l8"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_k4b8h"]
-atlas = ExtResource("3_enrn0")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rxsm5"]
-atlas = ExtResource("3_enrn0")
-region = Rect2(64, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_752ey"]
-atlas = ExtResource("3_enrn0")
-region = Rect2(128, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_o1er7"]
-atlas = ExtResource("3_enrn0")
-region = Rect2(192, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5acie"]
-atlas = ExtResource("3_enrn0")
-region = Rect2(256, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_twk4d"]
-atlas = ExtResource("3_enrn0")
-region = Rect2(320, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nkxtq"]
-atlas = ExtResource("3_enrn0")
-region = Rect2(384, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tnfy2"]
-atlas = ExtResource("3_enrn0")
-region = Rect2(448, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8g0km"]
-atlas = ExtResource("3_enrn0")
-region = Rect2(512, 0, 64, 64)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_3luq4"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_mf0wr")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_mf0wr")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_mf0wr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_k4b8h")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rxsm5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_752ey")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_o1er7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5acie")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_twk4d")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nkxtq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tnfy2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8g0km")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_mf0wr")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_mf0wr")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_mf0wr")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 9.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_mf0wr")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_xsu6k")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_ge1fg")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_cfmhb")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_8t4n0")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_qp7l8")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_xsu6k")
-}],
-"loop": false,
-"name": &"shoot",
-"speed": 10.0
-}]
+[ext_resource type="SpriteFrames" uid="uid://dsjtu84m5byhg" path="res://resources/sprite_frames/bow_player.tres" id="3_u8hli"]
 
 [node name="Bow" type="Node2D" node_paths=PackedStringArray("sprite")]
 script = ExtResource("1_usdhu")
@@ -132,10 +11,6 @@ arrow_count = 1
 sprite = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(32, 0)
 rotation = -1.57138
-sprite_frames = SubResource("SpriteFrames_3luq4")
-animation = &"shoot"
-
-[node name="CursorFacing" type="RayCast2D" parent="."]
-target_position = Vector2(36, 0)
+sprite_frames = ExtResource("3_u8hli")
+animation = &"windup"

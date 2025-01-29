@@ -18,6 +18,11 @@ static func spawn_projectile(proj_scene: PackedScene, spawn_position: Vector2, s
 	return inst
 
 func _ready():
+	if user is Enemy:
+		sprite.play('enemy')
+	else:
+		sprite.play('player')
+	
 	direction=Vector2.RIGHT.rotated(global_rotation)
 	sprite.play('default')
 	timer.timeout.connect(queue_free)

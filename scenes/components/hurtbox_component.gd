@@ -20,7 +20,6 @@ func _on_area_entered(hitbox: Hitbox):
 		elif hitbox.owner.user.weapon is Bow:	Session.last_hit_weapon = load('res://scenes/weapons/bow.tscn')
 		elif hitbox.owner is Mace:	Session.last_hit_weapon = load('res://scenes/weapons/mace.tscn')
 		elif hitbox.owner is Scythe:	Session.last_hit_weapon = load('res://scenes/weapons/scythe.tscn')
-			
 	
 	set_deferred('monitoring', false)
 	

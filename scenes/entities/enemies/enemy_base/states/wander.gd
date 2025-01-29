@@ -20,7 +20,7 @@ func physics_update(delta):
 		if is_instance_valid(wander_timer): wander_timer.queue_free()
 	
 	if Global.player in (owner.detection_range as Area2D).get_overlapping_bodies():
-		Transitioned.emit(self, 'Chase')
+		Transitioned.emit(self, owner.player_detected_state)
 		return
 	
 	#TODO: once rooms are implemented ensure movement tends toward center of room
@@ -32,7 +32,7 @@ func physics_update(delta):
 	owner.move_and_slide()
 
 func player_detected(area):
-	Transitioned.emit(self, 'Chase')
+	Transitioned.emit(self, owner.player_detected_state)
 
 func exit():
 	owner.detection_range.body_entered.disconnect(player_detected)
