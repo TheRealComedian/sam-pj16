@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://d3f0alvle4il3"]
+[gd_scene load_steps=6 format=3 uid="uid://d3f0alvle4il3"]
 
 [ext_resource type="Script" path="res://scenes/weapons/mace.gd" id="1_v10l8"]
 [ext_resource type="SpriteFrames" uid="uid://ct3gj2b7dnhqv" path="res://resources/sprite_frames/mace_player.tres" id="2_nct6l"]
+[ext_resource type="Texture2D" uid="uid://4p1tqe1vww3w" path="res://resources/gradients/glow.tres" id="4_ex002"]
 [ext_resource type="PackedScene" uid="uid://1rq7hjdwqhix" path="res://scenes/components/hitbox_component.tscn" id="7_1nuh5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lrx43"]
@@ -29,3 +30,15 @@ rotation = -1.57079
 shape = SubResource("CapsuleShape2D_lrx43")
 disabled = true
 debug_color = Color(0.9967, 0, 0.181514, 0.42)
+
+[node name="LightActive" type="PointLight2D" parent="."]
+position = Vector2(40, 0)
+scale = Vector2(5.5, 4.55972)
+color = Color(0, 0.856237, 0.816876, 1)
+texture = ExtResource("4_ex002")
+
+[node name="LightEye" type="PointLight2D" parent="."]
+position = Vector2(9.53674e-07, 0)
+scale = Vector2(10.7396, 8.14432)
+color = Color(0.894652, 0.474194, 3.85046e-07, 1)
+texture = ExtResource("4_ex002")

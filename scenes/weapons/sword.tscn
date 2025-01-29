@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b6ukhia0s6mkl"]
+[gd_scene load_steps=6 format=3 uid="uid://b6ukhia0s6mkl"]
 
 [ext_resource type="Script" path="res://scenes/weapons/sword.gd" id="2_7dl35"]
 [ext_resource type="SpriteFrames" uid="uid://b8n2y1rfmfmns" path="res://resources/sprite_frames/sword_player.tres" id="2_mkfx4"]
+[ext_resource type="Texture2D" uid="uid://4p1tqe1vww3w" path="res://resources/gradients/glow.tres" id="4_4b173"]
 [ext_resource type="PackedScene" uid="uid://1rq7hjdwqhix" path="res://scenes/components/hitbox_component.tscn" id="6_tj0cf"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lrx43"]
@@ -31,3 +32,14 @@ rotation = -1.57079
 shape = SubResource("CapsuleShape2D_lrx43")
 disabled = true
 debug_color = Color(0.9967, 0, 0.181514, 0.42)
+
+[node name="LightActive" type="PointLight2D" parent="."]
+position = Vector2(40, 0)
+scale = Vector2(7.33248, 4.55972)
+color = Color(0, 0.856237, 0.816876, 1)
+texture = ExtResource("4_4b173")
+
+[node name="LightEye" type="PointLight2D" parent="."]
+scale = Vector2(1.95265, 1.78614)
+color = Color(0.894652, 0.474194, 3.85046e-07, 1)
+texture = ExtResource("4_4b173")

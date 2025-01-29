@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://ggje00ded7ue"]
+[gd_scene load_steps=7 format=3 uid="uid://ggje00ded7ue"]
 
 [ext_resource type="Script" path="res://scenes/weapons/scythe.gd" id="1_e0m33"]
 [ext_resource type="PackedScene" uid="uid://cdpdshtgj402p" path="res://scenes/weapons/projectiles/scythe_projectile.tscn" id="2_sxkyp"]
 [ext_resource type="SpriteFrames" uid="uid://biht7u5tfiwpl" path="res://resources/sprite_frames/scythe_player.tres" id="3_3w1vy"]
+[ext_resource type="Texture2D" uid="uid://4p1tqe1vww3w" path="res://resources/gradients/glow.tres" id="5_3w5ut"]
 [ext_resource type="Script" path="res://scenes/components/hitbox_component.gd" id="10_a4281"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x4j66"]
@@ -37,3 +38,15 @@ damage = 1.0
 position = Vector2(20, 12)
 rotation = -0.219597
 shape = SubResource("CapsuleShape2D_x4j66")
+
+[node name="LightActive" type="PointLight2D" parent="."]
+position = Vector2(64, -8)
+scale = Vector2(4.79386, 6.44357)
+color = Color(0, 0.856237, 0.816876, 1)
+texture = ExtResource("5_3w5ut")
+
+[node name="LightEye" type="PointLight2D" parent="."]
+position = Vector2(8, 0)
+scale = Vector2(1.95265, 1.78614)
+color = Color(0.894652, 0.474194, 3.85046e-07, 1)
+texture = ExtResource("5_3w5ut")
