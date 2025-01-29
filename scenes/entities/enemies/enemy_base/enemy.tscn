@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://y28itm0e1koh"]
+[gd_scene load_steps=13 format=3 uid="uid://y28itm0e1koh"]
 
 [ext_resource type="Script" path="res://scenes/entities/enemies/enemy_base/enemy.gd" id="1_7mqys"]
 [ext_resource type="PackedScene" uid="uid://bymt3484vhpqx" path="res://scenes/components/FSM/finite_state_machine.tscn" id="2_ulcgu"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" path="res://scenes/entities/enemies/enemy_base/states/wander.gd" id="4_2r614"]
 [ext_resource type="PackedScene" uid="uid://8p244x1dnspa" path="res://scenes/components/health_component.tscn" id="4_imu56"]
 [ext_resource type="PackedScene" uid="uid://m4b6gk7f36vg" path="res://scenes/entities/health_bar.tscn" id="5_5k3q0"]
-[ext_resource type="Script" path="res://scenes/entities/enemies/enemy_base/states/chase.gd" id="5_elx00"]
 [ext_resource type="Script" path="res://scenes/entities/enemies/enemy_base/states/attack.gd" id="6_a0lxl"]
 [ext_resource type="Script" path="res://scenes/entities/enemies/enemy_base/states/hit.gd" id="7_j7kul"]
 [ext_resource type="Script" path="res://scenes/entities/enemies/enemy_base/states/death.gd" id="7_wp61d"]
@@ -33,9 +32,6 @@ script = ExtResource("3_8sevy")
 
 [node name="Wander" type="Node" parent="FiniteStateMachine"]
 script = ExtResource("4_2r614")
-
-[node name="Chase" type="Node" parent="FiniteStateMachine"]
-script = ExtResource("5_elx00")
 
 [node name="Attack" type="Node" parent="FiniteStateMachine"]
 script = ExtResource("6_a0lxl")
@@ -78,5 +74,3 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
 shape = SubResource("CircleShape2D_cqqe4")
 debug_color = Color(1, 0.0198501, 0.0837663, 0.254902)
-
-[connection signal="velocity_computed" from="NavigationAgent2D" to="FiniteStateMachine/Chase" method="velocity_computed"]

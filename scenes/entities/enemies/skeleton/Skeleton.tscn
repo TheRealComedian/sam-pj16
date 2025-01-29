@@ -1,7 +1,8 @@
-[gd_scene load_steps=22 format=3 uid="uid://cpbk8gj2mj1ea"]
+[gd_scene load_steps=23 format=3 uid="uid://cpbk8gj2mj1ea"]
 
 [ext_resource type="PackedScene" uid="uid://y28itm0e1koh" path="res://scenes/entities/enemies/enemy_base/enemy.tscn" id="1_oeulr"]
 [ext_resource type="Texture2D" uid="uid://bant6hkhyketg" path="res://assets/sprites/entities/SkeleIdle Mk 2.png" id="2_pfaef"]
+[ext_resource type="Script" path="res://scenes/entities/enemies/enemy_base/states/chase.gd" id="2_umuj2"]
 [ext_resource type="Animation" uid="uid://cpal1sha8q41s" path="res://resources/animations/skeleton_walk.res" id="3_o3gpb"]
 [ext_resource type="PackedScene" uid="uid://b6ukhia0s6mkl" path="res://scenes/weapons/sword.tscn" id="4_2lspu"]
 [ext_resource type="SpriteFrames" uid="uid://7ewnx8at5gh0" path="res://resources/sprite_frames/sword_enemy.tres" id="5_q26gx"]
@@ -114,6 +115,9 @@ _data = {
 [node name="Skeleton" node_paths=PackedStringArray("weapon") instance=ExtResource("1_oeulr")]
 position = Vector2(0, -0.413236)
 weapon = NodePath("Sword")
+
+[node name="Chase" type="Node" parent="FiniteStateMachine" index="3"]
+script = ExtResource("2_umuj2")
 
 [node name="Hurtbox" parent="." index="4" node_paths=PackedStringArray("visual_node")]
 visual_node = NodePath("../AnimatedSprite2D")

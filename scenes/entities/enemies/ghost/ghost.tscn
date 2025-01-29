@@ -1,6 +1,7 @@
-[gd_scene load_steps=20 format=3 uid="uid://bpo6yc7rnj2me"]
+[gd_scene load_steps=21 format=3 uid="uid://bpo6yc7rnj2me"]
 
 [ext_resource type="PackedScene" uid="uid://y28itm0e1koh" path="res://scenes/entities/enemies/enemy_base/enemy.tscn" id="1_k4tmn"]
+[ext_resource type="Script" path="res://scenes/entities/enemies/ghost/reposition.gd" id="2_76pe3"]
 [ext_resource type="Texture2D" uid="uid://c3ifr7x22dojn" path="res://assets/sprites/entities/Ghost Frames.png" id="2_jcmjn"]
 [ext_resource type="PackedScene" uid="uid://ba7bjlytuufxp" path="res://scenes/weapons/bow.tscn" id="3_jl1ix"]
 [ext_resource type="SpriteFrames" uid="uid://cyvm7jfu10xhb" path="res://resources/sprite_frames/bow_enemy.tres" id="4_i1frw"]
@@ -105,8 +106,12 @@ animations = [{
 }]
 
 [node name="Ghost" node_paths=PackedStringArray("weapon") instance=ExtResource("1_k4tmn")]
+player_detected_state = "Reposition"
 movement_speed = 0
 weapon = NodePath("Bow")
+
+[node name="Reposition" type="Node" parent="FiniteStateMachine" index="2"]
+script = ExtResource("2_76pe3")
 
 [node name="Hurtbox" parent="." index="4" node_paths=PackedStringArray("visual_node")]
 visual_node = NodePath("../AnimatedSprite2D")

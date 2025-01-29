@@ -1,6 +1,7 @@
-[gd_scene load_steps=22 format=3 uid="uid://byve87xjow6s"]
+[gd_scene load_steps=23 format=3 uid="uid://byve87xjow6s"]
 
 [ext_resource type="PackedScene" uid="uid://y28itm0e1koh" path="res://scenes/entities/enemies/enemy_base/enemy.tscn" id="1_mjkf8"]
+[ext_resource type="Script" path="res://scenes/entities/enemies/enemy_base/states/chase.gd" id="2_7eirt"]
 [ext_resource type="Texture2D" uid="uid://ciau6cdbwqtfw" path="res://assets/sprites/entities/Reaper_Sheet_Edit_5.png" id="2_wpq7c"]
 [ext_resource type="PackedScene" uid="uid://ggje00ded7ue" path="res://scenes/weapons/scythe.tscn" id="3_2y1y3"]
 [ext_resource type="SpriteFrames" uid="uid://cvqfsru3wegq" path="res://resources/sprite_frames/scythe_enemy.tres" id="4_o0gbm"]
@@ -114,6 +115,9 @@ height = 100.665
 
 [node name="Reaper" node_paths=PackedStringArray("weapon") instance=ExtResource("1_mjkf8")]
 weapon = NodePath("Scythe")
+
+[node name="Chase" type="Node" parent="FiniteStateMachine" index="3"]
+script = ExtResource("2_7eirt")
 
 [node name="HealthComponent" parent="." index="1"]
 max_health = 20.0
