@@ -121,5 +121,3 @@ sprite_frames = SubResource("SpriteFrames_r2dfi")
 frame_progress = 0.375729
 
 [node name="Bow" parent="." index="8" instance=ExtResource("3_jl1ix")]
-
-[connection signal="velocity_computed" from="NavigationAgent2D" to="FiniteStateMachine/Chase" method="velocity_computed"]

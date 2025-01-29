@@ -16,7 +16,7 @@ var warned=false
 var melee=2
 
 var can_shoot =true
-
+@onready var animation_player := $AnimationPlayer
 @export_category("Animation Durations")
 ## time it takes for the active swipe animation, hitbox is active during this timeframe
 @export var swipe_duration: float = 0.3
@@ -36,18 +36,18 @@ func attack():
 	if melee>0:
 		sprite.play('windup')
 		await Util.wait(self.anim_duration).timeout
-		current_animation_tween = get_tree().create_tween()
-		current_animation_tween.tween_property(self, 'rotation', self.rotation-1.1, 0.1)
-		await current_animation_tween.finished
+		#current_animation_tween = get_tree().create_tween()
+		#current_animation_tween.tween_property(self, 'rotation', self.rotation-1.1, 0.1)
+		#await current_animation_tween.finished
 		
-		hitbox.disabled = false
+		#hitbox.disabled = false
 		sprite.play('active')
+		animation_player.play("slash")
+		#current_animation_tween = get_tree().create_tween()
+		#current_animation_tween.tween_property(self, 'rotation', self.rotation+2.1, swipe_duration)
+		#await current_animation_tween.finished
 		
-		current_animation_tween = get_tree().create_tween()
-		current_animation_tween.tween_property(self, 'rotation', self.rotation+2.1, swipe_duration)
-		await current_animation_tween.finished
-		
-		hitbox.disabled = true
+		#hitbox.disabled = true
 		sprite.play('idle')
 		await Util.wait(self.cooldown_duration).timeout
 		melee-=1
