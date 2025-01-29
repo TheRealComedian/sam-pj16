@@ -13,8 +13,13 @@ limit_right = 0
 limit_bottom = 0
 editor_draw_limits = true
 
+[node name="Tiles" type="Node2D" parent="."]
+
 [node name="EntryPoints" type="Node2D" parent="."]
 
 [node name="start" type="Marker2D" parent="EntryPoints"]
 
 [node name="Exits" type="Node2D" parent="."]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.724643, 0.724643, 0.724642, 1)
