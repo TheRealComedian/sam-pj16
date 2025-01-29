@@ -34,6 +34,7 @@ Refs="*res://scripts/refs.gd"
 Session="*res://scripts/session.gd"
 SignalBus="*res://scripts/signal_bus.gd"
 Util="*res://scripts/util.gd"
+BGM="*res://scenes/BGM.tscn"
 
 [display]
 

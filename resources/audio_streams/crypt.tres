@@ -1,0 +1,16 @@
+[gd_resource type="AudioStreamPlaylist" load_steps=4 format=3 uid="uid://cv1x62w5m1og"]
+
+[ext_resource type="AudioStream" uid="uid://c1gdj6lvsj7dr" path="res://assets/audio/music/loop_calm.mp3" id="2_iicyp"]
+[ext_resource type="AudioStream" uid="uid://b6dusmw2w72u5" path="res://assets/audio/music/loop_battle.mp3" id="3_begul"]
+
+[sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_l1vv5"]
+stream_count = 2
+stream_0/stream = ExtResource("2_iicyp")
+stream_0/volume = 0.0
+stream_1/stream = ExtResource("3_begul")
+stream_1/volume = -60.0
+
+[resource]
+loop = false
+stream_count = 1
+stream_0 = SubResource("AudioStreamSynchronized_l1vv5")

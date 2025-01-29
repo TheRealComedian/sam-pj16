@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bygylt0g7l1sg"]
+
+[ext_resource type="AudioStream" uid="uid://cv1x62w5m1og" path="res://resources/audio_streams/crypt.tres" id="1_ibpts"]
+[ext_resource type="Script" path="res://scenes/bgm.gd" id="1_oe73t"]
+
+[node name="BGM" type="AudioStreamPlayer"]
+stream = ExtResource("1_ibpts")
+script = ExtResource("1_oe73t")
