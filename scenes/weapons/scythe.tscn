@@ -1,49 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://ggje00ded7ue"]
+[gd_scene load_steps=6 format=3 uid="uid://ggje00ded7ue"]
 
 [ext_resource type="Script" path="res://scenes/weapons/scythe.gd" id="1_e0m33"]
 [ext_resource type="PackedScene" uid="uid://cdpdshtgj402p" path="res://scenes/weapons/projectiles/scythe_projectile.tscn" id="2_sxkyp"]
-[ext_resource type="Texture2D" uid="uid://bgirxqu6a5247" path="res://assets/sprites/weapons/old weapon sprites/ReaperScythe.png" id="3_sxu5p"]
-[ext_resource type="Texture2D" uid="uid://ms3q8yxfelg" path="res://assets/sprites/weapons/old weapon sprites/ReaperScythe1.png" id="4_3wqds"]
-[ext_resource type="Texture2D" uid="uid://b12a0jknqjyw6" path="res://assets/sprites/weapons/old weapon sprites/ReaperScythe2.png" id="5_u344v"]
-[ext_resource type="Texture2D" uid="uid://d3i85ef2kgxdh" path="res://assets/sprites/weapons/old weapon sprites/ReaperScythe3.png" id="6_o2c1o"]
-[ext_resource type="Texture2D" uid="uid://uk8hgdnlkn0n" path="res://assets/sprites/weapons/old weapon sprites/ReaperScythe4.png" id="7_00bua"]
+[ext_resource type="SpriteFrames" uid="uid://biht7u5tfiwpl" path="res://resources/sprite_frames/scythe_player.tres" id="3_3w1vy"]
 [ext_resource type="Script" path="res://scenes/components/hitbox_component.gd" id="10_a4281"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_3luq4"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("7_00bua")
-}],
-"loop": true,
-"name": &"active",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_sxu5p")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("4_3wqds")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_u344v")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_o2c1o")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_00bua")
-}],
-"loop": true,
-"name": &"windup",
-"speed": 5.0
-}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x4j66"]
 radius = 16.0514
@@ -59,14 +19,15 @@ fire_rate = 2.381
 sprite = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(8, -2)
-rotation = 1.56982
+position = Vector2(32, 1.8332e-12)
+rotation = 1.57079
 scale = Vector2(1.0174, 1.07969)
-sprite_frames = SubResource("SpriteFrames_3luq4")
-animation = &"windup"
+sprite_frames = ExtResource("3_3w1vy")
+animation = &"idle"
+autoplay = "idle"
 
 [node name="Hitbox" type="Area2D" parent="."]
-position = Vector2(47, -20)
+position = Vector2(40, -16)
 collision_layer = 8
 collision_mask = 96
 script = ExtResource("10_a4281")

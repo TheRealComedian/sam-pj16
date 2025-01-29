@@ -1,8 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://byve87xjow6s"]
+[gd_scene load_steps=22 format=3 uid="uid://byve87xjow6s"]
 
 [ext_resource type="PackedScene" uid="uid://y28itm0e1koh" path="res://scenes/entities/enemies/enemy_base/enemy.tscn" id="1_mjkf8"]
 [ext_resource type="Texture2D" uid="uid://ciau6cdbwqtfw" path="res://assets/sprites/entities/Reaper_Sheet_Edit_5.png" id="2_wpq7c"]
 [ext_resource type="PackedScene" uid="uid://ggje00ded7ue" path="res://scenes/weapons/scythe.tscn" id="3_2y1y3"]
+[ext_resource type="SpriteFrames" uid="uid://cvqfsru3wegq" path="res://resources/sprite_frames/scythe_enemy.tres" id="4_o0gbm"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h8kj3"]
 radius = 24.0
@@ -107,6 +108,10 @@ animations = [{
 radius = 24.0
 height = 96.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gpfxx"]
+radius = 16.0514
+height = 100.665
+
 [node name="Reaper" node_paths=PackedStringArray("weapon") instance=ExtResource("1_mjkf8")]
 weapon = NodePath("Scythe")
 
@@ -136,8 +141,13 @@ rotation = 1.57079
 shape = SubResource("CapsuleShape2D_kyci6")
 
 [node name="Scythe" parent="." index="9" instance=ExtResource("3_2y1y3")]
-position = Vector2(8, 0)
 
-[connection signal="velocity_computed" from="NavigationAgent2D" to="FiniteStateMachine/Chase" method="velocity_computed"]
+[node name="AnimatedSprite2D" parent="Scythe" index="0"]
+position = Vector2(40, 1.8332e-12)
+sprite_frames = ExtResource("4_o0gbm")
+
+[node name="CollisionShape2D" parent="Scythe/Hitbox" index="0"]
+position = Vector2(64, 8)
+shape = SubResource("CapsuleShape2D_gpfxx")
 
 [editable path="Scythe"]
