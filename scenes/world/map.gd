@@ -10,9 +10,17 @@ func _ready():
 	Global.map = self
 	Global.camera = self.camera
 
+func check_for_enemies() -> bool:
+	for child in get_children():
+		if child is Enemy:
+			return true
+	return false
+
 func _process(delta):
 	if camera and Global.player and camera.enabled:
 		camera.global_position = Global.player.global_position
+	
+	BGM.combat_mode = check_for_enemies()
 
 func _exit_tree():
 	Global.camera = null

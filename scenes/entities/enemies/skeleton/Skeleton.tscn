@@ -108,7 +108,6 @@ radius = 24.4132
 height = 48.8265
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_he4qq"]
-
 _data = {
 "walk": ExtResource("3_o3gpb")
 }
