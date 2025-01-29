@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dljttb073ciof" path="res://scenes/weapons/projectiles/Projectile.tscn" id="1_j65l4"]
 [ext_resource type="Script" path="res://scenes/weapons/projectiles/arrow.gd" id="2_cu6b1"]
-[ext_resource type="SpriteFrames" uid="uid://bc6ah716whmio" path="res://resources/sprite_frames/arrow_player.tres" id="3_31d5h"]
+[ext_resource type="SpriteFrames" uid="uid://bc6ah716whmio" path="res://resources/sprite_frames/arrow.tres" id="3_31d5h"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a43j7"]
 radius = 8.0
@@ -14,6 +14,7 @@ script = ExtResource("2_cu6b1")
 position = Vector2(0, 0)
 rotation = -1.57079
 sprite_frames = ExtResource("3_31d5h")
+animation = &"player"
 
 [node name="Hitbox" parent="." index="1"]
 damage = 1.0

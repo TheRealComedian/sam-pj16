@@ -15,17 +15,18 @@ cooldown_duration = 0.1
 sprite = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(56.0002, 0.000202179)
+position = Vector2(24.0002, 0.000202179)
 rotation = -1.57079
 sprite_frames = ExtResource("2_mkfx4")
-animation = &"active"
+animation = &"inactive"
+autoplay = "inactive"
 
 [node name="Hitbox" parent="." instance=ExtResource("6_tj0cf")]
-position = Vector2(72, 0)
+position = Vector2(40, 0)
 damage = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(0, -0.000202179)
+position = Vector2(-3.8147e-06, 0)
 rotation = -1.57079
 shape = SubResource("CapsuleShape2D_lrx43")
 disabled = true

@@ -16,7 +16,7 @@ size = Vector2(32, 32)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_445qy"]
 size = Vector2(32, 32)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "weapon")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("health_component")]
 y_sort_enabled = true
 collision_layer = 2
 collision_mask = 5
@@ -24,7 +24,6 @@ motion_mode = 1
 script = ExtResource("1_3evo7")
 mc = true
 health_component = NodePath("HealthComponent")
-weapon = NodePath("")
 
 [node name="FiniteStateMachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("2_oeacy")]
 initial_state = NodePath("Free")
@@ -58,4 +57,3 @@ shape = SubResource("RectangleShape2D_445qy")
 debug_color = Color(0.244572, 0.601581, 0.581193, 0.42)
 
 [node name="HealthComponent" parent="." instance=ExtResource("4_758oi")]
-current_health = 1.0
