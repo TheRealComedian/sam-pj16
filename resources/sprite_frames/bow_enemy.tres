@@ -1,0 +1,96 @@
+[gd_resource type="SpriteFrames" load_steps=12 format=3 uid="uid://cyvm7jfu10xhb"]
+
+[ext_resource type="Texture2D" uid="uid://b5i7t06dgvyco" path="res://assets/sprites/weapons/Bow Sheet Alpha.png" id="1_y5t17"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bmgdd"]
+atlas = ExtResource("1_y5t17")
+region = Rect2(256, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4rggm"]
+atlas = ExtResource("1_y5t17")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6osnv"]
+atlas = ExtResource("1_y5t17")
+region = Rect2(256, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3yspt"]
+atlas = ExtResource("1_y5t17")
+region = Rect2(64, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vhq1d"]
+atlas = ExtResource("1_y5t17")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5g3lk"]
+atlas = ExtResource("1_y5t17")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l7c41"]
+atlas = ExtResource("1_y5t17")
+region = Rect2(64, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t78iq"]
+atlas = ExtResource("1_y5t17")
+region = Rect2(128, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j5gid"]
+atlas = ExtResource("1_y5t17")
+region = Rect2(192, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j1dob"]
+atlas = ExtResource("1_y5t17")
+region = Rect2(256, 128, 64, 64)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bmgdd")
+}],
+"loop": true,
+"name": &"active",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4rggm")
+}],
+"loop": false,
+"name": &"inactive",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6osnv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3yspt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vhq1d")
+}],
+"loop": false,
+"name": &"winddown",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5g3lk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l7c41")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t78iq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j5gid")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j1dob")
+}],
+"loop": false,
+"name": &"windup",
+"speed": 10.0
+}]

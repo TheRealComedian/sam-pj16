@@ -1,102 +1,32 @@
-[gd_scene load_steps=17 format=3 uid="uid://b6ukhia0s6mkl"]
+[gd_scene load_steps=5 format=3 uid="uid://b6ukhia0s6mkl"]
 
 [ext_resource type="Script" path="res://scenes/weapons/sword.gd" id="2_7dl35"]
-[ext_resource type="Texture2D" uid="uid://bmdit23huhynx" path="res://assets/sprites/weapons/Blade Battlforme.png" id="3_4tvn8"]
-[ext_resource type="Texture2D" uid="uid://c2mkp15l80a7l" path="res://assets/sprites/weapons/Blade.png" id="4_31d6s"]
-[ext_resource type="Texture2D" uid="uid://86nc84tqdwcd" path="res://assets/sprites/weapons/Sword_Atk_Frame_1.png" id="5_1uccb"]
-[ext_resource type="Texture2D" uid="uid://dglgqnut2mfur" path="res://assets/sprites/weapons/Inert Blade.png" id="5_mv7co"]
-[ext_resource type="Texture2D" uid="uid://bhcyvqfebrbr5" path="res://assets/sprites/weapons/Sword_Atk_Frame_2.png" id="6_c4mek"]
+[ext_resource type="SpriteFrames" uid="uid://b8n2y1rfmfmns" path="res://resources/sprite_frames/sword_player.tres" id="2_mkfx4"]
 [ext_resource type="PackedScene" uid="uid://1rq7hjdwqhix" path="res://scenes/components/hitbox_component.tscn" id="6_tj0cf"]
-[ext_resource type="Texture2D" uid="uid://86s4wrllhx0t" path="res://assets/sprites/weapons/Sword_Atk_Frame_3.png" id="7_38jc6"]
-[ext_resource type="Texture2D" uid="uid://2m3uqtmsnyl8" path="res://assets/sprites/weapons/Sword_Atk_Frame_4.png" id="8_batnk"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_m8f8i"]
-atlas = ExtResource("3_4tvn8")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0jynt"]
-atlas = ExtResource("4_31d6s")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rk067"]
-atlas = ExtResource("5_mv7co")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uells"]
-atlas = ExtResource("4_31d6s")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1bj7e"]
-atlas = ExtResource("5_mv7co")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_kls4t"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_m8f8i")
-}],
-"loop": true,
-"name": &"active",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 4.0,
-"texture": SubResource("AtlasTexture_0jynt")
-}, {
-"duration": 0.1,
-"texture": SubResource("AtlasTexture_rk067")
-}, {
-"duration": 0.2,
-"texture": SubResource("AtlasTexture_uells")
-}, {
-"duration": 0.1,
-"texture": SubResource("AtlasTexture_1bj7e")
-}],
-"loop": true,
-"name": &"inactive",
-"speed": 1.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("5_1uccb")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_c4mek")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_38jc6")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_batnk")
-}],
-"loop": true,
-"name": &"windup",
-"speed": 5.0
-}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lrx43"]
-radius = 16.0
-height = 48.0
+radius = 8.0
+height = 42.0
 
-[node name="Sword" type="Node2D" node_paths=PackedStringArray("sprite", "hitbox")]
+[node name="Sword" type="Node2D" node_paths=PackedStringArray("hitbox", "sprite")]
 script = ExtResource("2_7dl35")
-sprite = NodePath("AnimatedSprite2D")
-hitbox = NodePath("Hitbox/CollisionShape2D")
+hitbox = NodePath("Hitbox")
 cooldown_duration = 0.1
+sprite = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(56, 0)
+position = Vector2(24.0002, 0.000202179)
 rotation = -1.57079
-sprite_frames = SubResource("SpriteFrames_kls4t")
-animation = &"active"
+sprite_frames = ExtResource("2_mkfx4")
+animation = &"inactive"
 autoplay = "inactive"
 
 [node name="Hitbox" parent="." instance=ExtResource("6_tj0cf")]
+position = Vector2(40, 0)
 damage = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(72, 0)
+position = Vector2(-3.8147e-06, 0)
 rotation = -1.57079
 shape = SubResource("CapsuleShape2D_lrx43")
 disabled = true

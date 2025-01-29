@@ -8,6 +8,8 @@ class_name Enemy extends Character
 @onready var hurtbox: Hurtbox = $Hurtbox
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
 
+@export var player_detected_state: String = 'Chase'
+
 func _ready():
 	(health_component as HealthComponent).health_changed.connect(health_changed)
 	if animation!=null:

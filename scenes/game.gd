@@ -3,13 +3,14 @@ class_name Game extends Node2D
 ##NOTE: peepee weeheehee
 
 @onready var cursor = $Cursor
+@onready var menu: ControlFiniteStateMachine = $Overlay/Menu
 
 func _ready():
 	Global.game = self
 	
 	#NOTE: this may seem obsolete, but trust me having a separate global signal for the main scene's readiness prevents a lot of issues using the built in ready signal causes
 	SignalBus.main_scene_ready.emit()
-	Map.set_as_current_map(load('res://scenes/world/maps/test_room.tscn'))
+	Map.set_as_current_map(load('res://scenes/world/maps/crypt_vertical.tscn'))
 
 
 #func _process(_delta):

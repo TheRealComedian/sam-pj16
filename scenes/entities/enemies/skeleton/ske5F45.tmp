@@ -1,0 +1,141 @@
+[gd_scene load_steps=21 format=3 uid="uid://cpbk8gj2mj1ea"]
+
+[ext_resource type="PackedScene" uid="uid://y28itm0e1koh" path="res://scenes/entities/enemies/enemy_base/enemy.tscn" id="1_oeulr"]
+[ext_resource type="Texture2D" uid="uid://bant6hkhyketg" path="res://assets/sprites/entities/SkeleIdle Mk 2.png" id="2_pfaef"]
+[ext_resource type="Animation" uid="uid://cpal1sha8q41s" path="res://resources/animations/skeleton_walk.res" id="3_o3gpb"]
+[ext_resource type="PackedScene" uid="uid://b6ukhia0s6mkl" path="res://scenes/weapons/sword.tscn" id="4_2lspu"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aeua0"]
+radius = 32.0
+height = 112.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2pwr1"]
+atlas = ExtResource("2_pfaef")
+region = Rect2(0, 0, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ml7u"]
+atlas = ExtResource("2_pfaef")
+region = Rect2(64, 0, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lrnd3"]
+atlas = ExtResource("2_pfaef")
+region = Rect2(128, 0, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6073u"]
+atlas = ExtResource("2_pfaef")
+region = Rect2(192, 0, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vne3x"]
+atlas = ExtResource("2_pfaef")
+region = Rect2(256, 0, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tird3"]
+atlas = ExtResource("2_pfaef")
+region = Rect2(320, 0, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xjkei"]
+atlas = ExtResource("2_pfaef")
+region = Rect2(384, 0, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4iepb"]
+atlas = ExtResource("2_pfaef")
+region = Rect2(448, 0, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_edyvv"]
+atlas = ExtResource("2_pfaef")
+region = Rect2(512, 0, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2r2b"]
+atlas = ExtResource("2_pfaef")
+region = Rect2(576, 0, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yupcf"]
+atlas = ExtResource("2_pfaef")
+region = Rect2(640, 0, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_og77m"]
+atlas = ExtResource("2_pfaef")
+region = Rect2(704, 0, 64, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_15kxb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2pwr1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ml7u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lrnd3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6073u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vne3x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tird3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xjkei")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4iepb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_edyvv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2r2b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yupcf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_og77m")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fx35q"]
+radius = 32.0
+height = 112.826
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_he4qq"]
+_data = {
+"walk": ExtResource("3_o3gpb")
+}
+
+[node name="Skeleton" node_paths=PackedStringArray("weapon") instance=ExtResource("1_oeulr")]
+position = Vector2(0, -0.413236)
+weapon = NodePath("Sword")
+
+[node name="Hurtbox" parent="." index="4" node_paths=PackedStringArray("visual_node")]
+visual_node = NodePath("../AnimatedSprite2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" index="0"]
+shape = SubResource("CapsuleShape2D_aeua0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="7"]
+position = Vector2(0, -0.413236)
+sprite_frames = SubResource("SpriteFrames_15kxb")
+animation = &"Idle"
+autoplay = "Idle"
+frame_progress = 0.0825989
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="8"]
+shape = SubResource("CapsuleShape2D_fx35q")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="9"]
+root_node = NodePath("../AnimatedSprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_he4qq")
+}
+
+[node name="Sword" parent="." index="10" instance=ExtResource("4_2lspu")]
+
+[connection signal="velocity_computed" from="NavigationAgent2D" to="FiniteStateMachine/Chase" method="velocity_computed"]

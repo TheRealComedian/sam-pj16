@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://rgy0er52v04w"]
+
+[ext_resource type="Texture2D" uid="uid://dddh6v8jy7ukt" path="res://assets/sprites/entities/coffin.png" id="1_gyvh5"]
+[ext_resource type="Script" path="res://scenes/objects/coffin.gd" id="1_p8rlu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kqxqk"]
+atlas = ExtResource("1_gyvh5")
+region = Rect2(0, 0, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fxjgs"]
+atlas = ExtResource("1_gyvh5")
+region = Rect2(64, 0, 64, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mxc0e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kqxqk")
+}],
+"loop": false,
+"name": &"closed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fxjgs")
+}],
+"loop": false,
+"name": &"open",
+"speed": 5.0
+}]
+
+[node name="Coffin" type="StaticBody2D"]
+script = ExtResource("1_p8rlu")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_mxc0e")
+animation = &"closed"

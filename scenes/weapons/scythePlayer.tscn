@@ -1,0 +1,155 @@
+[gd_scene load_steps=18 format=3 uid="uid://ccl7i1g2loijl"]
+
+[ext_resource type="Script" path="res://scenes/weapons/scythe.gd" id="1_aony7"]
+[ext_resource type="PackedScene" uid="uid://dljttb073ciof" path="res://scenes/weapons/projectiles/Projectile.tscn" id="2_5sni4"]
+[ext_resource type="Texture2D" uid="uid://b8o7pweymjpav" path="res://assets/sprites/weapons/old weapon sprites/Scythe_Variant_Sheet.png" id="3_g7fn8"]
+[ext_resource type="Texture2D" uid="uid://c0b85bcki661f" path="res://assets/sprites/weapons/old weapon sprites/Scythe_Atk_Frame_2.png" id="4_81njq"]
+[ext_resource type="Texture2D" uid="uid://vgjia0w7iql5" path="res://assets/sprites/weapons/old weapon sprites/Scythe_Atk_Frame_3.png" id="5_moiva"]
+[ext_resource type="Script" path="res://scenes/components/hitbox_component.gd" id="8_dq6ob"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cuuj8"]
+atlas = ExtResource("3_g7fn8")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7g58g"]
+atlas = ExtResource("3_g7fn8")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_24nj4"]
+atlas = ExtResource("3_g7fn8")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qs8sl"]
+atlas = ExtResource("3_g7fn8")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rv726"]
+atlas = ExtResource("3_g7fn8")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xi57c"]
+atlas = ExtResource("3_g7fn8")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0yrqk"]
+atlas = ExtResource("3_g7fn8")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ru5rc"]
+atlas = ExtResource("3_g7fn8")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mfw28"]
+atlas = ExtResource("3_g7fn8")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3luq4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cuuj8")
+}],
+"loop": true,
+"name": &"active",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7g58g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7g58g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7g58g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_24nj4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qs8sl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rv726")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xi57c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0yrqk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xi57c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rv726")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qs8sl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_24nj4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7g58g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7g58g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7g58g")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ru5rc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_81njq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_moiva")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mfw28")
+}],
+"loop": true,
+"name": &"windup",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x4j66"]
+radius = 9.21954
+height = 57.9142
+
+[node name="Scythe" type="Node2D" node_paths=PackedStringArray("hitbox", "sprite")]
+script = ExtResource("1_aony7")
+hitbox = NodePath("Hitbox/CollisionShape2D")
+projectile = ExtResource("2_5sni4")
+arrow_count = 3
+arc = 131.611
+fire_rate = 2.381
+sprite = NodePath("AnimatedSprite2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(26.5818, 0.590515)
+rotation = 1.56982
+scale = Vector2(1.0174, 1.07969)
+sprite_frames = SubResource("SpriteFrames_3luq4")
+animation = &"active"
+frame_progress = 0.892548
+
+[node name="Hitbox" type="Area2D" parent="."]
+position = Vector2(37.5818, -20.4095)
+collision_layer = 8
+collision_mask = 96
+script = ExtResource("8_dq6ob")
+damage = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(15, 17)
+rotation = -0.219597
+shape = SubResource("CapsuleShape2D_x4j66")

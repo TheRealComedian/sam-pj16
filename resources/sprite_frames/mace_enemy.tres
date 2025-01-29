@@ -1,0 +1,70 @@
+[gd_resource type="SpriteFrames" load_steps=9 format=3 uid="uid://cjvdj84i5gcds"]
+
+[ext_resource type="Texture2D" uid="uid://b65yxtwfj1boj" path="res://assets/sprites/weapons/Mace Sheet Alpha.png" id="1_g0uef"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iqht5"]
+atlas = ExtResource("1_g0uef")
+region = Rect2(128, 128, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_00ar6"]
+atlas = ExtResource("1_g0uef")
+region = Rect2(0, 128, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kgbvn"]
+atlas = ExtResource("1_g0uef")
+region = Rect2(0, 128, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lthld"]
+atlas = ExtResource("1_g0uef")
+region = Rect2(32, 128, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2320q"]
+atlas = ExtResource("1_g0uef")
+region = Rect2(64, 128, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hrx6o"]
+atlas = ExtResource("1_g0uef")
+region = Rect2(96, 128, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g3qty"]
+atlas = ExtResource("1_g0uef")
+region = Rect2(128, 128, 32, 64)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iqht5")
+}],
+"loop": true,
+"name": &"active",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_00ar6")
+}],
+"loop": true,
+"name": &"inactive",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kgbvn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lthld")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2320q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hrx6o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g3qty")
+}],
+"loop": true,
+"name": &"windup",
+"speed": 5.0
+}]

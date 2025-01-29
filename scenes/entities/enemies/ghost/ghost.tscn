@@ -1,0 +1,135 @@
+[gd_scene load_steps=21 format=3 uid="uid://bpo6yc7rnj2me"]
+
+[ext_resource type="PackedScene" uid="uid://y28itm0e1koh" path="res://scenes/entities/enemies/enemy_base/enemy.tscn" id="1_k4tmn"]
+[ext_resource type="Script" path="res://scenes/entities/enemies/ghost/reposition.gd" id="2_76pe3"]
+[ext_resource type="Texture2D" uid="uid://c3ifr7x22dojn" path="res://assets/sprites/entities/Ghost Frames.png" id="2_jcmjn"]
+[ext_resource type="PackedScene" uid="uid://ba7bjlytuufxp" path="res://scenes/weapons/bow.tscn" id="3_jl1ix"]
+[ext_resource type="SpriteFrames" uid="uid://cyvm7jfu10xhb" path="res://resources/sprite_frames/bow_enemy.tres" id="4_i1frw"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p024h"]
+radius = 24.0
+height = 112.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0vuiu"]
+radius = 384.083
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dtjel"]
+atlas = ExtResource("2_jcmjn")
+region = Rect2(0, 0, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8lpe1"]
+atlas = ExtResource("2_jcmjn")
+region = Rect2(64, 0, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2yut4"]
+atlas = ExtResource("2_jcmjn")
+region = Rect2(128, 0, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ndyv"]
+atlas = ExtResource("2_jcmjn")
+region = Rect2(192, 0, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t86pq"]
+atlas = ExtResource("2_jcmjn")
+region = Rect2(256, 0, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uaj4g"]
+atlas = ExtResource("2_jcmjn")
+region = Rect2(320, 0, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8wakk"]
+atlas = ExtResource("2_jcmjn")
+region = Rect2(384, 0, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n4ake"]
+atlas = ExtResource("2_jcmjn")
+region = Rect2(448, 0, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0w8ns"]
+atlas = ExtResource("2_jcmjn")
+region = Rect2(512, 0, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_skfek"]
+atlas = ExtResource("2_jcmjn")
+region = Rect2(576, 0, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a4pk4"]
+atlas = ExtResource("2_jcmjn")
+region = Rect2(640, 0, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e8u22"]
+atlas = ExtResource("2_jcmjn")
+region = Rect2(704, 0, 64, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r2dfi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dtjel")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8lpe1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2yut4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ndyv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t86pq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uaj4g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8wakk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n4ake")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0w8ns")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_skfek")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a4pk4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e8u22")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.45
+}]
+
+[node name="Ghost" node_paths=PackedStringArray("weapon") instance=ExtResource("1_k4tmn")]
+player_detected_state = "Reposition"
+movement_speed = 0
+weapon = NodePath("Bow")
+
+[node name="Reposition" type="Node" parent="FiniteStateMachine" index="2"]
+script = ExtResource("2_76pe3")
+
+[node name="Hurtbox" parent="." index="4" node_paths=PackedStringArray("visual_node")]
+visual_node = NodePath("../AnimatedSprite2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" index="0"]
+shape = SubResource("CapsuleShape2D_p024h")
+
+[node name="CollisionShape2D" parent="AttackRange" index="0"]
+shape = SubResource("CircleShape2D_0vuiu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="7"]
+sprite_frames = SubResource("SpriteFrames_r2dfi")
+frame_progress = 0.375729
+
+[node name="Bow" parent="." index="8" instance=ExtResource("3_jl1ix")]
+
+[node name="AnimatedSprite2D" parent="Bow" index="0"]
+position = Vector2(40, -1.86265e-09)
+sprite_frames = ExtResource("4_i1frw")
+
+[editable path="Bow"]

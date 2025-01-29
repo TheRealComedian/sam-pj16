@@ -1,7 +1,11 @@
 class_name Sword extends Weapon
 
-@export var sprite: AnimatedSprite2D
-@export var hitbox: CollisionShape2D
+
+@export var hitbox: Hitbox:
+	set(value):
+		hitbox = value
+		hitbox_shape = hitbox.get_child(0)
+var hitbox_shape: CollisionShape2D
 
 @export_category("Animation Durations")
 ## time it takes for the active swipe animation, hitbox is active during this timeframe
@@ -15,7 +19,7 @@ var anim_duration = 0.6
 func cancel_attack():
 	if owner.weapon.current_animation_tween:
 		owner.weapon.current_animation_tween.kill()
-		owner.weapon.hitbox.disabled = true
+		owner.weapon.hitbox_shape.disabled = true
 
 func attack():
 	sprite.play('windup')
@@ -24,13 +28,13 @@ func attack():
 	current_animation_tween.tween_property(self, 'rotation', self.rotation-1.1, 0.1)
 	await current_animation_tween.finished
 	
-	hitbox.disabled = false
+	hitbox_shape.disabled = false
 	sprite.play('active')
 	
 	current_animation_tween = get_tree().create_tween()
 	current_animation_tween.tween_property(self, 'rotation', self.rotation+2.1, swipe_duration)
 	await current_animation_tween.finished
 	
-	hitbox.disabled = true
+	hitbox_shape.disabled = true
 	sprite.play('inactive')
 	await Util.wait(self.cooldown_duration).timeout

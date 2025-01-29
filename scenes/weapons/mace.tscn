@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://d3f0alvle4il3"]
+
+[ext_resource type="Script" path="res://scenes/weapons/mace.gd" id="1_v10l8"]
+[ext_resource type="SpriteFrames" uid="uid://ct3gj2b7dnhqv" path="res://resources/sprite_frames/mace_player.tres" id="2_nct6l"]
+[ext_resource type="PackedScene" uid="uid://1rq7hjdwqhix" path="res://scenes/components/hitbox_component.tscn" id="7_1nuh5"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lrx43"]
+radius = 14.0
+height = 28.0
+
+[node name="Mace" type="Node2D" node_paths=PackedStringArray("hitbox", "sprite")]
+script = ExtResource("1_v10l8")
+hitbox = NodePath("Hitbox/CollisionShape2D")
+sprite = NodePath("AnimatedSprite2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(24, 0)
+rotation = -1.57079
+sprite_frames = ExtResource("2_nct6l")
+animation = &"inactive"
+autoplay = "inactive"
+
+[node name="Hitbox" parent="." instance=ExtResource("7_1nuh5")]
+damage = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(40, 0)
+rotation = -1.57079
+shape = SubResource("CapsuleShape2D_lrx43")
+disabled = true
+debug_color = Color(0.9967, 0, 0.181514, 0.42)

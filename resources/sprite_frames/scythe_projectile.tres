@@ -1,0 +1,59 @@
+[gd_resource type="SpriteFrames" load_steps=9 format=3 uid="uid://crjucv57xbdo4"]
+
+[ext_resource type="Texture2D" uid="uid://b4jdgm7qc61no" path="res://assets/sprites/weapons/Reaper Scythe Alpha.png" id="1_0l1v8"]
+[ext_resource type="Texture2D" uid="uid://cpic81p88yds0" path="res://assets/sprites/weapons/Scythe Projectile Sheet Alpha.png" id="2_rvw5g"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_di8d2"]
+atlas = ExtResource("1_0l1v8")
+region = Rect2(576, 0, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4r4kc"]
+atlas = ExtResource("1_0l1v8")
+region = Rect2(720, 0, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5bwh"]
+atlas = ExtResource("1_0l1v8")
+region = Rect2(864, 0, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y6flr"]
+atlas = ExtResource("2_rvw5g")
+region = Rect2(0, 0, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vljvk"]
+atlas = ExtResource("2_rvw5g")
+region = Rect2(144, 0, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ytnwx"]
+atlas = ExtResource("2_rvw5g")
+region = Rect2(288, 0, 144, 144)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_di8d2")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_4r4kc")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_p5bwh")
+}],
+"loop": true,
+"name": &"enemy",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y6flr")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_vljvk")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_ytnwx")
+}],
+"loop": true,
+"name": &"player",
+"speed": 10.0
+}]
