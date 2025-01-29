@@ -20,7 +20,13 @@ func _exit_tree():
 
 static func set_as_current_map(map_resource: PackedScene, entry_point: String = 'start'):
 	# transition out
-	pass #TODO: add transitions
+	if Global.player:
+		Global.player.input_disabled = true
+	Global.transition.play('out')
+	await Global.transition.animation_finished
+	
+	
+
 	
 	# save player data
 	pass #TODO: no player specific data implemented yet such as current weapon, powerups, etc.
@@ -46,12 +52,12 @@ static func set_as_current_map(map_resource: PackedScene, entry_point: String = 
 	
 	# add player
 	Global.game.add_child(Player.instance())
-	
-	# load player data
-	pass #TODO: no player specific data implemented yet such as current weapon, powerups, etc.
+	Global.player.input_disabled = true
 	
 	# move player to entry point in map
 	Global.player.global_position = new_map.entry_points.get_node(entry_point).global_position
 	
 	# transition in
-	pass #TODO: add transitions
+	Global.transition.play('in')
+	await Global.transition.animation_finished
+	Global.player.input_disabled = false

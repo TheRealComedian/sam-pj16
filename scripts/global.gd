@@ -7,6 +7,7 @@ var game: Game
 
 var hud: HUD
 var camera: Camera2D
+var transition: Transition
 
 ## current instance of the player character
 var player: Player

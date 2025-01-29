@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://7wibdi5xwkt"]
+[gd_scene load_steps=34 format=3 uid="uid://7wibdi5xwkt"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_ilbpj"]
 [ext_resource type="Script" path="res://scenes/ui/hud/hud.gd" id="2_nyb4e"]
@@ -13,10 +13,123 @@
 [ext_resource type="Shortcut" uid="uid://b755kkr23w728" path="res://resources/input/key/escape.tres" id="8_ik34c"]
 [ext_resource type="PackedScene" uid="uid://bv5igxgun5x6e" path="res://scenes/components/FSM/transition_button.tscn" id="8_ou0a1"]
 [ext_resource type="Script" path="res://scenes/ui/menu/game_over.gd" id="12_5a466"]
+[ext_resource type="Texture2D" uid="uid://bpsdqq1t8lq5n" path="res://assets/sprites/ui/transition.png" id="13_n1rrx"]
+[ext_resource type="Script" path="res://scenes/ui/transition.gd" id="13_ye7qn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kyprb"]
 atlas = ExtResource("4_ktiyo")
 region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wr5xc"]
+atlas = ExtResource("13_n1rrx")
+region = Rect2(7680, 0, 1280, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_48vpx"]
+atlas = ExtResource("13_n1rrx")
+region = Rect2(6400, 0, 1280, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vbbah"]
+atlas = ExtResource("13_n1rrx")
+region = Rect2(5120, 0, 1280, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c62bc"]
+atlas = ExtResource("13_n1rrx")
+region = Rect2(3840, 0, 1280, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i3n8x"]
+atlas = ExtResource("13_n1rrx")
+region = Rect2(2560, 0, 1280, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sfa52"]
+atlas = ExtResource("13_n1rrx")
+region = Rect2(1280, 0, 1280, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e80a4"]
+atlas = ExtResource("13_n1rrx")
+region = Rect2(0, 0, 1280, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_83451"]
+atlas = ExtResource("13_n1rrx")
+region = Rect2(0, 0, 1280, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gjow7"]
+atlas = ExtResource("13_n1rrx")
+region = Rect2(1280, 0, 1280, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_22dgl"]
+atlas = ExtResource("13_n1rrx")
+region = Rect2(2560, 0, 1280, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mn3p0"]
+atlas = ExtResource("13_n1rrx")
+region = Rect2(3840, 0, 1280, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cn3av"]
+atlas = ExtResource("13_n1rrx")
+region = Rect2(5120, 0, 1280, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rrypa"]
+atlas = ExtResource("13_n1rrx")
+region = Rect2(6400, 0, 1280, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4w74p"]
+atlas = ExtResource("13_n1rrx")
+region = Rect2(7680, 0, 1280, 720)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_46mjo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wr5xc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_48vpx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vbbah")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c62bc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i3n8x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sfa52")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e80a4")
+}],
+"loop": false,
+"name": &"in",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_83451")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gjow7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_22dgl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mn3p0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cn3av")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rrypa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4w74p")
+}],
+"loop": false,
+"name": &"out",
+"speed": 10.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jk3v1"]
 atlas = ExtResource("5_1cxmy")
@@ -242,6 +355,33 @@ offset_bottom = -153.56
 scale = Vector2(5.74456, 5.95354)
 text = "Continue"
 metadata/_edit_use_anchors_ = true
+
+[node name="Transition" type="Control" parent="Overlay"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="Overlay/Transition"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Overlay/Transition/AspectRatioContainer"]
+position = Vector2(960, 540)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_46mjo")
+animation = &"in"
+frame = 6
+frame_progress = 1.0
+script = ExtResource("13_ye7qn")
 
 [node name="Cursor" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.142427, 0.142427)
