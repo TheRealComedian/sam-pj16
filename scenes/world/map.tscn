@@ -21,5 +21,5 @@ limit_right = 0
 limit_bottom = 0
 editor_draw_limits = true
 
-[node name="CanvasModulate" type="CanvasModulate" parent="Camera"]
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.724643, 0.724643, 0.724642, 1)
