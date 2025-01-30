@@ -33,6 +33,7 @@ func physics_update(delta):
 	)
 	if agent.avoidance_enabled:
 		agent.set_velocity(new_velocity)
+		owner.velocity = agent.velocity
 	else:
 		velocity_computed(new_velocity)
 	
