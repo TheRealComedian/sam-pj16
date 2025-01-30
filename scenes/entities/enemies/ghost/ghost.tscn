@@ -127,6 +127,7 @@ sprite_frames = SubResource("SpriteFrames_r2dfi")
 frame_progress = 0.375729
 
 [node name="Bow" parent="." index="8" instance=ExtResource("3_jl1ix")]
+position = Vector2(27, 0)
 
 [node name="AnimatedSprite2D" parent="Bow" index="0"]
 position = Vector2(40, -1.86265e-09)

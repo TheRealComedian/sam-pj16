@@ -21,7 +21,7 @@ func cancel_attack():
 	#var new_arrow=projectile.instantiate()
 
 func attack():
-	sprite.play('shoot')
+	sprite.play('windup')
 	#await Util.wait(self.anim_duration).timeout
 	await sprite.animation_finished
 	sprite.play('idle')
