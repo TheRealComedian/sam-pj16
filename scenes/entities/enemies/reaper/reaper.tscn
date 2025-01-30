@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://byve87xjow6s"]
+[gd_scene load_steps=22 format=3 uid="uid://byve87xjow6s"]
 
 [ext_resource type="PackedScene" uid="uid://y28itm0e1koh" path="res://scenes/entities/enemies/enemy_base/enemy.tscn" id="1_mjkf8"]
 [ext_resource type="Script" path="res://scenes/entities/enemies/enemy_base/states/chase.gd" id="2_7eirt"]
@@ -105,10 +105,6 @@ animations = [{
 "speed": 12.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kyci6"]
-radius = 24.0
-height = 96.0
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gpfxx"]
 radius = 16.0514
 height = 100.665
@@ -139,19 +135,15 @@ sprite_frames = SubResource("SpriteFrames_a762m")
 autoplay = "default"
 frame_progress = 0.83411
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="8"]
-position = Vector2(0, 32)
+[node name="Scythe_Hitbox#CollisionShape2D" type="CollisionShape2D" parent="." index="8"]
+position = Vector2(64, 8)
 rotation = 1.57079
-shape = SubResource("CapsuleShape2D_kyci6")
+shape = SubResource("CapsuleShape2D_gpfxx")
 
 [node name="Scythe" parent="." index="9" instance=ExtResource("3_2y1y3")]
 
 [node name="AnimatedSprite2D" parent="Scythe" index="0"]
 position = Vector2(40, 1.8332e-12)
 sprite_frames = ExtResource("4_o0gbm")
-
-[node name="CollisionShape2D" parent="Scythe/Hitbox" index="0"]
-position = Vector2(64, 8)
-shape = SubResource("CapsuleShape2D_gpfxx")
 
 [editable path="Scythe"]

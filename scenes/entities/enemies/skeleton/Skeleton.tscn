@@ -149,9 +149,5 @@ metadata/_edit_group_ = true
 [node name="AnimatedSprite2D" parent="Sword" index="0"]
 position = Vector2(56.0002, 0.000202179)
 sprite_frames = ExtResource("5_q26gx")
-autoplay = ""
-
-[node name="Hitbox" parent="Sword" index="1"]
-position = Vector2(72, 0)
 
 [editable path="Sword"]

@@ -9,6 +9,7 @@ func _ready():
 
 func enter():
 	Global.map.queue_free()
+	continue_button.grab_focus()
 
 func continue_game():
 	Session.current_weapon = Session.last_hit_weapon

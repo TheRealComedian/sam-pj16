@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=4 uid="uid://164i3kptt5w0"]
+[gd_scene load_steps=6 format=4 uid="uid://164i3kptt5w0"]
 
 [ext_resource type="PackedScene" uid="uid://dy335p6keujbx" path="res://scenes/world/map.tscn" id="1_4744t"]
 [ext_resource type="TileSet" uid="uid://def7m4nhhqg6a" path="res://resources/tilesets/crypt.tres" id="2_axu18"]
 [ext_resource type="PackedScene" uid="uid://depsu0p2x1g45" path="res://scenes/world/map_exit.tscn" id="3_jspku"]
+[ext_resource type="PackedScene" uid="uid://bpo6yc7rnj2me" path="res://scenes/entities/enemies/ghost/ghost.tscn" id="4_a8fbi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_or3l1"]
 size = Vector2(96, 48)
@@ -63,3 +64,8 @@ map_path = "res://scenes/world/maps/test_room.tscn"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Exits/Exit" index="0"]
 shape = SubResource("RectangleShape2D_or3l1")
 debug_color = Color(0.129355, 0.646675, 0, 0.42)
+
+[node name="CanvasModulate" parent="." index="4"]
+visible = false
+
+[node name="Ghost" parent="." index="5" instance=ExtResource("4_a8fbi")]
