@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://7wibdi5xwkt"]
+[gd_scene load_steps=18 format=3 uid="uid://7wibdi5xwkt"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_ilbpj"]
 [ext_resource type="Script" path="res://scenes/ui/hud/hud.gd" id="2_nyb4e"]
@@ -13,6 +13,7 @@
 [ext_resource type="Shortcut" uid="uid://b755kkr23w728" path="res://resources/input/key/escape.tres" id="8_ik34c"]
 [ext_resource type="PackedScene" uid="uid://bv5igxgun5x6e" path="res://scenes/components/FSM/transition_button.tscn" id="8_ou0a1"]
 [ext_resource type="Script" path="res://scenes/ui/menu/game_over.gd" id="12_5a466"]
+[ext_resource type="PackedScene" uid="uid://c4xyjdvy1qpyx" path="res://scenes/entities/player/player.tscn" id="13_pe8x4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kyprb"]
 atlas = ExtResource("4_ktiyo")
@@ -242,6 +243,8 @@ offset_bottom = -153.56
 scale = Vector2(5.74456, 5.95354)
 text = "Continue"
 metadata/_edit_use_anchors_ = true
+
+[node name="Player" parent="." instance=ExtResource("13_pe8x4")]
 
 [node name="Cursor" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.142427, 0.142427)
