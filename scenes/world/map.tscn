@@ -5,14 +5,6 @@
 [node name="Map" type="Node2D"]
 script = ExtResource("1_hqmaw")
 
-[node name="Camera" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
-limit_left = 0
-limit_top = 0
-limit_right = 0
-limit_bottom = 0
-editor_draw_limits = true
-
 [node name="Tiles" type="Node2D" parent="."]
 
 [node name="EntryPoints" type="Node2D" parent="."]
@@ -21,5 +13,13 @@ editor_draw_limits = true
 
 [node name="Exits" type="Node2D" parent="."]
 
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
+[node name="Camera" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+limit_left = 0
+limit_top = 0
+limit_right = 0
+limit_bottom = 0
+editor_draw_limits = true
+
+[node name="CanvasModulate" type="CanvasModulate" parent="Camera"]
 color = Color(0.724643, 0.724643, 0.724642, 1)
