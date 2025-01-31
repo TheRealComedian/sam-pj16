@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=4 uid="uid://c1udr61jmkh68"]
+[gd_scene load_steps=5 format=4 uid="uid://c1udr61jmkh68"]
 
 [ext_resource type="PackedScene" uid="uid://dy335p6keujbx" path="res://scenes/world/map.tscn" id="1_34yt8"]
 [ext_resource type="TileSet" uid="uid://def7m4nhhqg6a" path="res://resources/tilesets/crypt.tres" id="2_eu7yb"]
+[ext_resource type="PackedScene" uid="uid://depsu0p2x1g45" path="res://scenes/world/map_exit.tscn" id="3_un33m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kvkhb"]
+size = Vector2(144, 102)
 
 [node name="Map" instance=ExtResource("1_34yt8")]
 
@@ -26,5 +30,30 @@ scale = Vector2(2, 2)
 tile_map_data = PackedByteArray("AAAGAAAAAAAAABoAAAAFAAAAAAAAABoAAAAEAAAAAAAAABoAAAADAAAAAAAAABoAAAACAAAAAAAAABoAAAABAAAAAAAAABoAAAAAAAAAAAAAABoAAAAIAAAAAAAAABoAAAAJAAAAAAAAABoAAAAKAAAAAAAAABoAAAALAAAAAAAAABoAAAAMAAAAAAAAABoAAAANAAAAAAAAABoAAAAOAAAAAAAAABoAAAAOAAYAAAACABoAAAAOAAcAAAACABoAAAAAAAcAAAAEABoAAAAAAAYAAAAEABoAAAAAAAUAAAAEABoAAAAAAAMAAAAEABoAAAAAAAIAAAAEABoAAAAAAAEAAAAEABoAAAAHAAAAAAAAABoAAAA=")
 tile_set = ExtResource("2_eu7yb")
 
+<<<<<<< Updated upstream
 [node name="start" parent="EntryPoints" index="0"]
 position = Vector2(480, 160)
+=======
+[node name="Exit" parent="Exits" index="0" instance=ExtResource("3_un33m")]
+position = Vector2(482, 78)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exits/Exit" index="0"]
+shape = SubResource("RectangleShape2D_kvkhb")
+debug_color = Color(0.230117, 0.774673, 0, 0.42)
+
+[node name="Exit2" parent="Exits" index="1" instance=ExtResource("3_un33m")]
+position = Vector2(989, 262)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exits/Exit2" index="0"]
+position = Vector2(0, 27)
+shape = SubResource("RectangleShape2D_kvkhb")
+debug_color = Color(0.230117, 0.774673, 0, 0.42)
+
+[node name="Camera" parent="." index="4"]
+limit_left = -60
+limit_top = -60
+limit_right = 1015
+limit_bottom = 570
+>>>>>>> Stashed changes
