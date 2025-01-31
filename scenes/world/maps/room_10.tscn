@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=4 uid="uid://3jrlnl6hhd15"]
+[gd_scene load_steps=6 format=4 uid="uid://3jrlnl6hhd15"]
 
 [ext_resource type="PackedScene" uid="uid://dy335p6keujbx" path="res://scenes/world/map.tscn" id="1_6k3mp"]
 [ext_resource type="TileSet" uid="uid://def7m4nhhqg6a" path="res://resources/tilesets/crypt.tres" id="2_eu8js"]
 [ext_resource type="PackedScene" uid="uid://depsu0p2x1g45" path="res://scenes/world/map_exit.tscn" id="3_enbvg"]
+[ext_resource type="PackedScene" uid="uid://byve87xjow6s" path="res://scenes/entities/enemies/reaper/reaper.tscn" id="4_inlmn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xtuug"]
 size = Vector2(128, 128)
@@ -56,3 +57,20 @@ limit_left = -60
 limit_top = -60
 limit_right = 1530
 limit_bottom = 1590
+
+[node name="Reaper" parent="." index="5" instance=ExtResource("4_inlmn")]
+position = Vector2(736, 560)
+
+[node name="Columns" type="Node2D" parent="." index="6"]
+
+[node name="TopLeft" type="Marker2D" parent="Columns" index="0"]
+position = Vector2(448, 456)
+
+[node name="TopRight" type="Marker2D" parent="Columns" index="1"]
+position = Vector2(1024, 456)
+
+[node name="BottomLeft" type="Marker2D" parent="Columns" index="2"]
+position = Vector2(448, 1000)
+
+[node name="BottomRight" type="Marker2D" parent="Columns" index="3"]
+position = Vector2(1024, 1000)

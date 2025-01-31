@@ -1,17 +1,23 @@
-[gd_scene load_steps=22 format=3 uid="uid://byve87xjow6s"]
+[gd_scene load_steps=31 format=3 uid="uid://byve87xjow6s"]
 
-[ext_resource type="PackedScene" uid="uid://y28itm0e1koh" path="res://scenes/entities/enemies/enemy_base/enemy.tscn" id="1_mjkf8"]
-[ext_resource type="Script" path="res://scenes/entities/enemies/enemy_base/states/chase.gd" id="2_7eirt"]
+[ext_resource type="Script" path="res://scenes/entities/enemies/reaper/reaper.gd" id="1_k0chx"]
+[ext_resource type="PackedScene" uid="uid://bymt3484vhpqx" path="res://scenes/components/FSM/finite_state_machine.tscn" id="2_fvomk"]
 [ext_resource type="Texture2D" uid="uid://ciau6cdbwqtfw" path="res://assets/sprites/entities/Reaper_Sheet_Edit_5.png" id="2_wpq7c"]
 [ext_resource type="PackedScene" uid="uid://ggje00ded7ue" path="res://scenes/weapons/scythe.tscn" id="3_2y1y3"]
+[ext_resource type="Script" path="res://scenes/entities/enemies/reaper/states/idle.gd" id="3_ng8wu"]
+[ext_resource type="PackedScene" uid="uid://8p244x1dnspa" path="res://scenes/components/health_component.tscn" id="4_6f16y"]
+[ext_resource type="Script" path="res://scenes/entities/enemies/reaper/states/melee.gd" id="4_k140k"]
 [ext_resource type="SpriteFrames" uid="uid://cvqfsru3wegq" path="res://resources/sprite_frames/scythe_enemy.tres" id="4_o0gbm"]
+[ext_resource type="Script" path="res://scenes/entities/enemies/reaper/states/projectile.gd" id="5_p3hxi"]
+[ext_resource type="PackedScene" uid="uid://m4b6gk7f36vg" path="res://scenes/entities/health_bar.tscn" id="5_pbsfm"]
+[ext_resource type="PackedScene" uid="uid://sgkunku4x031" path="res://scenes/components/hurtbox_component.tscn" id="6_tik2j"]
+[ext_resource type="Script" path="res://scenes/entities/enemies/reaper/states/rest.gd" id="6_un1y2"]
+[ext_resource type="Script" path="res://scenes/entities/enemies/reaper/states/summon.gd" id="7_o3yi4"]
+[ext_resource type="Script" path="res://scenes/entities/enemies/reaper/states/death.gd" id="8_qphyx"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h8kj3"]
 radius = 24.0
 height = 144.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_snvt8"]
-radius = 1472.02
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f7yn5"]
 atlas = ExtResource("2_wpq7c")
@@ -109,41 +115,83 @@ animations = [{
 radius = 16.0514
 height = 100.665
 
-[node name="Reaper" node_paths=PackedStringArray("weapon") instance=ExtResource("1_mjkf8")]
-weapon = NodePath("Scythe")
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ccbss"]
+radius = 23.1823
+height = 101.011
 
-[node name="Chase" type="Node" parent="FiniteStateMachine" index="3"]
-script = ExtResource("2_7eirt")
+[node name="Reaper" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("1_k0chx")
 
-[node name="HealthComponent" parent="." index="1"]
+[node name="FiniteStateMachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("2_fvomk")]
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("3_ng8wu")
+
+[node name="Rest" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("6_un1y2")
+
+[node name="Melee" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("4_k140k")
+
+[node name="Projectile" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("5_p3hxi")
+
+[node name="Summon" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("7_o3yi4")
+
+[node name="Death" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("8_qphyx")
+
+[node name="HealthComponent" parent="." instance=ExtResource("4_6f16y")]
 max_health = 20.0
 current_health = 20.0
 
-[node name="Hurtbox" parent="." index="4" node_paths=PackedStringArray("visual_node")]
+[node name="HealthBar" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_pbsfm")]
+visible = false
+offset_left = -64.0
+offset_top = -56.0
+offset_right = 64.0
+offset_bottom = -29.0
+health_component = NodePath("../HealthComponent")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
+radius = 60.0
+debug_enabled = true
+
+[node name="Hurtbox" parent="." node_paths=PackedStringArray("health_component", "visual_node") instance=ExtResource("6_tik2j")]
 monitoring = false
 monitorable = false
+health_component = NodePath("../HealthComponent")
 visual_node = NodePath("../AnimatedSprite2D")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource("CapsuleShape2D_h8kj3")
 
-[node name="CollisionShape2D" parent="DetectionRange" index="0"]
-shape = SubResource("CircleShape2D_snvt8")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="7"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_a762m")
 autoplay = "default"
 frame_progress = 0.83411
 
-[node name="Scythe_Hitbox#CollisionShape2D" type="CollisionShape2D" parent="." index="8"]
-position = Vector2(64, 8)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 32)
 rotation = 1.57079
 shape = SubResource("CapsuleShape2D_gpfxx")
 
-[node name="Scythe" parent="." index="9" instance=ExtResource("3_2y1y3")]
+[node name="Scythe" parent="." instance=ExtResource("3_2y1y3")]
 
 [node name="AnimatedSprite2D" parent="Scythe" index="0"]
 position = Vector2(40, 1.8332e-12)
 sprite_frames = ExtResource("4_o0gbm")
+animation = &"active"
+autoplay = ""
+
+[node name="CollisionShape2D" parent="Scythe/AnimatedSprite2D/Hitbox" index="0"]
+position = Vector2(25, 18)
+rotation = -3.14159
+shape = SubResource("CapsuleShape2D_ccbss")
 
 [editable path="Scythe"]

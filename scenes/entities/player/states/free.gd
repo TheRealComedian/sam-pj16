@@ -19,7 +19,7 @@ func get_movement_direction() -> Vector2:
 
 func _input(event: InputEvent):
 	if owner.input_disabled: return
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
 		Transitioned.emit(self, 'Attacking')
 
 func _physics_process(delta):

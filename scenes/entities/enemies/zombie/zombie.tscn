@@ -1,15 +1,19 @@
-[gd_scene load_steps=23 format=3 uid="uid://bap3cwsoe2ooh"]
+[gd_scene load_steps=25 format=3 uid="uid://bap3cwsoe2ooh"]
 
 [ext_resource type="PackedScene" uid="uid://y28itm0e1koh" path="res://scenes/entities/enemies/enemy_base/enemy.tscn" id="1_d43yx"]
 [ext_resource type="Script" path="res://scenes/entities/enemies/enemy_base/states/chase.gd" id="2_uurt1"]
 [ext_resource type="Animation" uid="uid://cpal1sha8q41s" path="res://resources/animations/skeleton_walk.res" id="3_cv0of"]
 [ext_resource type="SpriteFrames" uid="uid://cjvdj84i5gcds" path="res://resources/sprite_frames/mace_enemy.tres" id="5_llgxt"]
+[ext_resource type="SpriteFrames" uid="uid://rq25ghbwlpe3" path="res://resources/sprite_frames/mace_trail_enemy.tres" id="7_e8n16"]
 [ext_resource type="PackedScene" uid="uid://d3f0alvle4il3" path="res://scenes/weapons/mace.tscn" id="12_eswwt"]
 [ext_resource type="Texture2D" uid="uid://bm47crp7oaf0j" path="res://assets/sprites/entities/ZOMBIE-Sheet-Outlined.png" id="13_l5jx3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wenln"]
 radius = 32.0
 height = 112.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pnnph"]
+radius = 256.125
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bpe8e"]
 atlas = ExtResource("13_l5jx3")
@@ -113,6 +117,8 @@ _data = {
 }
 
 [node name="Zombie" node_paths=PackedStringArray("weapon") instance=ExtResource("1_d43yx")]
+collision_layer = 4
+collision_mask = 7
 movement_speed = 100
 weapon = NodePath("Mace")
 
@@ -124,6 +130,9 @@ visual_node = NodePath("../AnimatedSprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" index="0"]
 shape = SubResource("CapsuleShape2D_wenln")
+
+[node name="CollisionShape2D" parent="DetectionRange" index="0"]
+shape = SubResource("CircleShape2D_pnnph")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="7"]
 position = Vector2(0, -0.413236)
@@ -143,8 +152,10 @@ libraries = {
 [node name="Mace" parent="." index="10" instance=ExtResource("12_eswwt")]
 
 [node name="AnimatedSprite2D" parent="Mace" index="0"]
-position = Vector2(56.0001, 0.000200272)
+position = Vector2(35, 0)
 sprite_frames = ExtResource("5_llgxt")
-frame_progress = 0.0
+
+[node name="Trail" parent="Mace/AnimatedSprite2D" index="1"]
+sprite_frames = ExtResource("7_e8n16")
 
 [editable path="Mace"]

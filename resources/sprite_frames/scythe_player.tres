@@ -111,7 +111,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_rvf0c")
 }],
 "loop": true,
-"name": &"idle",
+"name": &"inactive",
 "speed": 10.0
 }, {
 "frames": [{

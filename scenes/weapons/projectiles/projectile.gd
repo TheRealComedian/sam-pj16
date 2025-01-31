@@ -24,7 +24,7 @@ func _ready():
 		sprite.play('player')
 	
 	direction=Vector2.RIGHT.rotated(global_rotation)
-	sprite.play('default')
+	#sprite.play('default')
 	timer.timeout.connect(queue_free)
 	timer.start(lifetime)
 

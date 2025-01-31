@@ -17,24 +17,41 @@ var current_animation_tween: Tween
 var anim_duration = 0.6
 
 func cancel_attack():
+	animation_player.stop()
+	animation_player.play('RESET')
+func cancel_attack_tween():
 	if owner.weapon.current_animation_tween:
 		owner.weapon.current_animation_tween.kill()
-		owner.weapon.hitbox_shape.disabled = true
+		owner.weapon.hitbox.disabled = true
 
 func attack():
 	sprite.play('windup')
-	await Util.wait(self.anim_duration).timeout
-	#current_animation_tween = get_tree().create_tween()
-	#current_animation_tween.tween_property(self, 'rotation', self.rotation-1.1, 0.1)
-	#await current_animation_tween.finished
+	await sprite.animation_finished
 	
-	#hitbox_shape.disabled = false
 	sprite.play('active')
 	animation_player.play("slash")
-	#current_animation_tween = get_tree().create_tween()
-	#current_animation_tween.tween_property(self, 'rotation', self.rotation+2.1, swipe_duration)
-	#await current_animation_tween.finished
+	await animation_player.animation_finished
 	
-	#hitbox_shape.disabled = true
 	sprite.play('inactive')
-	#await Util.wait(self.cooldown_duration).timeout
+	await Util.wait(self.cooldown_duration).timeout
+
+func attack_tween():
+	if current_animation_tween and current_animation_tween.is_running(): return
+	print("ATTACK TWEEN")
+	look_at(Global.player.global_position)
+	current_animation_tween = get_tree().create_tween()
+	current_animation_tween.tween_property(self, 'rotation', self.rotation-1.1, 0.1)
+	await current_animation_tween.finished
+	sprite.play('windup')
+	await sprite.animation_finished
+	
+	hitbox_shape.disabled = false
+	sprite.play('active')
+	#animation_player.play("slash")
+	current_animation_tween = get_tree().create_tween()
+	current_animation_tween.tween_property(self, 'rotation', self.rotation+2.1, swipe_duration)
+	await current_animation_tween.finished
+	
+	hitbox_shape.disabled = true
+	sprite.play('inactive')
+	await Util.wait(self.cooldown_duration).timeout

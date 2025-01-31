@@ -10,7 +10,7 @@ func _ready():
 	
 	#NOTE: this may seem obsolete, but trust me having a separate global signal for the main scene's readiness prevents a lot of issues using the built in ready signal causes
 	SignalBus.main_scene_ready.emit()
-	Map.set_as_current_map(load('res://scenes/world/maps/room_7.tscn'))
+	Map.set_as_current_map(load('res://scenes/world/maps/room_10.tscn'))
 
 
 #func _process(_delta):

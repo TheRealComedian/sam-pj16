@@ -48,7 +48,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_bmgdd")
 }],
-"loop": true,
+"loop": false,
 "name": &"active",
 "speed": 5.0
 }, {

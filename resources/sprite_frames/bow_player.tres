@@ -88,7 +88,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1day8")
 }],
-"loop": true,
+"loop": false,
 "name": &"active",
 "speed": 5.0
 }, {
@@ -127,7 +127,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_0pgo7")
 }],
 "loop": true,
-"name": &"inactvie",
+"name": &"inactive",
 "speed": 10.0
 }, {
 "frames": [{
@@ -140,9 +140,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_44nry")
 }],
-"loop": true,
+"loop": false,
 "name": &"winddown",
-"speed": 5.0
+"speed": 18.0
 }, {
 "frames": [{
 "duration": 1.0,

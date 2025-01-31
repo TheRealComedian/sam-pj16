@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://d3f0alvle4il3"]
+[gd_scene load_steps=24 format=3 uid="uid://d3f0alvle4il3"]
 
 [ext_resource type="Script" path="res://scenes/weapons/mace.gd" id="1_v10l8"]
 [ext_resource type="Texture2D" uid="uid://dcjkbeu6gpu4y" path="res://assets/sprites/weapons/old weapon sprites/Mace_Transform_Frames4.png" id="2_ygc67"]
@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c5fhpvh6sj6ls" path="res://assets/sprites/weapons/old weapon sprites/Mace_Transform_Frames2.png" id="5_1775n"]
 [ext_resource type="Texture2D" uid="uid://cc5q07k4c5ysp" path="res://assets/sprites/weapons/old weapon sprites/Mace_Transform_Frames3.png" id="6_x8bps"]
 [ext_resource type="PackedScene" uid="uid://1rq7hjdwqhix" path="res://scenes/components/hitbox_component.tscn" id="7_1nuh5"]
-[ext_resource type="Texture2D" uid="uid://b65yxtwfj1boj" path="res://assets/sprites/weapons/Mace Sheet Alpha.png" id="8_rbuqo"]
+[ext_resource type="SpriteFrames" uid="uid://cmq15ln7s5ibx" path="res://resources/sprite_frames/mace_trail_player.tres" id="8_abngp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_14d22"]
 atlas = ExtResource("3_kw3e7")
@@ -56,7 +56,7 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 25.0,
 "texture": SubResource("AtlasTexture_14d22")
 }, {
 "duration": 1.0,
@@ -115,7 +115,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("2_ygc67")
 }],
-"loop": true,
+"loop": false,
 "name": &"windup",
 "speed": 5.0
 }]
@@ -123,42 +123,6 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lrx43"]
 radius = 14.0
 height = 28.0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1c4as"]
-atlas = ExtResource("8_rbuqo")
-region = Rect2(96, 64, 32, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kslaq"]
-atlas = ExtResource("8_rbuqo")
-region = Rect2(128, 64, 32, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8kp6s"]
-atlas = ExtResource("8_rbuqo")
-region = Rect2(160, 64, 32, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nnb08"]
-atlas = ExtResource("8_rbuqo")
-region = Rect2(192, 64, 32, 64)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_8k3dj"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1c4as")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kslaq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8kp6s")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nnb08")
-}],
-"loop": true,
-"name": &"default",
-"speed": 31.0
-}]
 
 [sub_resource type="Animation" id="Animation_vx5kd"]
 length = 0.001
@@ -322,23 +286,26 @@ _data = {
 "slow_slash": SubResource("Animation_c3oue")
 }
 
-[node name="Mace" type="Node2D" node_paths=PackedStringArray("hitbox", "sprite")]
+[node name="Mace" type="Node2D" node_paths=PackedStringArray("hitbox", "sprite", "animation")]
+scale = Vector2(1.30787, 1.30787)
 script = ExtResource("1_v10l8")
 hitbox = NodePath("AnimatedSprite2D/Hitbox/CollisionShape2D")
 sprite = NodePath("AnimatedSprite2D")
+animation = NodePath("AnimationPlayer")
+disable_input = true
+speed_modifier = 0.2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 rotation = -1.57079
 sprite_frames = SubResource("SpriteFrames_kls4t")
-animation = &"active"
+animation = &"inactive"
 autoplay = "inactive"
-frame_progress = 0.650055
 offset = Vector2(0, 22)
 
 [node name="Hitbox" parent="AnimatedSprite2D" instance=ExtResource("7_1nuh5")]
 position = Vector2(1.5299e-06, -35)
 rotation = 1.5708
-damage = 1.0
+damage = 3.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Hitbox"]
 position = Vector2(73, 0)
@@ -352,7 +319,7 @@ visible = false
 show_behind_parent = true
 position = Vector2(14, 19)
 rotation = -0.203284
-sprite_frames = SubResource("SpriteFrames_8k3dj")
+sprite_frames = ExtResource("8_abngp")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../AnimatedSprite2D")

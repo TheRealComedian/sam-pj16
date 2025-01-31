@@ -4,13 +4,19 @@
 [ext_resource type="PackedScene" uid="uid://c45r2p2cfi14k" path="res://scenes/weapons/projectiles/arrow.tscn" id="2_8usm0"]
 [ext_resource type="SpriteFrames" uid="uid://dsjtu84m5byhg" path="res://resources/sprite_frames/bow_player.tres" id="3_u8hli"]
 
-[node name="Bow" type="Node2D" node_paths=PackedStringArray("sprite")]
+[node name="Bow" type="Node2D" node_paths=PackedStringArray("sprite", "animation")]
 script = ExtResource("1_usdhu")
 projectile = ExtResource("2_8usm0")
 arrow_count = 1
+arc = 58.846
 sprite = NodePath("AnimatedSprite2D")
+animation = NodePath("AnimationPlayer")
+speed_modifier = 0.3
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 rotation = -1.57138
 sprite_frames = ExtResource("3_u8hli")
-animation = &"windup"
+animation = &"inactive"
+autoplay = "inactive"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

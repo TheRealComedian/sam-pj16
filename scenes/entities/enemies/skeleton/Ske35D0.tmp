@@ -115,7 +115,6 @@ _data = {
 
 [node name="Skeleton" node_paths=PackedStringArray("weapon") instance=ExtResource("1_oeulr")]
 position = Vector2(0, -0.413236)
-movement_speed = 100
 weapon = NodePath("Sword")
 
 [node name="Chase" type="Node" parent="FiniteStateMachine" index="2"]
@@ -151,7 +150,8 @@ metadata/_edit_group_ = true
 [node name="AnimatedSprite2D" parent="Sword" index="0"]
 position = Vector2(32, 0)
 sprite_frames = ExtResource("5_q26gx")
-frame_progress = 0.0
+animation = &"inactive"
+autoplay = "inactive"
 
 [node name="Trail" parent="Sword/AnimatedSprite2D" index="1"]
 sprite_frames = ExtResource("7_k7gtw")

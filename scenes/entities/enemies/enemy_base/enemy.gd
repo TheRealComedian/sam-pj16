@@ -21,9 +21,10 @@ func health_changed(_prev: int, new: int):
 		return
 	FSM.force_update('Hit')
 	
-## Idle
-## Wander
-## Chase
-## Reposition
-## Attack
-## Death
+#REAPER
+# idle (before fight) > intro (scripted animations)
+# rest (moves to center of map and stops moving)
+# melee (chases player)
+# perching (moves to column)
+# projectiles (fire projectiles in waves at player)
+# summon (summons enemies)

@@ -13,5 +13,5 @@ func enter():
 
 func continue_game():
 	Session.current_weapon = Session.last_hit_weapon
-	Map.set_as_current_map(load('res://scenes/world/maps/crypt_vertical.tscn'))
+	Map.set_as_current_map(load('res://scenes/world/maps/room_1.tscn'))
 	Transitioned.emit(self, 'Hidden')

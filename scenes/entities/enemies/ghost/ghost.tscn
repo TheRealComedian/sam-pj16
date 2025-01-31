@@ -106,11 +106,11 @@ animations = [{
 }]
 
 [node name="Ghost" node_paths=PackedStringArray("weapon") instance=ExtResource("1_k4tmn")]
-player_detected_state = "Reposition"
+player_detected_state = "Target"
 movement_speed = 0
 weapon = NodePath("Bow")
 
-[node name="Reposition" type="Node" parent="FiniteStateMachine" index="2"]
+[node name="Target" type="Node" parent="FiniteStateMachine" index="2"]
 script = ExtResource("2_76pe3")
 
 [node name="Hurtbox" parent="." index="4" node_paths=PackedStringArray("visual_node")]
@@ -118,6 +118,9 @@ visual_node = NodePath("../AnimatedSprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" index="0"]
 shape = SubResource("CapsuleShape2D_p024h")
+
+[node name="DetectionRange" parent="." index="5"]
+visible = false
 
 [node name="CollisionShape2D" parent="AttackRange" index="0"]
 shape = SubResource("CircleShape2D_0vuiu")
@@ -127,10 +130,10 @@ sprite_frames = SubResource("SpriteFrames_r2dfi")
 frame_progress = 0.375729
 
 [node name="Bow" parent="." index="8" instance=ExtResource("3_jl1ix")]
-position = Vector2(27, 0)
 
 [node name="AnimatedSprite2D" parent="Bow" index="0"]
 position = Vector2(40, -1.86265e-09)
 sprite_frames = ExtResource("4_i1frw")
+animation = &"active"
 
 [editable path="Bow"]

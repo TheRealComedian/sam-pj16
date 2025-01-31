@@ -1,6 +1,10 @@
 class_name Weapon extends Node2D
 
 @export var sprite: AnimatedSprite2D
+@export var animation: AnimationPlayer
+@export var disable_input: bool = false
+@export var speed_modifier: float = 1
+
 var user: Character
 
 func _ready():

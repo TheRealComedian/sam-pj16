@@ -1,0 +1,39 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://cmq15ln7s5ibx"]
+
+[ext_resource type="Texture2D" uid="uid://b65yxtwfj1boj" path="res://assets/sprites/weapons/Mace Sheet Alpha.png" id="1_aqj84"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1c4as"]
+atlas = ExtResource("1_aqj84")
+region = Rect2(96, 64, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kslaq"]
+atlas = ExtResource("1_aqj84")
+region = Rect2(128, 64, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8kp6s"]
+atlas = ExtResource("1_aqj84")
+region = Rect2(160, 64, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nnb08"]
+atlas = ExtResource("1_aqj84")
+region = Rect2(192, 64, 32, 64)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1c4as")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kslaq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8kp6s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nnb08")
+}],
+"loop": true,
+"name": &"default",
+"speed": 31.0
+}]

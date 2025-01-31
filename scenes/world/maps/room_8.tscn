@@ -31,7 +31,7 @@ tile_map_data = PackedByteArray("AAARABMAAAACABoAAAARABQAAAACABoAAAARABUAAAACABo
 tile_set = ExtResource("2_retak")
 
 [node name="start" parent="EntryPoints" index="0"]
-position = Vector2(720, 912)
+position = Vector2(592, 712)
 
 [node name="south" type="Marker2D" parent="EntryPoints" index="1"]
 position = Vector2(288, 1280)
