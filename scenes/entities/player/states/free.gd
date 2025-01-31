@@ -23,5 +23,8 @@ func _input(event: InputEvent):
 		Transitioned.emit(self, 'Attacking')
 
 func _physics_process(delta):
+	if Input.is_action_just_pressed('dash'):
+		owner.dash()
+	
 	if owner.weapon and !owner.input_disabled:
 		owner.weapon.look_at(Global.game.get_global_mouse_position())

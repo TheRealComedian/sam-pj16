@@ -16,7 +16,6 @@ func enter():
 
 func physics_update(delta: float):
 	if not start_checking: return
-	print((owner.detection_range as Area2D).get_overlapping_bodies())
 	if Global.player in (owner.detection_range as Area2D).get_overlapping_bodies():
 		Transitioned.emit(self, owner.player_detected_state)
 		return

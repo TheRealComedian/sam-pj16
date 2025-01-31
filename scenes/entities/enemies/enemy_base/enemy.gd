@@ -19,7 +19,7 @@ func health_changed(_prev: int, new: int):
 	if new == 0:
 		FSM.force_update('Death')
 		return
-	FSM.force_update('Hit')
+	hurtbox.invincible_period(1.5)
 	
 #REAPER
 # idle (before fight) > intro (scripted animations)

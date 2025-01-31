@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=4 uid="uid://bnuofuahphsud"]
+[gd_scene load_steps=6 format=4 uid="uid://bnuofuahphsud"]
 
 [ext_resource type="PackedScene" uid="uid://dy335p6keujbx" path="res://scenes/world/map.tscn" id="1_ec2cu"]
 [ext_resource type="TileSet" uid="uid://def7m4nhhqg6a" path="res://resources/tilesets/crypt.tres" id="2_qx8d0"]
 [ext_resource type="PackedScene" uid="uid://depsu0p2x1g45" path="res://scenes/world/map_exit.tscn" id="3_mk5iy"]
+[ext_resource type="PackedScene" uid="uid://bpo6yc7rnj2me" path="res://scenes/entities/enemies/ghost/ghost.tscn" id="4_3y42t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r54an"]
 size = Vector2(128, 128)
@@ -64,3 +65,6 @@ limit_left = -50
 limit_top = -50
 limit_right = 1970
 limit_bottom = 630
+
+[node name="Ghost" parent="." index="5" instance=ExtResource("4_3y42t")]
+position = Vector2(1440, 264)

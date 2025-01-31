@@ -1,8 +1,11 @@
-[gd_scene load_steps=5 format=4 uid="uid://cw4br85yfe4km"]
+[gd_scene load_steps=8 format=4 uid="uid://cw4br85yfe4km"]
 
 [ext_resource type="PackedScene" uid="uid://dy335p6keujbx" path="res://scenes/world/map.tscn" id="1_etdd7"]
 [ext_resource type="TileSet" uid="uid://def7m4nhhqg6a" path="res://resources/tilesets/crypt.tres" id="2_t7h3k"]
 [ext_resource type="PackedScene" uid="uid://depsu0p2x1g45" path="res://scenes/world/map_exit.tscn" id="3_vemm0"]
+[ext_resource type="PackedScene" uid="uid://cpbk8gj2mj1ea" path="res://scenes/entities/enemies/skeleton/Skeleton.tscn" id="4_e7nm5"]
+[ext_resource type="PackedScene" uid="uid://bpo6yc7rnj2me" path="res://scenes/entities/enemies/ghost/ghost.tscn" id="5_c7vqh"]
+[ext_resource type="PackedScene" uid="uid://bap3cwsoe2ooh" path="res://scenes/entities/enemies/zombie/zombie.tscn" id="6_0avrp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ll2bw"]
 size = Vector2(128, 128)
@@ -67,3 +70,18 @@ limit_bottom = 1850
 
 [node name="CanvasModulate" parent="." index="4"]
 position = Vector2(0, -8)
+
+[node name="Skeleton" parent="." index="5" instance=ExtResource("4_e7nm5")]
+position = Vector2(136, 631.587)
+
+[node name="Skeleton2" parent="." index="6" instance=ExtResource("4_e7nm5")]
+position = Vector2(824, 1015.59)
+
+[node name="Ghost" parent="." index="7" instance=ExtResource("5_c7vqh")]
+position = Vector2(472, 272)
+
+[node name="Zombie" parent="." index="8" instance=ExtResource("6_0avrp")]
+position = Vector2(480, 888)
+
+[node name="Skeleton3" parent="." index="9" instance=ExtResource("4_e7nm5")]
+position = Vector2(128, 1343.59)

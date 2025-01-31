@@ -34,8 +34,8 @@ func melee_attack():
 	animation_player.play("slash")
 	await animation_player.animation_finished
 	
-func projectile_attack():
-	if arrow_count == 1:
+func projectile_attack(count: int = arrow_count):
+	if count == 1:
 		Projectile.spawn_projectile(
 			projectile, 
 			self.global_position, 
@@ -43,7 +43,7 @@ func projectile_attack():
 			self.user
 		)
 	else:
-		for i in arrow_count:
+		for i in count:
 			var arc_rad = deg_to_rad(arc)
 			var increment=arc_rad/(arrow_count-1)
 			Projectile.spawn_projectile(
@@ -52,8 +52,10 @@ func projectile_attack():
 				global_rotation + increment*i - arc_rad/2,
 				self.user
 			)
+	sprite.play('inactive')
+	await Util.wait(self.cooldown_duration).timeout
 
-func attack_tween():
+func windup_tween():
 	if current_animation_tween and current_animation_tween.is_running(): return
 	print("ATTACK TWEEN")
 	look_at(Global.player.global_position)
@@ -64,6 +66,7 @@ func attack_tween():
 	await sprite.animation_finished
 	await Util.wait(1).timeout
 	
+func melee_tween():
 	hitbox.disabled = false
 	sprite.play('active')
 	#animation_player.play("slash")
@@ -74,6 +77,30 @@ func attack_tween():
 	hitbox.disabled = true
 	sprite.play('inactive')
 	await Util.wait(self.cooldown_duration).timeout
+
+func full_melee_tween():
+	if current_animation_tween and current_animation_tween.is_running(): return
+	print("ATTACK TWEEN")
+	look_at(Global.player.global_position)
+	current_animation_tween = get_tree().create_tween()
+	current_animation_tween.tween_property(self, 'rotation', self.rotation-1.1, 0.1)
+	await current_animation_tween.finished
+	sprite.play('windup')
+	await sprite.animation_finished
+	
+	hitbox.disabled = false
+	sprite.play('active')
+	#animation_player.play("slash")
+	current_animation_tween = get_tree().create_tween()
+	current_animation_tween.tween_property(self, 'rotation', self.rotation+2.1, swipe_duration)
+	await current_animation_tween.finished
+	
+	
+	hitbox.disabled = true
+	sprite.play('inactive')
+	await Util.wait(self.cooldown_duration).timeout
+	print(' attackl tween finished')
+	
 
 func attack():
 	sprite.play('windup')

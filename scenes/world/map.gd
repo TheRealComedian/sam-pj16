@@ -12,6 +12,7 @@ func _ready():
 
 func check_for_enemies() -> bool:
 	for child in get_children():
+		if child is Reaper: continue
 		if child is Enemy:
 			return true
 	return false
@@ -64,16 +65,15 @@ static func load_room(room: ROOM) -> PackedScene:
 		ROOM.TEN	: return map_10
 	return map_1
 
-static func set_as_current_map(map_resource: PackedScene, entry_point: String = 'start'):
-	
-	
+static func set_as_current_map(map_resource: PackedScene, entry_point: String = 'start', do_transition: bool = true):
+
 	# transition out
 	if Global.player:
 		Global.player.input_disabled = true
-	#Global.transition.play('out')
-	#await Global.transition.animation_finished
 	
-	
+	if do_transition:
+		Global.transition.play('out')
+		await Global.transition.animation_finished
 
 	
 	# save player data
@@ -106,6 +106,7 @@ static func set_as_current_map(map_resource: PackedScene, entry_point: String = 
 	Global.player.global_position = new_map.entry_points.get_node(entry_point).global_position
 	
 	# transition in
-	#Global.transition.play('in')
-	#await Global.transition.animation_finished
+	if do_transition:
+		Global.transition.play('in')
+		await Global.transition.animation_finished
 	Global.player.input_disabled = false

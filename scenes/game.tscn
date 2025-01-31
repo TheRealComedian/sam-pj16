@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://7wibdi5xwkt"]
+[gd_scene load_steps=38 format=3 uid="uid://7wibdi5xwkt"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_ilbpj"]
 [ext_resource type="Script" path="res://scenes/ui/hud/hud.gd" id="2_nyb4e"]
@@ -12,9 +12,12 @@
 [ext_resource type="Shortcut" uid="uid://b6qukba6pvtra" path="res://resources/input/shortcuts/ui_back.tres" id="8_d1wrf"]
 [ext_resource type="Shortcut" uid="uid://b755kkr23w728" path="res://resources/input/key/escape.tres" id="8_ik34c"]
 [ext_resource type="PackedScene" uid="uid://bv5igxgun5x6e" path="res://scenes/components/FSM/transition_button.tscn" id="8_ou0a1"]
+[ext_resource type="Script" path="res://scenes/ui/menu/title.gd" id="8_s85to"]
+[ext_resource type="Texture2D" uid="uid://drvtc05efj8xq" path="res://assets/visualscenery/REVENANT Menu.png" id="9_pdy8o"]
 [ext_resource type="Script" path="res://scenes/ui/menu/game_over.gd" id="12_5a466"]
 [ext_resource type="Texture2D" uid="uid://bpsdqq1t8lq5n" path="res://assets/sprites/ui/transition.png" id="13_n1rrx"]
 [ext_resource type="Script" path="res://scenes/ui/transition.gd" id="13_ye7qn"]
+[ext_resource type="FontFile" uid="uid://ctkkcns8v7ylf" path="res://assets/MementoMemoir.ttf" id="17_xata4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kyprb"]
 atlas = ExtResource("4_ktiyo")
@@ -131,6 +134,9 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_im7hk"]
+bg_color = Color(0, 0.121569, 0.0941176, 1)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_jk3v1"]
 atlas = ExtResource("5_1cxmy")
 region = Rect2(0, 0, 256, 256)
@@ -194,6 +200,7 @@ expand_mode = 3
 
 [node name="Transition" type="Control" parent="Overlay"]
 process_mode = 3
+z_index = 35
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -230,8 +237,54 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("4_v2mg7")
-initial_state = NodePath("Hidden")
+initial_state = NodePath("Title")
 metadata/_edit_lock_ = true
+
+[node name="Title" type="Control" parent="Overlay/Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("8_s85to")
+start_room = 3
+
+[node name="Panel" type="Panel" parent="Overlay/Menu/Title"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_im7hk")
+
+[node name="RevenantMenu" type="Sprite2D" parent="Overlay/Menu/Title"]
+position = Vector2(960, 544)
+scale = Vector2(3, 3.02222)
+texture = ExtResource("9_pdy8o")
+
+[node name="Button" type="Button" parent="Overlay/Menu/Title"]
+layout_mode = 0
+offset_left = 1168.0
+offset_top = 720.0
+offset_right = 1393.0
+offset_bottom = 838.0
+theme_override_font_sizes/font_size = 80
+text = "Begin"
+
+[node name="Label" type="Label" parent="Overlay/Menu/Title"]
+visible = false
+layout_mode = 0
+offset_left = 560.0
+offset_top = 696.0
+offset_right = 1516.0
+offset_bottom = 1037.0
+theme_override_font_sizes/font_size = 60
+text = "\"Even now, I remember his face.\"
+\"The Turncoat. My murderer.\"
+\"How smug he looked...\"
+\"Safe upon that precipice...\""
 
 [node name="Hidden" type="Control" parent="Overlay/Menu"]
 visible = false
@@ -360,15 +413,27 @@ grow_vertical = 2
 script = ExtResource("12_5a466")
 metadata/_edit_lock_ = true
 
+[node name="Panel2" type="Panel" parent="Overlay/Menu/GameOver"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_im7hk")
+
 [node name="Label" type="Label" parent="Overlay/Menu/GameOver"]
-layout_mode = 0
-anchor_left = 0.166667
-anchor_top = 0.177778
-anchor_right = 0.821959
-anchor_bottom = 0.475348
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1125
+anchor_top = 0.155556
+anchor_right = 0.767792
+anchor_bottom = 0.453126
 offset_right = -1166.16
 offset_bottom = -298.376
-scale = Vector2(13.6757, 13.9729)
+scale = Vector2(15.5968, 23.6946)
+theme_override_colors/font_color = Color(0.643542, 1, 0.529456, 1)
+theme_override_fonts/font = ExtResource("17_xata4")
 text = "GAME OVER"
 metadata/_edit_use_anchors_ = true
 
@@ -379,8 +444,9 @@ anchor_left = 0.3
 anchor_top = 0.518519
 anchor_right = 0.70625
 anchor_bottom = 0.602778
+theme_override_fonts/font = ExtResource("17_xata4")
 theme_override_font_sizes/font_size = 60
-text = "Press [ENTER] to Continue"
+text = "Continue"
 metadata/_edit_use_anchors_ = true
 
 [node name="Cursor" type="AnimatedSprite2D" parent="."]

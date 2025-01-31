@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=4 uid="uid://vuq64lhbxy2s"]
+[gd_scene load_steps=7 format=4 uid="uid://vuq64lhbxy2s"]
 
 [ext_resource type="PackedScene" uid="uid://dy335p6keujbx" path="res://scenes/world/map.tscn" id="1_0c4d3"]
 [ext_resource type="TileSet" uid="uid://def7m4nhhqg6a" path="res://resources/tilesets/crypt.tres" id="2_8mttr"]
 [ext_resource type="PackedScene" uid="uid://depsu0p2x1g45" path="res://scenes/world/map_exit.tscn" id="3_d63yv"]
+[ext_resource type="PackedScene" uid="uid://bap3cwsoe2ooh" path="res://scenes/entities/enemies/zombie/zombie.tscn" id="4_0cayq"]
+[ext_resource type="PackedScene" uid="uid://bpo6yc7rnj2me" path="res://scenes/entities/enemies/ghost/ghost.tscn" id="5_chvvv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xrqdd"]
 size = Vector2(128, 128)
@@ -60,7 +62,14 @@ shape = SubResource("RectangleShape2D_xrqdd")
 debug_color = Color(0, 0.64084, 0.343728, 0.42)
 
 [node name="Camera" parent="." index="3"]
+zoom = Vector2(1.75, 1.75)
 limit_left = 10
 limit_top = -50
 limit_right = 2290
 limit_bottom = 1010
+
+[node name="Zombie" parent="." index="5" instance=ExtResource("4_0cayq")]
+position = Vector2(656, 504)
+
+[node name="Ghost" parent="." index="6" instance=ExtResource("5_chvvv")]
+position = Vector2(280, 760)

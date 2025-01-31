@@ -11,7 +11,8 @@ var targeting: bool = true
 func enter():
 	targeting = true
 	await (owner as Enemy).weapon.draw_tween()
-	Util.wait(2, func(): targeting = false)
+	await Util.wait(2).timeout
+	targeting = false
 	
 func physics_update(delta: float):
 	owner.weapon.look_at(Global.player.global_position)

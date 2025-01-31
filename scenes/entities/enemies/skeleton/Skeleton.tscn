@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cpbk8gj2mj1ea"]
+[gd_scene load_steps=25 format=3 uid="uid://cpbk8gj2mj1ea"]
 
 [ext_resource type="PackedScene" uid="uid://y28itm0e1koh" path="res://scenes/entities/enemies/enemy_base/enemy.tscn" id="1_oeulr"]
 [ext_resource type="Texture2D" uid="uid://bant6hkhyketg" path="res://assets/sprites/entities/SkeleIdle Mk 2.png" id="2_pfaef"]
@@ -11,6 +11,9 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aeua0"]
 radius = 32.0
 height = 112.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dcm2i"]
+radius = 512.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2pwr1"]
 atlas = ExtResource("2_pfaef")
@@ -115,7 +118,7 @@ _data = {
 
 [node name="Skeleton" node_paths=PackedStringArray("weapon") instance=ExtResource("1_oeulr")]
 position = Vector2(0, -0.413236)
-movement_speed = 100
+movement_speed = 150
 weapon = NodePath("Sword")
 
 [node name="Chase" type="Node" parent="FiniteStateMachine" index="2"]
@@ -126,6 +129,9 @@ visual_node = NodePath("../AnimatedSprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" index="0"]
 shape = SubResource("CapsuleShape2D_aeua0")
+
+[node name="CollisionShape2D" parent="DetectionRange" index="0"]
+shape = SubResource("CircleShape2D_dcm2i")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="7"]
 position = Vector2(0, -0.413236)

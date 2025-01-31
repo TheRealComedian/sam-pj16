@@ -57,3 +57,5 @@ shape = SubResource("RectangleShape2D_445qy")
 debug_color = Color(0.244572, 0.601581, 0.581193, 0.42)
 
 [node name="HealthComponent" parent="." instance=ExtResource("4_758oi")]
+
+[node name="DashCooldown" type="Timer" parent="."]

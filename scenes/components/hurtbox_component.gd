@@ -14,6 +14,9 @@ func _on_area_entered(hitbox: Hitbox):
 	if owner is Character and hitbox.owner is Weapon or hitbox.owner is Projectile:
 		if owner == hitbox.owner.user: return
 	
+	if owner is Enemy and hitbox.owner.user is Enemy:
+		return
+	
 	#HACK: this is really messy, but it'll work for the jam
 	if owner is Player:
 		if hitbox.owner is Sword:	Session.last_hit_weapon = load('res://scenes/weapons/sword.tscn')
@@ -24,11 +27,14 @@ func _on_area_entered(hitbox: Hitbox):
 	set_deferred('monitoring', false)
 	
 	health_component.current_health -= hitbox.damage
+	invincible_period()
+	
+func invincible_period(time: float = invincibility_preiod):
 	var clr: Color = visual_node.modulate
 	clr.a = 0.5
 	visual_node.modulate = clr
 	
-	await Util.wait(invincibility_preiod).timeout
+	await Util.wait(time).timeout
 	clr.a = 1
 	visual_node.modulate = clr
 	monitoring = true

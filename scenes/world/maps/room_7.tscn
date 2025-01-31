@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=4 uid="uid://bs23sj088qv8w"]
+[gd_scene load_steps=7 format=4 uid="uid://bs23sj088qv8w"]
 
 [ext_resource type="PackedScene" uid="uid://dy335p6keujbx" path="res://scenes/world/map.tscn" id="1_noi2y"]
 [ext_resource type="TileSet" uid="uid://def7m4nhhqg6a" path="res://resources/tilesets/crypt.tres" id="2_vbhvp"]
 [ext_resource type="PackedScene" uid="uid://depsu0p2x1g45" path="res://scenes/world/map_exit.tscn" id="3_k3aye"]
+[ext_resource type="PackedScene" uid="uid://bap3cwsoe2ooh" path="res://scenes/entities/enemies/zombie/zombie.tscn" id="4_5qgir"]
+[ext_resource type="PackedScene" uid="uid://bpo6yc7rnj2me" path="res://scenes/entities/enemies/ghost/ghost.tscn" id="5_m6v6k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tdllk"]
 size = Vector2(128, 128)
@@ -76,3 +78,9 @@ limit_left = -1140
 limit_top = -50
 limit_right = 760
 limit_bottom = 560
+
+[node name="Zombie" parent="." index="5" instance=ExtResource("4_5qgir")]
+position = Vector2(-200, 280)
+
+[node name="Ghost" parent="." index="6" instance=ExtResource("5_m6v6k")]
+position = Vector2(464, 272)

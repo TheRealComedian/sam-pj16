@@ -19,6 +19,7 @@ func enter():
 		return
 	else:
 		Transitioned.emit(self, 'Idle')
+		return
 	
 	#connect_signals()
 	#ims = owner.movement_speed

@@ -1,6 +1,8 @@
 class_name Player extends Character
 
 @onready var FSM: FiniteStateMachine = $FiniteStateMachine
+@onready var hurtbox: Hurtbox = $Hurtbox
+@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 
 func _ready():
 	if Global.player:
@@ -23,6 +25,18 @@ static func instance(weapon: PackedScene = Session.current_weapon) -> Player:
 	Global.hud.set_weapon_icon(weapon_inst)
 	return inst
 
+
+var dash_available: bool = true
+func dash():
+	if !dash_available: return
+	dashing = true
+	dash_available = false
+	set_collision_mask_value(3, false)
+	await hurtbox.invincible_period(1)
+	dashing = false
+	set_collision_mask_value(3, true)
+	await Util.wait(2).timeout
+	dash_available = true
 
 #func _input(event: InputEvent):
 	#if input_disabled: return

@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://byve87xjow6s"]
+[gd_scene load_steps=31 format=3 uid="uid://byve87xjow6s"]
 
 [ext_resource type="Script" path="res://scenes/entities/enemies/reaper/reaper.gd" id="1_k0chx"]
 [ext_resource type="PackedScene" uid="uid://bymt3484vhpqx" path="res://scenes/components/FSM/finite_state_machine.tscn" id="2_fvomk"]
@@ -18,9 +18,6 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h8kj3"]
 radius = 24.0
 height = 144.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_6388d"]
-radius = 84.0536
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f7yn5"]
 atlas = ExtResource("2_wpq7c")
@@ -114,66 +111,18 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gpfxx"]
+radius = 16.0514
+height = 100.665
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ccbss"]
 radius = 23.1823
 height = 101.011
 
-[sub_resource type="Animation" id="Animation_6jeb8"]
-resource_name = "spin_attack"
-length = 1.5
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = false
-tracks/0/path = NodePath("Scythe/AnimatedSprite2D/Hitbox:disable_mode")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"update": 1,
-"values": []
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Scythe:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5, 1, 1.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 1.57079, 4.97418, 6.28319]
-}
-
-[sub_resource type="Animation" id="Animation_g2nrp"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Scythe:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_oquum"]
-_data = {
-"RESET": SubResource("Animation_g2nrp"),
-"spin_attack": SubResource("Animation_6jeb8")
-}
-
-[node name="Reaper" type="CharacterBody2D" node_paths=PackedStringArray("attack_range", "health_component", "weapon")]
+[node name="Reaper" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "weapon")]
 collision_layer = 4
 collision_mask = 7
 script = ExtResource("1_k0chx")
-attack_range = NodePath("AttackRange")
-movement_speed = 80
 health_component = NodePath("HealthComponent")
 weapon = NodePath("Scythe")
 
@@ -224,21 +173,17 @@ visual_node = NodePath("../AnimatedSprite2D")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource("CapsuleShape2D_h8kj3")
 
-[node name="AttackRange" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
-shape = SubResource("CircleShape2D_6388d")
-debug_color = Color(1, 0.0198501, 0.0837663, 0.254902)
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_a762m")
 autoplay = "default"
 frame_progress = 0.83411
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 32)
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_gpfxx")
+
 [node name="Scythe" parent="." instance=ExtResource("3_2y1y3")]
-arc = 140.215
 
 [node name="AnimatedSprite2D" parent="Scythe" index="0"]
 position = Vector2(40, 1.8332e-12)
@@ -250,11 +195,5 @@ autoplay = ""
 position = Vector2(25, 18)
 rotation = -3.14159
 shape = SubResource("CapsuleShape2D_ccbss")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_oquum")
-}
-speed_scale = 4.0
 
 [editable path="Scythe"]

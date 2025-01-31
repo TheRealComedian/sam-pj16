@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=4 uid="uid://c1udr61jmkh68"]
+[gd_scene load_steps=6 format=4 uid="uid://c1udr61jmkh68"]
 
 [ext_resource type="PackedScene" uid="uid://dy335p6keujbx" path="res://scenes/world/map.tscn" id="1_34yt8"]
 [ext_resource type="TileSet" uid="uid://def7m4nhhqg6a" path="res://resources/tilesets/crypt.tres" id="2_eu7yb"]
 [ext_resource type="PackedScene" uid="uid://depsu0p2x1g45" path="res://scenes/world/map_exit.tscn" id="3_6bbt6"]
+[ext_resource type="PackedScene" uid="uid://cpbk8gj2mj1ea" path="res://scenes/entities/enemies/skeleton/Skeleton.tscn" id="4_nvuj6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ppap3"]
 size = Vector2(128, 128)
@@ -63,3 +64,6 @@ limit_left = -50
 limit_top = -50
 limit_right = 1010
 limit_bottom = 570
+
+[node name="Skeleton" parent="." index="5" instance=ExtResource("4_nvuj6")]
+position = Vector2(160, 280)

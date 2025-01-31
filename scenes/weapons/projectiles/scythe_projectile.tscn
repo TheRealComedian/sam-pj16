@@ -46,6 +46,8 @@ _data = {
 
 [node name="ScytheProjectile" instance=ExtResource("1_ipm3l")]
 script = ExtResource("2_qe20p")
+speed = 1
+lifetime = 5.0
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 position = Vector2(0, 0)

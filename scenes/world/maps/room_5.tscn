@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=4 uid="uid://drkhk86u0g0tx"]
+[gd_scene load_steps=7 format=4 uid="uid://drkhk86u0g0tx"]
 
 [ext_resource type="PackedScene" uid="uid://dy335p6keujbx" path="res://scenes/world/map.tscn" id="1_mujrj"]
 [ext_resource type="TileSet" uid="uid://def7m4nhhqg6a" path="res://resources/tilesets/crypt.tres" id="2_sjc4g"]
 [ext_resource type="PackedScene" uid="uid://depsu0p2x1g45" path="res://scenes/world/map_exit.tscn" id="3_6r2gp"]
+[ext_resource type="PackedScene" uid="uid://bpo6yc7rnj2me" path="res://scenes/entities/enemies/ghost/ghost.tscn" id="4_i3fkr"]
+[ext_resource type="PackedScene" uid="uid://cpbk8gj2mj1ea" path="res://scenes/entities/enemies/skeleton/Skeleton.tscn" id="5_dslk8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mlyef"]
 size = Vector2(128, 128)
@@ -73,7 +75,20 @@ shape = SubResource("RectangleShape2D_mlyef")
 debug_color = Color(0, 0.64084, 0.343728, 0.42)
 
 [node name="Camera" parent="." index="3"]
+zoom = Vector2(1.75, 1.75)
 limit_left = -60
 limit_top = -50
 limit_right = 1460
 limit_bottom = 1780
+
+[node name="Ghost" parent="." index="5" instance=ExtResource("4_i3fkr")]
+position = Vector2(688, 208)
+
+[node name="Ghost2" parent="." index="6" instance=ExtResource("4_i3fkr")]
+position = Vector2(712, 1488)
+
+[node name="Skeleton" parent="." index="7" instance=ExtResource("5_dslk8")]
+position = Vector2(272, 888)
+
+[node name="Skeleton2" parent="." index="8" instance=ExtResource("5_dslk8")]
+position = Vector2(1096, 847.587)
