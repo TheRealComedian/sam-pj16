@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=4 uid="uid://c1udr61jmkh68"]
+[gd_scene load_steps=5 format=4 uid="uid://c1udr61jmkh68"]
 
 [ext_resource type="PackedScene" uid="uid://dy335p6keujbx" path="res://scenes/world/map.tscn" id="1_34yt8"]
 [ext_resource type="TileSet" uid="uid://def7m4nhhqg6a" path="res://resources/tilesets/crypt.tres" id="2_eu7yb"]
+[ext_resource type="PackedScene" uid="uid://depsu0p2x1g45" path="res://scenes/world/map_exit.tscn" id="3_6bbt6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ppap3"]
+size = Vector2(128, 128)
 
 [node name="Map" instance=ExtResource("1_34yt8")]
 
@@ -27,4 +31,35 @@ tile_map_data = PackedByteArray("AAAGAAAAAAAAABoAAAAFAAAAAAAAABoAAAAEAAAAAAAAABo
 tile_set = ExtResource("2_eu7yb")
 
 [node name="start" parent="EntryPoints" index="0"]
-position = Vector2(480, 160)
+position = Vector2(552, 288)
+
+[node name="north" type="Marker2D" parent="EntryPoints" index="1"]
+position = Vector2(480, 120)
+
+[node name="east" type="Marker2D" parent="EntryPoints" index="2"]
+position = Vector2(872, 280)
+
+[node name="north" parent="Exits" index="0" instance=ExtResource("3_6bbt6")]
+position = Vector2(480, 8)
+entry_point = "south"
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exits/north" index="0"]
+shape = SubResource("RectangleShape2D_ppap3")
+debug_color = Color(0, 0.64084, 0.343728, 0.42)
+
+[node name="east" parent="Exits" index="1" instance=ExtResource("3_6bbt6")]
+position = Vector2(976, 288)
+destination_room = 2
+entry_point = "west"
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exits/east" index="0"]
+shape = SubResource("RectangleShape2D_ppap3")
+debug_color = Color(0, 0.64084, 0.343728, 0.42)
+
+[node name="Camera" parent="." index="3"]
+limit_left = -50
+limit_top = -50
+limit_right = 1010
+limit_bottom = 570

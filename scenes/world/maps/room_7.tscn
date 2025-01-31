@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=4 uid="uid://bs23sj088qv8w"]
+[gd_scene load_steps=5 format=4 uid="uid://bs23sj088qv8w"]
 
 [ext_resource type="PackedScene" uid="uid://dy335p6keujbx" path="res://scenes/world/map.tscn" id="1_noi2y"]
 [ext_resource type="TileSet" uid="uid://def7m4nhhqg6a" path="res://resources/tilesets/crypt.tres" id="2_vbhvp"]
+[ext_resource type="PackedScene" uid="uid://depsu0p2x1g45" path="res://scenes/world/map_exit.tscn" id="3_k3aye"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tdllk"]
+size = Vector2(128, 128)
 
 [node name="Map" instance=ExtResource("1_noi2y")]
 
@@ -37,3 +41,38 @@ tile_set = ExtResource("2_vbhvp")
 scale = Vector2(2, 2)
 tile_map_data = PackedByteArray("AADv/wUAAAAEABoAAADv/wEAAAAEABoAAADv/wAAAAAEABoAAAAHAAAAAAAAABoAAAAKAAEAAAACABoAAAAKAAIAAAACABoAAAAKAAMAAAACABoAAAAKAAQAAAACABoAAAAKAAUAAAACABoAAAAKAAAAAAACABoAAADw/wAAAAAAABoAAADx/wAAAAAAABoAAADy/wAAAAAAABoAAADz/wAAAAAAABoAAAD0/wAAAAAAABoAAAD1/wAAAAAAABoAAAD2/wAAAAAAABoAAAD3/wAAAAAAABoAAAD4/wAAAAAAABoAAAD5/wAAAAAAABoAAAD6/wAAAAAAABoAAAD7/wAAAAAAABoAAAD8/wAAAAAAABoAAAD9/wAAAAAAABoAAAD+/wAAAAAAABoAAAD//wAAAAAAABoAAAAAAAAAAAAAABoAAAABAAAAAAAAABoAAAACAAAAAAAAABoAAAADAAAAAAAAABoAAAAEAAAAAAAAABoAAAAFAAAAAAAAABoAAAAGAAAAAAAAABoAAAAIAAAAAAAAABoAAAAJAAAAAAAAABoAAADv/wYAAAAEABoAAADv/wcAAAAEABoAAAAKAAYAAAACABoAAAAKAAcAAAACABoAAAAHAAcAAAABABoAAAA=")
 tile_set = ExtResource("2_vbhvp")
+
+[node name="start" parent="EntryPoints" index="0"]
+position = Vector2(-208, 272)
+
+[node name="west" type="Marker2D" parent="EntryPoints" index="1"]
+position = Vector2(-1016, 288)
+
+[node name="north" type="Marker2D" parent="EntryPoints" index="2"]
+position = Vector2(480, 120)
+
+[node name="west" parent="Exits" index="0" instance=ExtResource("3_k3aye")]
+position = Vector2(-1136, 288)
+destination_room = 7
+entry_point = "east"
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exits/west" index="0"]
+shape = SubResource("RectangleShape2D_tdllk")
+debug_color = Color(0, 0.64084, 0.343728, 0.42)
+
+[node name="north" parent="Exits" index="1" instance=ExtResource("3_k3aye")]
+position = Vector2(480, 8)
+destination_room = 8
+entry_point = "south"
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exits/north" index="0"]
+shape = SubResource("RectangleShape2D_tdllk")
+debug_color = Color(0, 0.64084, 0.343728, 0.42)
+
+[node name="Camera" parent="." index="3"]
+limit_left = -1140
+limit_top = -50
+limit_right = 760
+limit_bottom = 560

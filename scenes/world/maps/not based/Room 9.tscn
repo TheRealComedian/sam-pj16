@@ -1,20 +1,18 @@
-[gd_scene load_steps=4 format=4 uid="uid://boyf7ipgbuiv6"]
+[gd_scene load_steps=6 format=4 uid="uid://boyf7ipgbuiv6"]
 
 [ext_resource type="PackedScene" uid="uid://dy335p6keujbx" path="res://scenes/world/map.tscn" id="1_2hf6t"]
 [ext_resource type="TileSet" uid="uid://def7m4nhhqg6a" path="res://resources/tilesets/crypt.tres" id="2_rnd7n"]
-[ext_resource type="PackedScene" uid="uid://bpo6yc7rnj2me" path="res://scenes/entities/enemies/ghost/ghost.tscn" id="3_7x6i1"]
+[ext_resource type="PackedScene" uid="uid://depsu0p2x1g45" path="res://scenes/world/map_exit.tscn" id="3_sh2y5"]
+[ext_resource type="PackedScene" uid="uid://c1udr61jmkh68" path="res://scenes/world/maps/room_2.tscn" id="4_v55cr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iqhrg"]
+size = Vector2(128, 128)
 
 [node name="CryptVertical" instance=ExtResource("1_2hf6t")]
 
 [node name="Tiles2" type="Node2D" parent="." index="0"]
 position = Vector2(-480, -888)
 metadata/_edit_group_ = true
-
-[node name="Camera" parent="." index="1"]
-limit_left = -470
-limit_top = -890
-limit_right = 470
-limit_bottom = 900
 
 [node name="Ground" type="TileMapLayer" parent="Tiles" index="0"]
 scale = Vector2(2, 2)
@@ -37,5 +35,26 @@ scale = Vector2(2, 2)
 tile_map_data = PackedByteArray("AAAHAAEAAAAAABoAAAAHABsAAAABABoAAAAOAAAAAAACABoAAAAAAAAAAAAEABoAAAAAABsAAAABABoAAAAOABsAAAABABoAAAA=")
 tile_set = ExtResource("2_rnd7n")
 
-[node name="Ghost" parent="." index="4" instance=ExtResource("3_7x6i1")]
-position = Vector2(-224, -232)
+[node name="Exit" parent="Exits" index="0" instance=ExtResource("3_sh2y5")]
+position = Vector2(480, 80)
+destination_map = ExtResource("4_v55cr")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exits/Exit" index="0"]
+shape = SubResource("RectangleShape2D_iqhrg")
+debug_color = Color(0, 0.64084, 0.343728, 0.42)
+
+[node name="Exit2" parent="Exits" index="1" instance=ExtResource("3_sh2y5")]
+position = Vector2(480, 1752)
+destination_map = ExtResource("4_v55cr")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exits/Exit2" index="0"]
+shape = SubResource("RectangleShape2D_iqhrg")
+debug_color = Color(0, 0.64084, 0.343728, 0.42)
+
+[node name="Camera" parent="." index="4"]
+limit_left = -50
+limit_top = -60
+limit_right = 1010
+limit_bottom = 1850

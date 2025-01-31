@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=4 uid="uid://vuq64lhbxy2s"]
+[gd_scene load_steps=5 format=4 uid="uid://vuq64lhbxy2s"]
 
 [ext_resource type="PackedScene" uid="uid://dy335p6keujbx" path="res://scenes/world/map.tscn" id="1_0c4d3"]
 [ext_resource type="TileSet" uid="uid://def7m4nhhqg6a" path="res://resources/tilesets/crypt.tres" id="2_8mttr"]
+[ext_resource type="PackedScene" uid="uid://depsu0p2x1g45" path="res://scenes/world/map_exit.tscn" id="3_d63yv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xrqdd"]
+size = Vector2(128, 128)
 
 [node name="Map" instance=ExtResource("1_0c4d3")]
 
@@ -25,3 +29,38 @@ tile_set = ExtResource("2_8mttr")
 scale = Vector2(2, 2)
 tile_map_data = PackedByteArray("AAAjAAcAAAAAABoAAAASAAAAAAAAABoAAAARAAAAAAAAABoAAAAQAAAAAAAAABoAAAAPAAAAAAAAABoAAAAOAAAAAAAAABoAAAANAAAAAAAAABoAAAAMAAAAAAAAABoAAAALAAAAAAAAABoAAAAKAAAAAAAAABoAAAAJAAAAAAAAABoAAAAIAAAAAAAAABoAAAAHAAAAAAAAABoAAAAGAAAAAAAAABoAAAAFAAAAAAAAABoAAAAEAAAAAAAAABoAAAADAAAAAAAAABoAAAACAAAAAAAAABoAAAABAAAAAAAAABoAAAATAAAAAAAAABoAAAAVAAAAAAAAABoAAAAWAAAAAAAAABoAAAAXAAAAAAAAABoAAAABAA4AAAABABoAAAACAA4AAAABABoAAAADAA4AAAABABoAAAAEAA4AAAABABoAAAAFAA4AAAABABoAAAAGAA4AAAABABoAAAAHAA4AAAABABoAAAAIAA4AAAABABoAAAAJAA4AAAABABoAAAAKAA4AAAABABoAAAALAA4AAAABABoAAAAMAA4AAAABABoAAAANAA4AAAABABoAAAAOAA4AAAABABoAAAAPAA4AAAABABoAAAAQAA4AAAABABoAAAARAA4AAAABABoAAAASAA4AAAABABoAAAATAA4AAAABABoAAAAUAA4AAAABABoAAAAVAA4AAAABABoAAAAWAA4AAAABABoAAAAXAA4AAAABABoAAAAYAA4AAAABABoAAAAZAA4AAAABABoAAAAaAA4AAAABABoAAAAbAA4AAAABABoAAAAcAA4AAAABABoAAAAdAA4AAAABABoAAAAeAA4AAAABABoAAAAfAA4AAAABABoAAAAgAA4AAAABABoAAAAhAA4AAAABABoAAAAiAA4AAAABABoAAAAYAAAAAAAAABoAAAAZAAAAAAAAABoAAAAaAAAAAAAAABoAAAAbAAAAAAAAABoAAAAcAAAAAAAAABoAAAAdAAAAAAAAABoAAAAeAAAAAAAAABoAAAAfAAAAAAAAABoAAAAgAAAAAAAAABoAAAAhAAAAAAAAABoAAAAiAAAAAAACABoAAAAiAAEAAAACABoAAAAiAAIAAAACABoAAAAiAAMAAAACABoAAAAiAAQAAAACABoAAAAiAAUAAAACABoAAAAUAAAAAAAAABoAAAAVAAcAAAAAABsAAAAWAAcAAAAAABsAAAAXAAcAAAAAABsAAAAYAAcAAAAAABsAAAAZAAcAAAAAABsAAAAaAAcAAAAAABsAAAAcAAcAAAAAABsAAAAdAAcAAAAAABsAAAAeAAcAAAAAABsAAAAfAAcAAAAAABsAAAAgAAcAAAAAABsAAAAhAAcAAAAAABsAAAAbAAcAAAAAABoAAAA=")
 tile_set = ExtResource("2_8mttr")
+
+[node name="start" parent="EntryPoints" index="0"]
+position = Vector2(680, 512)
+
+[node name="northwest" type="Marker2D" parent="EntryPoints" index="1"]
+position = Vector2(672, 112)
+
+[node name="northeast" type="Marker2D" parent="EntryPoints" index="2"]
+position = Vector2(1760, 576)
+
+[node name="northwest" parent="Exits" index="0" instance=ExtResource("3_d63yv")]
+position = Vector2(664, 8)
+destination_room = 4
+entry_point = "south"
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exits/northwest" index="0"]
+shape = SubResource("RectangleShape2D_xrqdd")
+debug_color = Color(0, 0.64084, 0.343728, 0.42)
+
+[node name="northeast" parent="Exits" index="1" instance=ExtResource("3_d63yv")]
+position = Vector2(1760, 464)
+destination_room = 7
+entry_point = "south"
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exits/northeast" index="0"]
+shape = SubResource("RectangleShape2D_xrqdd")
+debug_color = Color(0, 0.64084, 0.343728, 0.42)
+
+[node name="Camera" parent="." index="3"]
+limit_left = 10
+limit_top = -50
+limit_right = 2290
+limit_bottom = 1010

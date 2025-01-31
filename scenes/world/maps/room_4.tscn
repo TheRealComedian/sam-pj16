@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=4 uid="uid://bnuofuahphsud"]
+[gd_scene load_steps=5 format=4 uid="uid://bnuofuahphsud"]
 
 [ext_resource type="PackedScene" uid="uid://dy335p6keujbx" path="res://scenes/world/map.tscn" id="1_ec2cu"]
 [ext_resource type="TileSet" uid="uid://def7m4nhhqg6a" path="res://resources/tilesets/crypt.tres" id="2_qx8d0"]
+[ext_resource type="PackedScene" uid="uid://depsu0p2x1g45" path="res://scenes/world/map_exit.tscn" id="3_mk5iy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r54an"]
+size = Vector2(128, 128)
 
 [node name="Map" instance=ExtResource("1_ec2cu")]
 
@@ -25,3 +29,38 @@ tile_set = ExtResource("2_qx8d0")
 scale = Vector2(2, 2)
 tile_map_data = PackedByteArray("AAAHAAgAAAABABoAAAAAAAAAAAAEABoAAAAIAAgAAAABABoAAAAGAAgAAAABABoAAAAFAAgAAAABABoAAAAEAAgAAAABABoAAAADAAgAAAABABoAAAACAAgAAAABABoAAAABAAgAAAABABoAAAAAAAgAAAABABoAAAAAAAcAAAAEABoAAAAAAAYAAAAEABoAAAAAAAUAAAAEABoAAAAAAAMAAAAEABoAAAAAAAIAAAAEABoAAAAAAAEAAAAEABoAAAAJAAgAAAABABoAAAAKAAgAAAABABoAAAALAAgAAAABABoAAAAMAAgAAAABABoAAAANAAgAAAABABoAAAAdAAAAAAACABoAAAAdAAEAAAACABoAAAAdAAIAAAACABoAAAAdAAMAAAACABoAAAAdAAQAAAACABoAAAAdAAUAAAACABoAAAAdAAYAAAACABoAAAAdAAcAAAACABoAAAAdAAgAAAACABoAAAA=")
 tile_set = ExtResource("2_qx8d0")
+
+[node name="start" parent="EntryPoints" index="0"]
+position = Vector2(1096, 280)
+
+[node name="south" type="Marker2D" parent="EntryPoints" index="1"]
+position = Vector2(480, 440)
+
+[node name="east" type="Marker2D" parent="EntryPoints" index="2"]
+position = Vector2(1856, 288)
+
+[node name="south" parent="Exits" index="0" instance=ExtResource("3_mk5iy")]
+position = Vector2(480, 560)
+destination_room = 2
+entry_point = "north"
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exits/south" index="0"]
+shape = SubResource("RectangleShape2D_r54an")
+debug_color = Color(0, 0.64084, 0.343728, 0.42)
+
+[node name="east" parent="Exits" index="1" instance=ExtResource("3_mk5iy")]
+position = Vector2(1960, 280)
+destination_room = 4
+entry_point = "northwest"
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exits/east" index="0"]
+shape = SubResource("RectangleShape2D_r54an")
+debug_color = Color(0, 0.64084, 0.343728, 0.42)
+
+[node name="Camera" parent="." index="3"]
+limit_left = -50
+limit_top = -50
+limit_right = 1970
+limit_bottom = 630
